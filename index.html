@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Entregas - Equipe Alpha Q1 2025</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Calm Corporate -->
+    <!-- Application Structure Plan: A dashboard-style SPA with tabbed navigation (Visão Geral, Entregas, Qualidade, Métricas, Jornada). This structure transforms the linear report into an exploratory experience, allowing stakeholders to quickly access high-level KPIs or dive deep into specific charts and project details. This is more usable than a slide-by-slide format because it empowers the user to control the information flow based on their interests. -->
+    <!-- Visualization & Content Choices: 
+        - Report Info: Executive Summary -> Goal: Inform -> Viz: KPI Cards -> Interaction: Hover -> Justification: Quick, scannable highlights.
+        - Report Info: Key Deliverables (Portal V2) -> Goal: Detail -> Viz: Content Cards -> Interaction: Static -> Justification: Clear separation of projects.
+        - Report Info: Technical Improvements -> Goal: Organize -> Viz: Tabbed content -> Interaction: Click to switch views -> Justification: Prevents information overload.
+        - Report Info: MTTR & Deployments -> Goal: Compare/Show Change -> Viz: Line & Bar Charts (Chart.js/Canvas) -> Interaction: Tooltips on hover -> Justification: Visualizes trends effectively.
+        - Report Info: Challenges/Learnings/Next Steps -> Goal: Organize -> Viz: Two-column layout -> Interaction: Static -> Justification: Juxtaposes past and future for a narrative flow.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .chart-container { position: relative; width: 100%; max-width: 600px; margin-left: auto; margin-right: auto; height: 320px; max-height: 400px; }
+        @media (min-width: 640px) { .chart-container { height: 350px; } }
+        .nav-button { transition: all 0.3s ease; }
+        .nav-button.active { background-color: #4f46e5; color: white; }
+        .nav-button:not(.active):hover { background-color: #eef2ff; }
+        .content-section { display: none; }
+        .content-section.active { display: block; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <div class="container mx-auto p-4 sm:p-6 md:p-8">
+        
+        <header class="text-center mb-8">
+            <h1 class="text-3xl sm:text-4xl font-bold text-indigo-700">Entregas do Time - 6w</h1>
+            <p class="text-slate-500 mt-2 text-lg">Um resumo interativo das nossas conquistas, métricas e aprendizados.</p>
+        </header>
+
+        <nav id="main-nav" class="flex flex-wrap justify-center gap-2 mb-8">
+            <button data-target="overview" class="nav-button active font-medium py-2 px-4 rounded-lg">Visão Geral</button>
+            <!-- <button data-target="deliverables" class="nav-button font-medium py-2 px-4 rounded-lg">Entregas</button> -->
+            <button data-target="deliverables" class="nav-button font-medium py-2 px-4 rounded-lg">Entregas</button>
+            <button data-target="metrics" class="nav-button font-medium py-2 px-4 rounded-lg">Métricas</button>
+            <!-- <button data-target="journey" class="nav-button font-medium py-2 px-4 rounded-lg">Próximos Passos</button> -->
+        </nav>
+
+        <main>
+            <section id="overview" class="content-section active">
+                <div class="bg-white p-6 rounded-xl shadow-sm mb-6">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">Visão Geral das 6 semanas</h2>
+                    <p class="text-slate-600">As ultimas 6 semanas foram focadas em inovação, estabilidade e na melhoria da experiência do cliente. Atingimos marcos importantes que geraram impacto direto no negócio e fortaleceram nossa plataforma tecnológica. Esta seção resume nossos principais resultados.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-indigo-500">
+                        <h3 class="font-bold text-xl mb-2 text-slate-900">Melhorias UX - Withdraw</h3>
+                        <p class="text-slate-600">Implementamos melhorias de UX no fluxo de transferências, tornando o processo mais intuitivo, rápido e transparente para o usuário. As alterações reduziram etapas desnecessárias, simplificaram mensagens e aumentaram a clareza das informações exibidas, resultando em menos dúvidas e maior satisfação dos clientes.</p>
+                        <p class="text-slate-600"><strong>Total de Histórias - 18.</strong></p>
+                        <p class="text-slate-600"><strong>Pontos de complexidade - 63.</strong></p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-teal-500">
+                        <h3 class="font-bold text-xl mb-2 text-slate-900">Melhorias UX Settlement</h3>
+                        <p class="text-slate-600">Aprimoramos a experiência do usuário nos relatórios de settlement, tornando a navegação mais clara e intuitiva. As informações financeiras foram reorganizadas para facilitar a compreensão, adicionamos filtros dinâmicos e melhoramos a visualização de dados, reduzindo dúvidas e acelerando a tomada de decisão.</p>
+                        <p class="text-slate-600"><strong>Total de Histórias - 22.</strong></p>
+                        <p class="text-slate-600"><strong>Pontos de complexidade - 95.</strong></p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-amber-500">
+                        <h3 class="font-bold text-xl mb-2 text-slate-900">Non Resident's Accounts </h3>
+                        <p class="text-slate-600">Ajustamos os fluxos de transferências e gestão de contas para acomodar as funcionalidades de Contas de Não residentes</p>
+                        <p class="text-slate-600"><strong>Total de Histórias - 20.</strong></p>
+                        <p class="text-slate-600"><strong>Pontos de complexidade - 98.</strong></p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-indigo-500">
+                        <h3 class="font-bold text-xl mb-2 text-slate-900">Comprovantes de transferências</h3>
+                        <p class="text-slate-600">Desenvolvimento de comprovantes de trasnferências fornecendo uma ferramenta de apoio a operação.</p>
+                        <p class="text-slate-600"><strong>Total de Histórias - 4.</strong></p>
+                        <p class="text-slate-600"><strong>Pontos de complexidade - 20.</strong></p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-teal-500">
+                        <h3 class="font-bold text-xl mb-2 text-slate-900">Documentação de APIs em Open API</h3>
+                        <p class="text-slate-600">Mapeamento e documentação de todas APIs internas e Externas em Open API.</p>
+                        <p class="text-slate-600"><strong>Total de Histórias - 10.</strong></p>
+                        <p class="text-slate-600"><strong>Pontos de complexidade - 34.</strong></p>
+                    </div>
+                </div>
+            </section>
+            <!-- Pagina desaticada -->
+            <section id="deliverables" class="content-section">
+                <div class="bg-white p-6 rounded-xl shadow-sm mb-6">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">Principais Entregas</h2>
+                    <p class="text-slate-600">Um pouco das nossas entregas.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <article class="bg-white p-6 rounded-xl shadow-sm">
+                        <h3 class="font-bold text-xl mb-2 text-indigo-600">Documentação de APIs em Open API</h3>
+                        <p class="font-medium text-slate-700 mb-2">Documentação detalhada de 9 serviços e 98 endpoints publicada em Open API, facilitando a integração e o entendimento técnico para desenvolvedores internos e parceiros.</p>
+                        <div class="mt-4 pt-4 border-t border-slate-200">
+                            <h4 class="font-semibold text-slate-800">Impacto e Benefício:</h4>
+                            <p class="text-slate-600">Aumentar a transparência, reduzir dúvidas técnicas e acelerar o onboarding de novos desenvolvedores, promovendo integrações mais rápidas e seguras.</p>
+                        </div>
+                        <img src="entregas-1/docs.png" alt="Swagger" class="mx-auto rounded-lg shadow mt-4" style="width:auto; max-width:60%; height:auto;">
+                    </article>
+                    </article>
+                        <article class="bg-white p-6 rounded-xl shadow-sm">
+                        <h3 class="font-bold text-xl mb-2 text-indigo-600">Comprovantes de Transferências</h3>
+                        <p class="font-medium text-slate-700 mb-2">Desenvolvimento e disponibilização de comprovantes digitais para transferências realizadas na plataforma, permitindo que os usuários acessem, visualizem e compartilhem facilmente os comprovantes de suas operações financeiras.</p>
+                        <div class="mt-4 pt-4 border-t border-slate-200">
+                            <h4 class="font-semibold text-slate-800">Impacto e Benefício:</h4>
+                            <p class="text-slate-600">Proporcionar maior segurança e confiança aos usuários, facilitou a comprovação de operações financeiras e reduziu o volume de solicitações ao suporte relacionadas a dúvidas sobre transferências.</p>
+                        <div class="flex flex-row flex-wrap justify-center gap-4 mt-4">
+                            <img src="entregas-1/comprovante.png" alt="Exemplo de comprovante digital" class="rounded-lg shadow" style="max-width:220px; width:100%; height:auto;">
+                            <img src="entregas-1/comprovante2.png" alt="Exemplo de comprovante digital" class="rounded-lg shadow" style="max-width:220px; width:100%; height:auto;">
+                        </div>
+                    </div>
+                    </article>
+                    <article class="bg-white p-6 rounded-xl shadow-sm">
+                        <h3 class="font-bold text-xl mb-2 text-indigo-600">Melhorias na Experiência Settlement</h3>
+                        <p class="font-medium text-slate-700 mb-2">Otimização do relatório de liquidações implementando uma série de ferramentas de apoio a operação.</p>
+                         <div class="mt-4 pt-4 border-t border-slate-200">
+                            <h4 class="font-semibold text-slate-800">Impacto e Benefício:</h4>
+                            <p class="text-slate-600">Otimização da operação, redução de esforço operacional e melhoria na experiência operacional .</p>
+                            <img src="entregas-1/settlement.png" alt="Tela de settlment" class="mx-auto rounded-lg shadow mt-4" style="width:auto; max-width:60%; height:auto;">
+                        </div>
+                    </article>
+                    </article>
+                        <article class="bg-white p-6 rounded-xl shadow-sm">
+                        <h3 class="font-bold text-xl mb-2 text-indigo-600">Transferências via API</h3>
+                        <p class="font-medium text-slate-700 mb-2">Implementação do serviço de transferências via API, permitindo que clientes corporativos realizem operações financeiras de forma automatizada, segura e integrada aos seus próprios sistemas, ampliando a flexibilidade e eficiência dos processos.</p>
+                        <div class="mt-4 pt-4 border-t border-slate-200">
+                            <h4 class="font-semibold text-slate-800">Impacto e Benefício:</h4>
+                            <p class="text-slate-600">Revisão dos fluxos de transferências atuais e complementação do fluxo. Preparação do sistema para a funcionalidade de contas de não residentes</p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+            
+            <section id="quality" class="content-section">
+                <div class="bg-white p-6 rounded-xl shadow-sm mb-6">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">Otimização Contínua e Qualidade</h2>
+                    <p class="text-slate-600">Além de novas funcionalidades, dedicamos uma parte significativa do nosso esforço para fortalecer a base do nosso sistema. Melhorias de performance, correções de bugs e redução de débito técnico são essenciais para um crescimento sustentável.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div>
+                            <h3 class="font-bold text-lg text-teal-600 mb-2">Testes e Qualidade</h3>
+                            <ul class="list-disc list-inside text-slate-600 space-y-1">
+                                <li>Revisão dos testes automatizados .</li>
+                                <li>Melhorias na cobertura, logs, organização do código e padronização.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg text-rose-600 mb-2">Atuação em ítens operacionais</h3>
+                            <ul class="list-disc list-inside text-slate-600 space-y-1">
+                                <li>Análise de dados operacionais.</li>
+                                <li>levantamento de melhorias e funcionalidades para redução do esforço operacional.</li>
+                            </ul>
+                        </div>
+                         <div>
+                            <h3 class="font-bold text-lg text-sky-600 mb-2">Documentação de APIs</h3>
+                            <ul class="list-disc list-inside text-slate-600 space-y-1">
+                                <li>Documentação de todos serviços e APIs Rest.</li>
+                                <li>Documentação de 98 endpoints</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="metrics" class="content-section">
+                 <div class="bg-white p-6 rounded-xl shadow-sm mb-6">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">Nossos Números</h2>
+                    <p class="text-slate-600">Os dados contam a história do nosso progresso. Nesta seção, apresentamos as métricas chave que monitoramos para medir nossa eficiência, a qualidade das nossas entregas e o impacto direto no negócio.</p>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="bg-white p-6 rounded-xl shadow-sm">
+                        <h3 class="text-xl font-bold text-center mb-4 text-slate-900">Velocity - Média de story points</h3>
+                        <div class="chart-container">
+                            <canvas id="mttrChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm">
+                        <h3 class="text-xl font-bold text-center mb-4 text-slate-900">Velocity por Tecnologia</h3>
+                        <div class="chart-container">
+                            <canvas id="deploymentsChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                 <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-8">
+                    <div class="bg-white p-4 text-center rounded-xl shadow-sm">
+                        <p class="text-3xl font-bold text-teal-600">74</p>
+                        <p class="text-slate-500">Histórias</p>
+                    </div>
+                    <div class="bg-white p-4 text-center rounded-xl shadow-sm">
+                        <p class="text-3xl font-bold text-indigo-600">310</p>
+                        <p class="text-slate-500">Pontos de Complexidade</p>
+                    </div>
+                    <div class="bg-white p-4 text-center rounded-xl shadow-sm">
+                        <p class="text-3xl font-bold text-teal-600">5</p>
+                        <p class="text-slate-500">FTEs</p>
+                    </div>
+                    <div class="bg-white p-4 text-center rounded-xl shadow-sm">
+                        <p class="text-3xl font-bold text-indigo-600">48</p>
+                        <p class="text-slate-500">Funcionalidades entregues</p>
+                    </div>
+                </div>
+                <br>
+                <div class="bg-white p-6 rounded-xl shadow-sm mb-6">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">Próximos Passos</h2>
+                    <p class="text-slate-600">Refletir sobre os desafios que superamos nos ajuda a crescer, enquanto olhar para o futuro nos dá direção. Aqui compartilhamos nossos aprendizados e nosso foco para o próximo trimestre.</p>
+                </div>
+                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white p-6 rounded-xl shadow-sm">
+                        <h3 class="text-xl font-bold text-slate-900 mb-4">Foco para as Próximas 6 semanas</h3>
+                         <ul class="list-disc list-inside text-slate-600 space-y-2">
+                            <li>
+                                <span class="font-semibold text-slate-700">Transferência entre contas:</span>
+                                Lançar uma nova ferramenta para transferências entre contas.
+                            </li>
+                             <li>
+                                <span class="font-semibold text-slate-700">Liquidação parametrizável:</span>
+                                Ferramenta para liquidação de operações parametrizável.
+                            </li>
+                             <li>
+                                <span class="font-semibold text-slate-700">Exposição de documentação Open-API:</span>
+                                Centralizar e disponibilizar a documentação do time para a equipe de desenvolvimento e integrações.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <!-- Página desativada -->
+            <section id="journey" class="content-section">
+                <div class="bg-white p-6 rounded-xl shadow-sm mb-6">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">Nossa Jornada: Passado e Futuro</h2>
+                    <p class="text-slate-600">Refletir sobre os desafios que superamos nos ajuda a crescer, enquanto olhar para o futuro nos dá direção. Aqui compartilhamos nossos aprendizados e nosso foco para o próximo trimestre.</p>
+                </div>
+                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- <div class="bg-white p-6 rounded-xl shadow-sm">
+                        <h3 class="text-xl font-bold text-slate-900 mb-4">Desafios e Aprendizados</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <h4 class="font-semibold text-amber-700">Desafio: Distância da operação</h4>
+                                <p class="text-slate-600">A distância entre o time de operações e o time de desenvolvimento dificultou o alinhamento de prioridades e a comunicação sobre necessidades reais do dia a dia operacional.</p>
+                                <p class="text-slate-500 text-sm mt-1"><strong>Solução:</strong> Proximidade com a operação.</p>
+                            </div>
+                             <div>
+                                <h4 class="font-semibold text-amber-700">Desafio: Instabilidade de Parceiros</h4>
+                                <p class="text-slate-600">Instabilidades no ambiente de testes impactaram em entregas</p>
+                                <p class="text-slate-500 text-sm mt-1"><strong>Solução:</strong> Planejamento de implementação de solução para eliminar a dependência de parceiros em ambiente de testes.</p>
+                            </div>
+                             <div class="pt-4 border-t border-slate-200">
+                                <h4 class="font-semibold text-sky-700">Principal Aprendizado:</h4>
+                                <p class="text-slate-600">A importância de uma análise de risco mais aprofundada em integrações e a necessidade de balancear novas features com a saúde do código.</p>
+                            </div>
+                        </div>
+                    </div> -->
+                    <div class="bg-white p-6 rounded-xl shadow-sm">
+                        <h3 class="text-xl font-bold text-slate-900 mb-4">Foco para as Próximas 6 semanas</h3>
+                         <ul class="list-disc list-inside text-slate-600 space-y-2">
+                            <li>
+                                <span class="font-semibold text-slate-700">Transferência entre contas:</span>
+                                Lançar uma nova ferramenta para transferências entre contas.
+                            </li>
+                             <li>
+                                <span class="font-semibold text-slate-700">Liquidação parametrizável:</span>
+                                Ferramenta para liquidação de operações parametrizável.
+                            </li>
+                             <li>
+                                <span class="font-semibold text-slate-700">Exposição de documentação Open-API:</span>
+                                Centralizar e disponibilizar a documentação do time para a equipe de desenvolvimento e integrações.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <footer class="text-center mt-12 pt-6 border-t border-slate-200">
+            <p class="text-slate-500">&copy; 2025 Equipe Account. Todos os direitos reservados.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const nav = document.getElementById('main-nav');
+            const sections = document.querySelectorAll('.content-section');
+            const buttons = nav.querySelectorAll('button');
+
+            nav.addEventListener('click', (e) => {
+                if (e.target.tagName === 'BUTTON') {
+                    const targetId = e.target.getAttribute('data-target');
+
+                    buttons.forEach(btn => btn.classList.remove('active'));
+                    e.target.classList.add('active');
+                    
+                    sections.forEach(section => {
+                        if (section.id === targetId) {
+                            section.classList.add('active');
+                        } else {
+                            section.classList.remove('active');
+                        }
+                    });
+                }
+            });
+
+            function createMttrChart() {
+                const ctx = document.getElementById('mttrChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['DBA-2025SP32', 'DBA-2025SP33', 'DBA-2025SP34', 'DBA-2025SP35', 'DBA-2526SP1'],
+                        datasets: [
+                            {
+                                label: 'Média de story points - DBA',
+                                data: [88, 98, 73, 89.5, 50.5],
+                                backgroundColor: '#4f46e5'
+                            },
+                            {
+                                label: 'Story Points Time Z',
+                                data: [22, 45, 27, 33, 32],
+                                backgroundColor: '#10b981'
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            x: { stacked: true },
+                            y: { beginAtZero: true, suggestedMax: 120, stacked: true }
+                        },
+                        plugins: {
+                            legend: { display: true }
+                        }
+                    }
+                });
+            }
+
+            function createDeploymentsChart() {
+                const ctx = document.getElementById('deploymentsChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: ['Backend', 'Frontend'],
+                        datasets: [{
+                            label: 'Pontos por Tecnologia',
+                            data: [
+                                // Soma dos pontos Backend
+                                11 + 10 + 8 + 14 + 3,
+                                // Soma dos pontos Frontend
+                                14 + 20 + 14 + 17 + 22
+                            ],
+                            backgroundColor: ['#4f46e5', '#10b981']
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { display: true }
+                        }
+                    }
+                });
+            }
+
+            createMttrChart();
+            createDeploymentsChart();
+        });
+    </script>
+
+</body>
+</html>
