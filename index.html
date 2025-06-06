@@ -37,7 +37,7 @@
             <button data-target="overview" class="nav-button active font-medium py-2 px-4 rounded-lg">Visão Geral</button>
             <button data-target="deliverables" class="nav-button font-medium py-2 px-4 rounded-lg">Entregas</button>
             <button data-target="metrics" class="nav-button font-medium py-2 px-4 rounded-lg">Métricas</button>
-            <button data-target="journey" class="nav-button font-medium py-2 px-4 rounded-lg">Próximos Passos</button>
+            <!-- <button data-target="journey" class="nav-button font-medium py-2 px-4 rounded-lg">Próximos Passos</button> -->
         </nav>
         <main>
             <section id="overview" class="content-section active">
@@ -111,6 +111,39 @@
                             <span class="text-xs text-slate-400 mt-1">70% concluído</span>
                         </div>
                     </div>
+                </div>
+                <div class="my-6"></div>
+                <div class="bg-white p-6 rounded-xl shadow-sm mb-6">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">Principais Entregas <i class="fas fa-rocket ml-2 text-indigo-600"></i></h2>
+                    <p class="text-slate-600">Um pouco das nossas entregas.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <article class="bg-white p-6 rounded-xl shadow-sm">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-file-code text-3xl text-indigo-600 mr-3"></i>
+                            <h3 class="font-bold text-xl text-indigo-600">Documentação de APIs em Open API</h3>
+                        </div>
+                        <img src="assets/docs.png" alt="Swagger" class="mx-auto rounded-lg shadow mt-4" style="width:auto; max-width:60%; height:auto;">
+                    </article>
+                    <article class="bg-white p-6 rounded-xl shadow-sm">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-file-invoice-dollar text-3xl text-indigo-600 mr-3"></i>
+                            <h3 class="font-bold text-xl text-indigo-600">Comprovantes de Transferências</h3>
+                        </div>
+                        <div class="flex flex-row flex-wrap justify-center gap-4 mt-4">
+                            <img src="assets/comprovante.png" alt="Exemplo de comprovante digital" class="rounded-lg shadow" style="max-width:220px; width:100%; height:auto;">
+                            <img src="assets/comprovante2.png" alt="Exemplo de comprovante digital" class="rounded-lg shadow" style="max-width:220px; width:100%; height:auto;">
+                        </div>
+                    </article>
+                    <article class="bg-white p-6 rounded-xl shadow-sm">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-chart-area text-3xl text-indigo-600 mr-3"></i>
+                            <h3 class="font-bold text-xl text-indigo-600">Melhorias na Experiência Settlement</h3>
+                        </div>
+                            <img src="assets/settlement.png" alt="Tela de settlment" class="mx-auto rounded-lg shadow mt-4" style="width:auto; max-width:60%; height:auto;">
+                        </div>
+                    </article>
                 </div>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
