@@ -6,8 +6,7 @@
     <title>DBA Development Panel</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.js"></script>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%234f46e5'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-size='40' font-family='Arial, sans-serif' fill='white'%3EE%3C/text%3E%3C/svg%3E" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -555,16 +554,23 @@
             async function loadSprintData() {
                 try {
                     const response = await fetch('sprints.yml');
+                    if (!response.ok) { // Check for HTTP errors like 404
+                        throw new Error(`Failed to fetch: ${response.statusText}`);
+                    }
                     const yamlText = await response.text();
-                    const sprints = jsYaml.load(yamlText); // Use jsYaml.load()
-                    console.log("Loaded Sprints:", sprints); // Log to verify parsing
-
+                    const sprints = jsyaml.load(yamlText); 
                     populateSprintDropdown(sprints);
-                    if (sprints.length > 0) {
+                    if (sprints && sprints.length > 0) {
                         updateSprintDisplay(sprints[0]);
                     }
                 } catch (error) {
                     console.error('Error loading or parsing sprint data:', error);
+                    // Add user-facing feedback
+                    const historySection = document.getElementById('history');
+                    historySection.innerHTML = `<div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-xl" role="alert">
+                                                    <strong class="font-bold">Error:</strong>
+                                                    <span class="block sm:inline">Could not load sprint history data. Please check the console for details.</span>
+                                                </div>`;
                 }
             }
 
