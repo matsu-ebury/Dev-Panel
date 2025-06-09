@@ -558,7 +558,6 @@
                         throw new Error(`Failed to fetch: ${response.statusText}`);
                     }
                     const yamlText = await response.text();
-                    console.log('YAML data loaded:', yamlText); // Debugging log
                     const sprints = jsYaml.load(yamlText); 
                     populateSprintDropdown(sprints);
                     if (sprints && sprints.length > 0) {
@@ -598,18 +597,11 @@
                 createSprintMetricsChart(sprint);
             }
 
-            // Simple YAML parser (for demonstration purposes)
-            // For complex YAML, consider a dedicated library like js-yaml
-            
-
             // Initial chart rendering when the page loads
             createBurndownChart();
             createMttrChart();
             createOverviewDeploymentsChart();
             loadSprintData(); // Load sprint data for the history section
-
-            // Ensure charts are redrawn if a section becomes active
-            // This is already handled by the nav click listener and destroyCharts()
         });
     </script>
 </body>
