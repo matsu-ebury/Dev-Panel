@@ -1,28 +1,78 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel de Entregas - Infográfico</title>
+    <title>DBA Development Panel</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        body { font-family: 'Inter', sans-serif; }
-        .chart-container { position: relative; width: 100%; max-width: 600px; margin-left: auto; margin-right: auto; height: 320px; max-height: 400px; }
-        @media (min-width: 640px) { .chart-container { height: 350px; } }
-        .nav-button { transition: all 0.3s ease; }
-        .nav-button.active { background-color: #4f46e5; color: white; }
-        .nav-button:not(.active):hover { background-color: #eef2ff; }
-        .content-section { display: none; }
-        .content-section.active { display: block; }
-        .icon-card { @apply text-4xl text-indigo-600 mb-4; }
-        .metric-icon { @apply text-5xl text-teal-600 mb-4; }
-        .progress-bar-container { @apply w-full bg-slate-200 rounded-full h-2.5; }
-        .progress-bar { @apply bg-indigo-500 h-2.5 rounded-full; }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 100%; /* Adjusted for wider charts */
+            margin-left: auto;
+            margin-right: auto;
+            height: 400px; /* Base height for charts */
+        }
+        @media (min-width: 640px) {
+            .chart-container {
+                height: 400px; /* Consistent height on larger screens */
+            }
+        }
+        .nav-button {
+            transition: all 0.2s ease;
+            position: relative;
+            top: 1px;
+        }
+        .nav-button.active {
+            background-color: white;
+            color: #4f46e5;
+            border-color: #e2e8f0;
+            border-bottom-color: transparent;
+            border-top-left-radius: 0.5rem;
+            border-top-right-radius: 0.5rem;
+            z-index: 10;
+        }
+        .nav-button:not(.active):hover {
+            background-color: #f1f5f9;
+            color: #1a202c;
+        }
+        .content-section {
+            display: none;
+        }
+        .content-section.active {
+            display: block;
+        }
+        .icon-card {
+            font-size: 2.25rem;
+            color: #4f46e5;
+            margin-bottom: 1rem;
+        }
+        .metric-icon {
+            font-size: 3rem;
+            color: #0c2b68; 
+            margin-bottom: 1rem;
+        }
+        .progress-bar-container {
+            width: 100%;
+            background-color: #e2e8f0;
+            border-radius: 9999px;
+            height: 0.625rem;
+        }
+        .progress-bar {
+            background-color: #6366f1;
+            height: 0.625rem;
+            border-radius: 9999px;
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
@@ -30,273 +80,264 @@
     <div class="container mx-auto p-4 sm:p-6 md:p-8">
 
         <header class="text-center mb-8">
-            <h1 class="text-3xl sm:text-4xl font-bold text-indigo-700">Entregas do Time - 6w <i class="fas fa-chart-line ml-2"></i></h1>
-            <p class="text-slate-500 mt-2 text-lg">Um resumo interativo das nossas conquistas, métricas e aprendizados.</p>
+            <h1 class="text-3xl sm:text-4xl font-bold text-indigo-700">DBA Development Panel <i class="fas fa-chart-line ml-2"></i></h1>
+            <p class="text-slate-500 mt-2 text-lg">An interactive summary of our achievements, metrics, and learnings.</p>
         </header>
-        <nav id="main-nav" class="flex flex-wrap justify-center gap-2 mb-8">
-            <button data-target="overview" class="nav-button active font-medium py-2 px-4 rounded-lg">Visão Geral</button>
-            <button data-target="deliverables" class="nav-button font-medium py-2 px-4 rounded-lg">Entregas</button>
-            <button data-target="metrics" class="nav-button font-medium py-2 px-4 rounded-lg">Métricas</button>
-            <!-- <button data-target="journey" class="nav-button font-medium py-2 px-4 rounded-lg">Próximos Passos</button> -->
+
+        <nav id="main-nav" class="flex justify-center gap-0 mb-8 border-b border-slate-200">
+            <div class="flex justify-start gap-0 w-full bg-slate-100 rounded-t-xl p-1 shadow-sm">
+                <button data-target="release" class="nav-button active font-semibold py-2 px-8 border border-b-0 border-transparent text-slate-600 hover:bg-white hover:text-indigo-700 rounded-t-xl transition-all duration-200 flex items-center gap-2">
+                    <i class="fas fa-rocket"></i> Release Dashboard
+                </button>
+                <button data-target="overview" class="nav-button font-semibold py-2 px-8 border border-b-0 border-transparent text-slate-600 hover:bg-white hover:text-indigo-700 rounded-t-xl transition-all duration-200 flex items-center gap-2">
+                    <i class="fas fa-chart-bar"></i> Last 6W
+                </button>
+                <button data-target="history" class="nav-button font-semibold py-2 px-8 border border-b-0 border-transparent text-slate-600 hover:bg-white hover:text-indigo-700 rounded-t-xl transition-all duration-200 flex items-center gap-2">
+                    <i class="fas fa-history"></i> Sprint History
+                </button>
+            </div>
         </nav>
         <main>
-            <section id="overview" class="content-section active">
+            <section id="release" class="content-section active">
                 <div class="bg-white p-6 rounded-xl shadow-sm mb-6">
-                    <h2 class="text-2xl font-bold text-slate-900 mb-4">Visão Geral das 6 semanas <i class="fas fa-eye ml-2 text-indigo-600"></i></h2>
-                    <p class="text-slate-600">As ultimas 6 semanas foram focadas em inovação, estabilidade e na melhoria da experiência do cliente. Atingimos marcos importantes que geraram impacto direto no negócio e fortaleceram nossa plataforma tecnológica. Esta seção resume nossos principais resultados.</p>
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">Release Dashboard <i class="fas fa-rocket ml-2 text-indigo-600"></i></h2>
+                    <p class="text-slate-600">
+                        The Release Dashboard provides a comprehensive view of our team's recent delivery performance, highlighting completed epics, ongoing work, and overall progress. Here you can track story points, monitor burndown trends, and review key metrics that reflect our efficiency and impact over the last six weeks.
+                    </p>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-6 mt-8">
+                    <div class="bg-white p-4 text-center rounded-xl shadow-sm flex flex-col justify-center items-center">
+                        <i class="metric-icon fas fa-list-check"></i>
+                        <p class="text-3xl font-bold text-teal-600">3</p>
+                        <p class="text-slate-500">Epics Delivered</p>
+                    </div>
+                    <div class="bg-white p-4 text-center rounded-xl shadow-sm flex flex-col justify-center items-center">
+                        <i class="metric-icon fas fa-star"></i>
+                        <p class="text-3xl font-bold text-indigo-600">3</p>
+                        <p class="text-slate-500">Epics in Progress</p>
+                    </div>
+                    <div class="bg-white p-4 text-center rounded-xl shadow-sm flex flex-col justify-center items-center">
+                        <i class="metric-icon fas fa-users"></i>
+                        <p class="text-3xl font-bold text-teal-600">210</p>
+                        <p class="text-slate-500">Overall Story Points</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl shadow-sm flex flex-col items-center col-span-2 md:col-span-3">
+                        <h3 class="text-lg font-bold text-slate-900 mb-2 flex items-center gap-2">
+                            <i class="fas fa-fire text-indigo-600"></i> Burndown Chart
+                        </h3>
+                        <div class="chart-container" style="width: 100%; max-width: 100%; height: 400px;">
+                            <canvas id="burndownChart" style="width:100% !important; height:400px !important;"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="overview" class="content-section">
+                <div class="bg-white p-6 rounded-xl shadow-sm mb-6">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">6-Week Overview <i class="fa-solid fa-magnifying-glass ml-2 text-indigo-600"></i></h2>
+                    <p class="text-slate-600">The last 6 weeks were focused on innovation, stability, and improving the customer experience. We achieved important milestones that had a direct impact on the business and strengthened our technology platform. This section summarizes our main results.</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-indigo-500 flex flex-col items-start">
-                        <i class="icon-card fas fa-hand-holding-usd"></i>
-                        <h3 class="font-bold text-xl mb-2 text-slate-900">Melhorias UX - Withdraw</h3>
-                        <p class="text-slate-600 flex-grow">Implementamos melhorias de UX no fluxo de transferências, tornando o processo mais intuitivo, rápido e transparente para o usuário. As alterações reduziram etapas desnecessárias, simplificaram mensagens e aumentaram a clareza das informações exibidas, resultando em menos dúvidas e maior satisfação dos clientes.</p>
+                    <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-indigo-500 flex flex-col items-start justify-between">
+                        <div>
+                            <i class="icon-card fas fa-hand-holding-usd"></i>
+                            <h3 class="font-bold text-xl mb-2 text-slate-900">UX Improvements - Withdraw</h3>
+                            <p class="text-slate-600">We implemented UX improvements in the transfer flow, making the process more intuitive, faster, and transparent for the user. The changes reduced unnecessary steps, simplified messages, and increased the clarity of the information displayed, resulting in fewer questions and greater customer satisfaction.</p>
+                        </div>
                         <div class="mt-4 w-full">
-                            <p class="text-slate-700 font-semibold text-lg">Histórias de Usuário: <span class="text-indigo-600">18</span></p>
+                            <p class="text-slate-700 font-semibold text-lg">User Stories: <span class="text-indigo-600">18</span></p>
                             <p class="text-slate-700 font-semibold text-lg">Story Points: <span class="text-indigo-600">63</span></p>
                             <div class="progress-bar-container mt-2">
-                                <div class="progress-bar" data-progress="80" style="width: 0"></div>
+                                <div class="progress-bar" data-progress="80" style="width: 80%"></div>
                             </div>
-                            <span class="text-xs text-slate-400 mt-1">80% concluído</span>
+                            <span class="text-xs text-slate-400 mt-1">80% completed</span>
                         </div>
                     </div>
-                    <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-teal-500 flex flex-col items-start">
-                        <i class="icon-card fas fa-chart-pie"></i>
-                        <h3 class="font-bold text-xl mb-2 text-slate-900">Melhorias UX Settlement</h3>
-                        <p class="text-slate-600 flex-grow">Aprimoramos a experiência do usuário nos relatórios de settlement, tornando a navegação mais clara e intuitiva. As informações financeiras foram reorganizadas para facilitar a compreensão, adicionamos filtros dinâmicos e melhoramos a visualização de dados, reduzindo dúvidas e acelerando a tomada de decisão.</p>
+                    <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-teal-500 flex flex-col items-start justify-between">
+                        <div>
+                            <i class="icon-card fas fa-chart-pie"></i>
+                            <h3 class="font-bold text-xl mb-2 text-slate-900">UX Improvements Settlement</h3>
+                            <p class="text-slate-600">We enhanced the user experience in settlement reports, making navigation clearer and more intuitive. Financial information was reorganized for easier understanding, dynamic filters were added, and data visualization was improved, reducing queries and accelerating decision-making.</p>
+                        </div>
                         <div class="mt-4 w-full">
-                            <p class="text-slate-700 font-semibold text-lg">Histórias de Usuário: <span class="text-teal-600">22</span></p>
+                            <p class="text-slate-700 font-semibold text-lg">User Stories: <span class="text-teal-600">22</span></p>
                             <p class="text-slate-700 font-semibold text-lg">Story Points: <span class="text-teal-600">95</span></p>
                             <div class="progress-bar-container mt-2">
-                                <div class="progress-bar bg-teal-500" data-progress="100" style="width: 0"></div>
+                                <div class="progress-bar bg-teal-500" data-progress="100" style="width: 100%"></div>
                             </div>
-                            <span class="text-xs text-slate-400 mt-1">100% concluído</span>
+                            <span class="text-xs text-slate-400 mt-1">100% completed</span>
                         </div>
                     </div>
-                    <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-amber-500 flex flex-col items-start">
-                        <i class="icon-card fas fa-globe-americas"></i>
-                        <h3 class="font-bold text-xl mb-2 text-slate-900">Non Resident's Accounts </h3>
-                        <p class="text-slate-600 flex-grow">Ajustamos os fluxos de transferências e gestão de contas para acomodar as funcionalidades de Contas de Não residentes</p>
+                    <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-amber-500 flex flex-col items-start justify-between">
+                        <div>
+                            <i class="icon-card fas fa-globe-americas"></i>
+                            <h3 class="font-bold text-xl mb-2 text-slate-900">Non Resident's Accounts </h3>
+                            <p class="text-slate-600">We adjusted transfer and account management flows to accommodate Non-Resident Account functionalities.</p>
+                        </div>
                         <div class="mt-4 w-full">
-                            <p class="text-slate-700 font-semibold text-lg">Histórias de Usuário: <span class="text-amber-600">20</span></p>
+                            <p class="text-slate-700 font-semibold text-lg">User Stories: <span class="text-amber-600">20</span></p>
                             <p class="text-slate-700 font-semibold text-lg">Story Points: <span class="text-amber-600">98</span></p>
                             <div class="progress-bar-container mt-2">
-                                <div class="progress-bar bg-amber-500" data-progress="90" style="width: 0"></div>
+                                <div class="progress-bar bg-amber-500" data-progress="90" style="width: 90%"></div>
                             </div>
-                            <span class="text-xs text-slate-400 mt-1">90% concluído</span>
+                            <span class="text-xs text-slate-400 mt-1">90% completed</span>
                         </div>
                     </div>
-                    <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-indigo-500 flex flex-col items-start">
-                        <i class="icon-card fas fa-receipt"></i>
-                        <h3 class="font-bold text-xl mb-2 text-slate-900">Comprovantes de transferências</h3>
-                        <p class="text-slate-600 flex-grow">Desenvolvimento de comprovantes de trasnferências fornecendo uma ferramenta de apoio a operação.</p>
+                    <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-indigo-500 flex flex-col items-start justify-between">
+                        <div>
+                            <i class="icon-card fas fa-receipt"></i>
+                            <h3 class="font-bold text-xl mb-2 text-slate-900">Transfer Receipts</h3>
+                            <p class="text-slate-600">Development of transfer receipts, providing a support tool for operations.</p>
+                        </div>
                         <div class="mt-4 w-full">
-                            <p class="text-slate-700 font-semibold text-lg">Histórias de Usuário: <span class="text-indigo-600">4</span></p>
+                            <p class="text-slate-700 font-semibold text-lg">User Stories: <span class="text-indigo-600">4</span></p>
                             <p class="text-slate-700 font-semibold text-lg">Story Points: <span class="text-indigo-600">20</span></p>
                             <div class="progress-bar-container mt-2">
-                                <div class="progress-bar" data-progress="100" style="width: 0"></div>
+                                <div class="progress-bar" data-progress="100" style="width: 100%"></div>
                             </div>
-                            <span class="text-xs text-slate-400 mt-1">100% concluído</span>
+                            <span class="text-xs text-slate-400 mt-1">100% completed</span>
                         </div>
                     </div>
-                    <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-teal-500 flex flex-col items-start">
-                        <i class="icon-card fas fa-book"></i>
-                        <h3 class="font-bold text-xl mb-2 text-slate-900">Documentação de APIs em Open API</h3>
-                        <p class="text-slate-600 flex-grow">Mapeamento e documentação de todas APIs internas e Externas em Open API.</p>
+                    <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-teal-500 flex flex-col items-start justify-between">
+                        <div>
+                            <i class="icon-card fas fa-book"></i>
+                            <h3 class="font-bold text-xl mb-2 text-slate-900">API Documentation in Open API</h3>
+                            <p class="text-slate-600">Mapping and documentation of all internal and external APIs in Open API.</p>
+                        </div>
                         <div class="mt-4 w-full">
-                            <p class="text-slate-700 font-semibold text-lg">Histórias de Usuário: <span class="text-teal-600">10</span></p>
+                            <p class="text-slate-700 font-semibold text-lg">User Stories: <span class="text-teal-600">10</span></p>
                             <p class="text-slate-700 font-semibold text-lg">Story Points: <span class="text-teal-600">34</span></p>
                             <div class="progress-bar-container mt-2">
-                                <div class="progress-bar bg-teal-500" data-progress="70" style="width: 0"></div>
+                                <div class="progress-bar bg-teal-500" data-progress="70" style="width: 70%"></div>
                             </div>
-                            <span class="text-xs text-slate-400 mt-1">70% concluído</span>
+                            <span class="text-xs text-slate-400 mt-1">70% completed</span>
                         </div>
                     </div>
                 </div>
+
+                <div class="my-6"></div>
+
+                <div class="bg-white p-6 rounded-xl shadow-sm mb-6">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">Some deliverables <i class="fas fa-rocket ml-2 text-indigo-600"></i></h2>
+                    <p class="text-slate-600">Some features that we've been working.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <article class="bg-white p-6 rounded-xl shadow-sm flex flex-col items-center text-center">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-file-code text-3xl text-indigo-600 mr-3"></i>
+                            <h3 class="font-bold text-xl text-indigo-600">API Documentation in Open API</h3>
+                        </div>
+                        <img src="assets/docs.png" alt="Swagger" class="mx-auto rounded-lg shadow mt-4 w-full h-auto max-w-xs object-contain">
+                    </article>
+                    <article class="bg-white p-6 rounded-xl shadow-sm flex flex-col items-center text-center">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-file-invoice-dollar text-3xl text-indigo-600 mr-3"></i>
+                            <h3 class="font-bold text-xl text-indigo-600">Transfer Receipts</h3>
+                        </div>
+                        <div class="flex flex-row flex-wrap justify-center gap-4 mt-4 w-full">
+                            <img src="assets/comprovante.png" alt="Digital receipt example" class="rounded-lg shadow w-full max-w-[220px] h-auto object-contain">
+                            <img src="assets/comprovante2.png" alt="Digital receipt example" class="rounded-lg shadow w-full max-w-[220px] h-auto object-contain">
+                        </div>
+                    </article>
+                    <article class="bg-white p-6 rounded-xl shadow-sm flex flex-col items-center text-center md:col-span-2">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-chart-area text-3xl text-indigo-600 mr-3"></i>
+                            <h3 class="font-bold text-xl text-indigo-600">Settlement Experience Improvements</h3>
+                        </div>
+                        <img src="assets/settlement.png" alt="Settlement screen" class="mx-auto rounded-lg shadow mt-4 w-full h-auto max-w-md object-contain">
+                    </article>
+                </div>
+
                 <div class="my-6"></div>
                 <div class="bg-white p-6 rounded-xl shadow-sm mb-6">
-                    <h2 class="text-2xl font-bold text-slate-900 mb-4">Principais Entregas <i class="fas fa-rocket ml-2 text-indigo-600"></i></h2>
-                    <p class="text-slate-600">Um pouco das nossas entregas.</p>
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">Our Numbers <i class="fas fa-calculator ml-2 text-indigo-600"></i></h2>
+                    <p class="text-slate-600">Data tells the story of our progress. In this section, we present the key metrics we monitor to measure our efficiency, the quality of our deliveries, and the direct business impact.</p>
                 </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <article class="bg-white p-6 rounded-xl shadow-sm">
-                        <div class="flex items-center mb-2">
-                            <i class="fas fa-file-code text-3xl text-indigo-600 mr-3"></i>
-                            <h3 class="font-bold text-xl text-indigo-600">Documentação de APIs em Open API</h3>
-                        </div>
-                        <img src="assets/docs.png" alt="Swagger" class="mx-auto rounded-lg shadow mt-4" style="width:auto; max-width:60%; height:auto;">
-                    </article>
-                    <article class="bg-white p-6 rounded-xl shadow-sm">
-                        <div class="flex items-center mb-2">
-                            <i class="fas fa-file-invoice-dollar text-3xl text-indigo-600 mr-3"></i>
-                            <h3 class="font-bold text-xl text-indigo-600">Comprovantes de Transferências</h3>
-                        </div>
-                        <div class="flex flex-row flex-wrap justify-center gap-4 mt-4">
-                            <img src="assets/comprovante.png" alt="Exemplo de comprovante digital" class="rounded-lg shadow" style="max-width:220px; width:100%; height:auto;">
-                            <img src="assets/comprovante2.png" alt="Exemplo de comprovante digital" class="rounded-lg shadow" style="max-width:220px; width:100%; height:auto;">
-                        </div>
-                    </article>
-                    <article class="bg-white p-6 rounded-xl shadow-sm">
-                        <div class="flex items-center mb-2">
-                            <i class="fas fa-chart-area text-3xl text-indigo-600 mr-3"></i>
-                            <h3 class="font-bold text-xl text-indigo-600">Melhorias na Experiência Settlement</h3>
-                        </div>
-                            <img src="assets/settlement.png" alt="Tela de settlment" class="mx-auto rounded-lg shadow mt-4" style="width:auto; max-width:60%; height:auto;">
-                        </div>
-                    </article>
-                </div>
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    // Animate progress bars
-    document.querySelectorAll('.progress-bar').forEach(function(bar) {
-        const target = bar.getAttribute('data-progress');
-        bar.style.transition = 'width 1.2s cubic-bezier(0.4,0,0.2,1)';
-        setTimeout(() => {
-            bar.style.width = target + '%';
-        }, 200);
-    });
-});
-</script>
-            </section>
-            <section id="deliverables" class="content-section">
-                <div class="bg-white p-6 rounded-xl shadow-sm mb-6">
-                    <h2 class="text-2xl font-bold text-slate-900 mb-4">Principais Entregas <i class="fas fa-rocket ml-2 text-indigo-600"></i></h2>
-                    <p class="text-slate-600">Um pouco das nossas entregas.</p>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <article class="bg-white p-6 rounded-xl shadow-sm">
-                        <div class="flex items-center mb-2">
-                            <i class="fas fa-file-code text-3xl text-indigo-600 mr-3"></i>
-                            <h3 class="font-bold text-xl text-indigo-600">Documentação de APIs em Open API</h3>
-                        </div>
-                        <p class="font-medium text-slate-700 mb-2">Documentação detalhada de 9 serviços e 98 endpoints publicada em Open API, facilitando a integração e o entendimento técnico para desenvolvedores internos e parceiros.</p>
-                        <div class="mt-4 pt-4 border-t border-slate-200">
-                            <h4 class="font-semibold text-slate-800">Impacto e Benefício:</h4>
-                            <p class="text-slate-600">Aumentar a transparência, reduzir dúvidas técnicas e acelerar o onboarding de novos desenvolvedores, promovendo integrações mais rápidas e seguras.</p>
-                        </div>
-                        <img src="assets/docs.png" alt="Swagger" class="mx-auto rounded-lg shadow mt-4" style="width:auto; max-width:60%; height:auto;">
-                    </article>
-                    <article class="bg-white p-6 rounded-xl shadow-sm">
-                        <div class="flex items-center mb-2">
-                            <i class="fas fa-file-invoice-dollar text-3xl text-indigo-600 mr-3"></i>
-                            <h3 class="font-bold text-xl text-indigo-600">Comprovantes de Transferências</h3>
-                        </div>
-                        <p class="font-medium text-slate-700 mb-2">Desenvolvimento e disponibilização de comprovantes digitais para transferências realizadas na plataforma, permitindo que os usuários acessem, visualizem e compartilhem facilmente os comprovantes de suas operações financeiras.</p>
-                        <div class="mt-4 pt-4 border-t border-slate-200">
-                            <h4 class="font-semibold text-slate-800">Impacto e Benefício:</h4>
-                            <p class="text-slate-600">Proporcionar maior segurança e confiança aos usuários, facilitou a comprovação de operações financeiras e reduziu o volume de solicitações ao suporte relacionadas a dúvidas sobre transferências.</p>
-                            <div class="mt-4">
-                            </div>
-                            <div class="flex flex-row flex-wrap justify-center gap-4 mt-4">
-                                <img src="assets/comprovante.png" alt="Exemplo de comprovante digital" class="rounded-lg shadow" style="max-width:220px; width:100%; height:auto;">
-                                <img src="assets/comprovante2.png" alt="Exemplo de comprovante digital" class="rounded-lg shadow" style="max-width:220px; width:100%; height:auto;">
-                            </div>
-                        </div>
-                    </article>
-                    <article class="bg-white p-6 rounded-xl shadow-sm">
-                        <div class="flex items-center mb-2">
-                            <i class="fas fa-chart-area text-3xl text-indigo-600 mr-3"></i>
-                            <h3 class="font-bold text-xl text-indigo-600">Melhorias na Experiência Settlement</h3>
-                        </div>
-                        <p class="font-medium text-slate-700 mb-2">Otimização do relatório de liquidações implementando uma série de ferramentas de apoio a operação.</p>
-                         <div class="mt-4 pt-4 border-t border-slate-200">
-                            <h4 class="font-semibold text-slate-800">Impacto e Benefício:</h4>
-                            <p class="text-slate-600">Otimização da operação, redução de esforço operacional e melhoria na experiência operacional .</p>
-                            <img src="assets/settlement.png" alt="Tela de settlment" class="mx-auto rounded-lg shadow mt-4" style="width:auto; max-width:60%; height:auto;">
-                        </div>
-                    </article>
-                    <article class="bg-white p-6 rounded-xl shadow-sm">
-                        <div class="flex items-center mb-2">
-                            <i class="fas fa-exchange-alt text-3xl text-indigo-600 mr-3"></i>
-                            <h3 class="font-bold text-xl text-indigo-600">Transferências via API</h3>
-                        </div>
-                        <p class="font-medium text-slate-700 mb-2">Implementação do serviço de transferências via API, permitindo que clientes corporativos realizem operações financeiras de forma automatizada, segura e integrada aos seus próprios sistemas, ampliando a flexibilidade e eficiência dos processos.</p>
-                        <div class="mt-4 pt-4 border-t border-slate-200">
-                            <h4 class="font-semibold text-slate-800">Impacto e Benefício:</h4>
-                            <p class="text-slate-600">Revisão dos fluxos de transferências atuais e complementação do fluxo. Preparação do sistema para a funcionalidade de contas de não residentes</p>
-                        </div>
-                    </article>
-                </div>
-            </section>
-
-            <section id="metrics" class="content-section">
-                 <div class="bg-white p-6 rounded-xl shadow-sm mb-6">
-                    <h2 class="text-2xl font-bold text-slate-900 mb-4">Nossos Números <i class="fas fa-calculator ml-2 text-indigo-600"></i></h2>
-                    <p class="text-slate-600">Os dados contam a história do nosso progresso. Nesta seção, apresentamos as métricas chave que monitoramos para medir nossa eficiência, a qualidade das nossas entregas e o impacto direto no negócio.</p>
-                </div>
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    <div class="bg-white p-6 rounded-xl shadow-sm">
-                        <h3 class="text-xl font-bold text-center mb-4 text-slate-900">Velocity - Média de story points</h3>
-                        <div class="chart-container">
-                            <canvas id="mttrChart"></canvas>
-                        </div>
-                    </div>
-                    <div class="bg-white p-6 rounded-xl shadow-sm">
-                        <h3 class="text-xl font-bold text-center mb-4 text-slate-900">Alocação de Story Points por Tecnologia</h3>
-                        <div class="chart-container">
-                            <canvas id="deploymentsChart"></canvas>
-                        </div>
-                    </div>
-                </div>
-                 <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-8">
-                    <div class="bg-white p-4 text-center rounded-xl shadow-sm">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-8">
+                    <div class="bg-white p-4 text-center rounded-xl shadow-sm flex flex-col justify-center items-center">
                         <i class="metric-icon fas fa-list-check"></i>
-                        <p class="text-3xl font-bold text-teal-600">74</p>
-                        <p class="text-slate-500">Histórias</p>
+                        <p class="text-3xl font-bold text-teal-600">4</p>
+                        <p class="text-slate-500">Epics</p>
                     </div>
-                    <div class="bg-white p-4 text-center rounded-xl shadow-sm">
+                    <div class="bg-white p-4 text-center rounded-xl shadow-sm flex flex-col justify-center items-center">
                         <i class="metric-icon fas fa-star"></i>
                         <p class="text-3xl font-bold text-indigo-600">310</p>
                         <p class="text-slate-500">Total Story Points</p>
                     </div>
-                    <div class="bg-white p-4 text-center rounded-xl shadow-sm">
+                    <div class="bg-white p-4 text-center rounded-xl shadow-sm flex flex-col justify-center items-center">
                         <i class="metric-icon fas fa-users"></i>
                         <p class="text-3xl font-bold text-teal-600">4</p>
                         <p class="text-slate-500">FTEs</p>
                     </div>
-                    <div class="bg-white p-4 text-center rounded-xl shadow-sm">
+                    <div class="bg-white p-4 text-center rounded-xl shadow-sm flex flex-col justify-center items-center">
                         <i class="metric-icon fas fa-box-open"></i>
                         <p class="text-3xl font-bold text-indigo-600">48</p>
-                        <p class="text-slate-500">Funcionalidades entregues</p>
+                        <p class="text-slate-500">Support Tasks</p>
+                    </div>
+                </div>
+                <div class="my-6"></div>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="bg-white p-6 rounded-xl shadow-sm flex flex-col items-center">
+                        <h3 class="text-xl font-bold text-center mb-4 text-slate-900">Velocity - Average story points</h3>
+                        <div class="chart-container">
+                            <canvas id="mttrChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm flex flex-col items-center">
+                        <h3 class="text-xl font-bold text-center mb-4 text-slate-900">Build & Run</h3>
+                        <div class="chart-container">
+                            <canvas id="deploymentsChart_overview"></canvas>
+                        </div>
                     </div>
                 </div>
             </section>
-            <section id="journey" class="content-section">
+            <section id="history" class="content-section">
                 <div class="bg-white p-6 rounded-xl shadow-sm mb-6">
-                    <h2 class="text-2xl font-bold text-slate-900 mb-4">Próximos Passos <i class="fas fa-forward ml-2 text-indigo-600"></i></h2>
-                    <p class="text-slate-600">Refletir sobre os desafios que superamos nos ajuda a crescer, enquanto olhar para o futuro nos dá direção. Aqui compartilhamos nossos aprendizados e nosso foco para o próximo trimestre.</p>
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">Sprint History <i class="fas fa-history ml-2 text-indigo-600"></i></h2>
+                    <p class="text-slate-600">
+                        The Sprint History page offers a detailed record of our team's progress across recent sprints. Here you will find an overview of completed work, ongoing initiatives, and key metrics that highlight our achievements and challenges. This section helps visualize our continuous improvement, delivery cadence, and the evolution of our team's performance over time.
+                    </p>
                 </div>
-                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="bg-white p-6 rounded-xl shadow-sm">
-                        <h3 class="text-xl font-bold text-slate-900 mb-4">Foco para as Próximas 6 semanas</h3>
-                        <div class="space-y-6 text-slate-600">
-                            <div>
-                                <span class="font-semibold text-slate-700 flex items-center">
-                                    <i class="fas fa-exchange-alt mr-2 text-indigo-500"></i> Transferência entre contas:
-                                </span>
-                                Lançar uma nova ferramenta para transferências entre contas.
-                            </div>
-                            <div>
-                                <span class="font-semibold text-slate-700 flex items-center">
-                                    <i class="fas fa-sliders-h mr-2 text-indigo-500"></i> Liquidação parametrizável:
-                                </span>
-                                Ferramenta para liquidação de operações parametrizável.
-                            </div>
-                            <div>
-                                <span class="font-semibold text-slate-700 flex items-center">
-                                    <i class="fas fa-share-alt mr-2 text-indigo-500"></i> Exposição de documentação Open-API:
-                                </span>
-                                Centralizar e disponibilizar a documentação do time para a equipe de desenvolvimento e integrações.
-                            </div>
-                        </div>
-                        </ul>
+
+                <div class="bg-white p-6 rounded-xl shadow-sm mb-6 flex flex-col items-start">
+                    <label for="sprint-select" class="text-lg font-semibold text-slate-800 mb-2">Select Sprint:</label>
+                    <select id="sprint-select" class="block w-full max-w-xs p-2 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    </select>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-6 mt-8">
+                    <div class="bg-white p-4 text-center rounded-xl shadow-sm flex flex-col justify-center items-center">
+                        <i class="metric-icon fas fa-list-check text-teal-600"></i>
+                        <p class="text-3xl font-bold text-teal-600" id="build-metric">--</p>
+                        <p class="text-slate-500">Build</p>
+                    </div>
+                    <div class="bg-white p-4 text-center rounded-xl shadow-sm flex flex-col justify-center items-center">
+                        <i class="metric-icon fas fa-star text-amber-600"></i>
+                        <p class="text-3xl font-bold text-amber-600" id="run-metric">--</p>
+                        <p class="text-slate-500">Run</p>
+                    </div>
+                    <div class="bg-white p-4 text-center rounded-xl shadow-sm flex flex-col justify-center items-center">
+                        <i class="metric-icon fas fa-users text-indigo-600"></i>
+                        <p class="text-3xl font-bold text-indigo-600" id="refine-metric">--</p>
+                        <p class="text-slate-500">Refine</p>
+                    </div>
+                </div>
+
+                <div class="my-6"></div>
+
+                <div class="bg-white p-4 rounded-xl shadow-sm flex flex-col items-center col-span-2 md:col-span-3">
+                    <h3 class="text-lg font-bold text-slate-900 mb-2 flex items-center gap-2">
+                        <i class="fas fa-calculator text-indigo-600"></i> Development Metrics
+                    </h3>
+                    <div class="chart-container" style="width: 100%; max-width: 100%; height: 400px;">
+                        <canvas id="sprintMetricsChart" style="width:100% !important; height:400px !important;"></canvas>
                     </div>
                 </div>
             </section>
         </main>
 
         <footer class="text-center mt-12 pt-6 border-t border-slate-200">
-            <p class="text-slate-500">&copy; 2025 Equipe Account. Todos os direitos reservados.</p>
+            <p class="text-slate-500">&copy; 2025 DBA Team. All rights reserved.</p>
         </footer>
 
     </div>
@@ -306,6 +347,32 @@ document.addEventListener('DOMContentLoaded', function () {
             const nav = document.getElementById('main-nav');
             const sections = document.querySelectorAll('.content-section');
             const buttons = nav.querySelectorAll('button');
+            const sprintSelect = document.getElementById('sprint-select');
+
+            let burndownChartInstance = null;
+            let mttrChartInstance = null;
+            let overviewDeploymentsChartInstance = null;
+            let sprintMetricsChartInstance = null;
+
+            // Function to destroy existing chart instances
+            function destroyCharts() {
+                if (burndownChartInstance) {
+                    burndownChartInstance.destroy();
+                    burndownChartInstance = null;
+                }
+                if (mttrChartInstance) {
+                    mttrChartInstance.destroy();
+                    mttrChartInstance = null;
+                }
+                if (overviewDeploymentsChartInstance) {
+                    overviewDeploymentsChartInstance.destroy();
+                    overviewDeploymentsChartInstance = null;
+                }
+                if (sprintMetricsChartInstance) {
+                    sprintMetricsChartInstance.destroy();
+                    sprintMetricsChartInstance = null;
+                }
+            }
 
             nav.addEventListener('click', (e) => {
                 if (e.target.tagName === 'BUTTON') {
@@ -321,73 +388,220 @@ document.addEventListener('DOMContentLoaded', function () {
                             section.classList.remove('active');
                         }
                     });
+
+                    // Re-render charts for the active section
+                    destroyCharts(); // Destroy all charts before re-rendering
+                    if (targetId === 'release') {
+                        createBurndownChart();
+                    } else if (targetId === 'overview') {
+                        createMttrChart();
+                        createOverviewDeploymentsChart();
+                    } else if (targetId === 'history') {
+                        // Load sprint data and update metrics/chart for history section
+                        loadSprintData();
+                    }
                 }
             });
 
-            function createMttrChart() {
-                const ctx = document.getElementById('mttrChart').getContext('2d');
-                new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        labels: ['DBA-2025SP32', 'DBA-2025SP33', 'DBA-2025SP34', 'DBA-2025SP35', 'DBA-2526SP1'],
-                        datasets: [
-                            {
-                                label: 'Média de story points - DBA',
-                                data: [88, 98, 73, 89.5, 50.5],
-                                backgroundColor: '#4f46e5'
-                            },
-                            {
-                                label: 'Story Points Time Z',
-                                data: [22, 45, 27, 33, 32],
-                                backgroundColor: '#10b981'
-                            }
-                        ]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        scales: {
-                            x: { stacked: true },
-                            y: { beginAtZero: true, suggestedMax: 120, stacked: true }
+            // Set initial width for progress bars
+            document.querySelectorAll('.progress-bar').forEach(bar => {
+                const progress = bar.getAttribute('data-progress');
+                bar.style.width = progress + '%';
+            });
+
+            // Chart functions
+            function createBurndownChart() {
+                if (document.getElementById('burndownChart')) {
+                    const ctx = document.getElementById('burndownChart').getContext('2d');
+                    burndownChartInstance = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: ['Start', 'W1', 'W2', 'W3', 'W4', 'W5', 'W6'],
+                            datasets: [
+                                {
+                                    label: 'Ideal',
+                                    data: [310, 258, 206, 155, 103, 52, 0],
+                                    borderColor: '#10b981',
+                                    fill: false,
+                                    tension: 0.2,
+                                    pointRadius: 0
+                                },
+                                {
+                                    label: 'Actual',
+                                    data: [310, 270, 220, 170, 120, 80, 40],
+                                    borderColor: '#4f46e5',
+                                    backgroundColor: '#6366f1',
+                                    fill: false,
+                                    tension: 0.2,
+                                    pointRadius: 4,
+                                    pointBackgroundColor: '#4f46e5'
+                                }
+                            ]
                         },
-                        plugins: {
-                            legend: { display: true }
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: {
+                                legend: { display: true }
+                            },
+                            scales: {
+                                y: {
+                                    beginAtZero: true,
+                                    title: { display: true, text: 'Story Points' }
+                                },
+                                x: {
+                                    title: { display: true, text: 'Week' }
+                                }
+                            }
                         }
+                    });
+                }
+            }
+
+            function createMttrChart() {
+                if (document.getElementById('mttrChart')) {
+                    const ctx = document.getElementById('mttrChart').getContext('2d');
+                    mttrChartInstance = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: ['DBA-2025SP32', 'DBA-2025SP33', 'DBA-2025SP34', 'DBA-2025SP35', 'DBA-2526SP1'],
+                            datasets: [
+                                {
+                                    label: 'Average Story Points - DBA',
+                                    data: [88, 98, 73, 89.5, 50.5],
+                                    backgroundColor: '#4f46e5'
+                                },
+                                {
+                                    label: 'Story Points Team Z',
+                                    data: [22, 45, 27, 33, 32],
+                                    backgroundColor: '#10b981'
+                                }
+                            ]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            scales: {
+                                x: { stacked: true },
+                                y: { beginAtZero: true, suggestedMax: 120, stacked: true }
+                            },
+                            plugins: {
+                                legend: { display: true }
+                            }
+                        }
+                    });
+                }
+            }
+
+            function createOverviewDeploymentsChart() {
+                if (document.getElementById('deploymentsChart_overview')) {
+                    const ctx = document.getElementById('deploymentsChart_overview').getContext('2d');
+                    overviewDeploymentsChartInstance = new Chart(ctx, {
+                        type: 'pie',
+                        data: {
+                            labels: ['Build', 'Run'],
+                            datasets: [{
+                                label: 'Build & Run',
+                                data: [74, 26],
+                                backgroundColor: ['#4f46e5', '#10b981']
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: {
+                                legend: { display: true }
+                            }
+                        }
+                    });
+                }
+            }
+
+            function createSprintMetricsChart(sprintData) {
+                if (document.getElementById('sprintMetricsChart')) {
+                    const ctx = document.getElementById('sprintMetricsChart').getContext('2d');
+                    if (sprintMetricsChartInstance) {
+                        sprintMetricsChartInstance.destroy();
+                    }
+                    sprintMetricsChartInstance = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: sprintData.chart.labels,
+                            datasets: sprintData.chart.datasets.map(dataset => ({
+                                label: dataset.label,
+                                data: dataset.data,
+                                backgroundColor: dataset.backgroundColor
+                            }))
+                        },
+                        options: {
+                            indexAxis: 'y',
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: {
+                                legend: { display: true }
+                            },
+                            scales: {
+                                x: { beginAtZero: true, stacked: true, max: 30 },
+                                y: { stacked: true }
+                            }
+                        }
+                    });
+                }
+            }
+
+            // YAML data loading and processing
+            async function loadSprintData() {
+                try {
+                    const response = await fetch('sprints.yml');
+                    const yamlText = await response.text();
+                    const sprints = jsYaml.load(yamlText); // Use jsYaml.load()
+                    console.log("Loaded Sprints:", sprints); // Log to verify parsing
+
+                    populateSprintDropdown(sprints);
+                    if (sprints.length > 0) {
+                        updateSprintDisplay(sprints[0]);
+                    }
+                } catch (error) {
+                    console.error('Error loading or parsing sprint data:', error);
+                }
+            }
+
+            function populateSprintDropdown(sprints) {
+                sprintSelect.innerHTML = '';
+                sprints.forEach(sprint => {
+                    const option = document.createElement('option');
+                    option.value = sprint.id;
+                    option.textContent = sprint.name;
+                    sprintSelect.appendChild(option);
+                });
+                sprintSelect.addEventListener('change', (e) => {
+                    const selectedSprint = sprints.find(s => s.id === e.target.value);
+                    if (selectedSprint) {
+                        updateSprintDisplay(selectedSprint);
                     }
                 });
             }
 
-            function createDeploymentsChart() {
-                const ctx = document.getElementById('deploymentsChart').getContext('2d');
-                new Chart(ctx, {
-                    type: 'pie',
-                    data: {
-                        labels: ['Backend', 'Frontend'],
-                        datasets: [{
-                            label: 'Pontos por Tecnologia',
-                            data: [
-                                // Soma dos pontos Backend
-                                11 + 10 + 8 + 14 + 3, // Assuming these points are for backend
-                                // Soma dos pontos Frontend
-                                14 + 20 + 14 + 17 + 22 // Assuming these points are for frontend
-                            ],
-                            backgroundColor: ['#4f46e5', '#10b981']
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: { display: true }
-                        }
-                    }
-                });
+            function updateSprintDisplay(sprint) {
+                document.getElementById('build-metric').textContent = sprint.metrics.build;
+                document.getElementById('run-metric').textContent = sprint.metrics.run;
+                document.getElementById('refine-metric').textContent = sprint.metrics.refine;
+                createSprintMetricsChart(sprint);
             }
 
+            // Simple YAML parser (for demonstration purposes)
+            // For complex YAML, consider a dedicated library like js-yaml
+            
+
+            // Initial chart rendering when the page loads
+            createBurndownChart();
             createMttrChart();
-            createDeploymentsChart();
+            createOverviewDeploymentsChart();
+            loadSprintData(); // Load sprint data for the history section
+
+            // Ensure charts are redrawn if a section becomes active
+            // This is already handled by the nav click listener and destroyCharts()
         });
     </script>
-
 </body>
 </html>
