@@ -558,7 +558,8 @@
                         throw new Error(`Failed to fetch: ${response.statusText}`);
                     }
                     const yamlText = await response.text();
-                    const sprints = jsyaml.load(yamlText); 
+                    console.log('YAML data loaded:', yamlText); // Debugging log
+                    const sprints = jsYaml.load(yamlText); 
                     populateSprintDropdown(sprints);
                     if (sprints && sprints.length > 0) {
                         updateSprintDisplay(sprints[0]);
