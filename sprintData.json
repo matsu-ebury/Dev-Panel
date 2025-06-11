@@ -1,0 +1,56 @@
+{
+  "DBA-2025SP32": {
+      "effort": {"build": 65, "develop": 25, "refine": 10},
+      "epics": {
+          "DBA-101: Reporting Module": {"Done": 1, "Done in Sprint": 1, "Pending": 2, "Dropped": 1},
+          "DBA-102: Auth Flow": {"Done": 2, "Done in Sprint": 1, "Pending": 1, "Dropped": 1},
+          "DBA-112: Non-Resident Acct.": {"Done": 3, "Done in Sprint": 1, "Pending": 1, "Dropped": 1},
+          "DBA-120: New API Specs": {"Done": 4, "Done in Sprint": 1, "Pending": 1, "Dropped": 1},
+          "DBA-121: DB Schema Refactor": {"Done": 6, "Done in Sprint": 2, "Pending": 1, "Dropped": 2}
+      },
+      "run_causes": {"WrongFlow": 10, "ValorMenor": 5, "DepositoFilialMatriz": 8, "SettlementEventDate": 2}
+  },
+  "DBA-2025SP33": {
+      "effort": {"build": 60, "develop": 30, "refine": 10},
+      "epics": {
+          "DBA-105: API Docs Portal": {"Done": 2, "Done in Sprint": 0, "Pending": 0, "Dropped": 0},
+          "DBA-108: Settlement UX": {"Done": 1, "Done in Sprint": 0, "Pending": 0, "Dropped": 0},
+          "DBA-115: Withdraw UX": {"Done": 0, "Done in Sprint": 1, "Pending": 0, "Dropped": 0},
+          "DBA-110: Transfer Receipts": {"Done": 0, "Done in Sprint": 1, "Pending": 0, "Dropped": 0},
+          "DBA-122: Caching Layer": {"Done": 0, "Done in Sprint": 0, "Pending": 1, "Dropped": 0},
+          "DBA-109: Notification Svc": {"Done": 0, "Done in Sprint": 0, "Pending": 0, "Dropped": 1}
+      },
+      "run_causes": {"WrongFlow": 8, "ValorMenor": 6, "DepositoFilialMatriz": 4, "SettlementEventDate": 5}
+  },
+  "DBA-2025SP34": {
+      "effort": {"build": 70, "develop": 20, "refine": 10},
+      "epics": {
+          "DBA-121: DB Schema Refactor": {"Done": 1, "Done in Sprint": 0, "Pending": 0, "Dropped": 0},
+          "DBA-120: New API Specs": {"Done": 0, "Done in Sprint": 1, "Pending": 0, "Dropped": 0},
+          "DBA-130: Fraud Detection": {"Done": 0, "Done in Sprint": 0, "Pending": 1, "Dropped": 0},
+          "DBA-131: KYC Process": {"Done": 0, "Done in Sprint": 0, "Pending": 1, "Dropped": 0}
+      },
+      "run_causes": {"WrongFlow": 12, "ValorMenor": 3, "DepositoFilialMatriz": 3, "SettlementEventDate": 1}
+  },
+  "DBA-2025SP35": {
+      "effort": {"build": 55, "develop": 35, "refine": 10},
+      "epics": {
+          "DBA-122: Caching Layer": {"Done": 1, "Done in Sprint": 0, "Pending": 0, "Dropped": 0},
+          "DBA-131: KYC Process": {"Done": 0, "Done in Sprint": 1, "Pending": 0, "Dropped": 0},
+          "DBA-130: Fraud Detection": {"Done": 0, "Done in Sprint": 0, "Pending": 1, "Dropped": 0},
+          "DBA-140: User Profile Page": {"Done": 0, "Done in Sprint": 0, "Pending": 1, "Dropped": 0}
+      },
+      "run_causes": {"WrongFlow": 7, "ValorMenor": 9, "DepositoFilialMatriz": 6, "SettlementEventDate": 3}
+  },
+  "DBA-2526SP1": {
+      "effort": {"build": 50, "develop": 40, "refine": 10},
+      "epics": {
+          "DBA-130: Fraud Detection": {"Done": 0, "Done in Sprint": 1, "Pending": 0, "Dropped": 0},
+          "DBA-140: User Profile Page": {"Done": 0, "Done in Sprint": 0, "Pending": 1, "Dropped": 0},
+          "DBA-142: MFA Rollout": {"Done": 0, "Done in Sprint": 0, "Pending": 1, "Dropped": 0},
+          "DBA-145: Analytics Dashboard": {"Done": 0, "Done in Sprint": 0, "Pending": 1, "Dropped": 0},
+          "DBA-135: Gamification PoC": {"Done": 0, "Done in Sprint": 0, "Pending": 0, "Dropped": 1}
+      },
+      "run_causes": {"WrongFlow": 5, "ValorMenor": 4, "DepositoFilialMatriz": 10, "SettlementEventDate": 6}
+  }
+}

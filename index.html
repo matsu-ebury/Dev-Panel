@@ -309,32 +309,44 @@
 
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-6 mt-8">
                     <div class="bg-white p-4 text-center rounded-xl shadow-sm flex flex-col justify-center items-center">
-                        <i class="metric-icon fas fa-list-check text-teal-600"></i>
-                        <p class="text-3xl font-bold text-teal-600" id="build-metric">--</p>
+                        <i class="metric-icon fas fa-tools text-indigo-600"></i>
+                        <p class="text-3xl font-bold text-indigo-600" id="build-metric">--</p>
                         <p class="text-slate-500">Build</p>
                     </div>
                     <div class="bg-white p-4 text-center rounded-xl shadow-sm flex flex-col justify-center items-center">
-                        <i class="metric-icon fas fa-star text-amber-600"></i>
+                        <i class="metric-icon fas fa-code-branch text-amber-600"></i>
                         <p class="text-3xl font-bold text-amber-600" id="run-metric">--</p>
-                        <p class="text-slate-500">Run</p>
+                        <p class="text-slate-500">Develop</p>
                     </div>
                     <div class="bg-white p-4 text-center rounded-xl shadow-sm flex flex-col justify-center items-center">
-                        <i class="metric-icon fas fa-users text-indigo-600"></i>
-                        <p class="text-3xl font-bold text-indigo-600" id="refine-metric">--</p>
+                        <i class="metric-icon fas fa-lightbulb text-teal-600"></i>
+                        <p class="text-3xl font-bold text-teal-600" id="refine-metric">--</p>
                         <p class="text-slate-500">Refine</p>
                     </div>
                 </div>
 
-                <div class="my-6"></div>
-
-                <div class="bg-white p-4 rounded-xl shadow-sm flex flex-col items-center col-span-2 md:col-span-3">
+                <div class="my-8"></div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-sm mb-6 flex flex-col items-start">
                     <h3 class="text-lg font-bold text-slate-900 mb-2 flex items-center gap-2">
-                        <i class="fas fa-calculator text-indigo-600"></i> Development Metrics
+                            <i class="fas fa-tasks text-indigo-600"></i> Epics Status
                     </h3>
-                    <div class="chart-container" style="width: 100%; max-width: 100%; height: 400px;">
-                        <canvas id="sprintMetricsChart" style="width:100% !important; height:400px !important;"></canvas>
+                    <div class="chart-container">
+                        <canvas id="epicsStatusChart"></canvas>
                     </div>
                 </div>
+
+ 
+                <div class="bg-white p-6 rounded-xl shadow-sm mb-6 flex flex-col items-start">
+                    <h3 class="text-lg font-bold text-slate-900 mb-2 flex items-center gap-2">
+                        <i class="fas fa-exclamation-circle text-indigo-600"></i> Run Causes
+                    </h3>
+                    <div class="chart-container">
+                        <canvas id="runCausesChart"></canvas>
+                    </div>
+                </div>
+
+
             </section>
         </main>
 
@@ -354,256 +366,344 @@
             let burndownChartInstance = null;
             let mttrChartInstance = null;
             let overviewDeploymentsChartInstance = null;
-            let sprintMetricsChartInstance = null;
+            let effortDistributionChartInstance = null;
+            let epicsStatusChartInstance = null;
+            let runCausesChartInstance = null;
+            
+            // --- Data from sprintData.json is now embedded here ---
+            const sprintData = {
+              "DBA-2025SP32": {
+                  "effort": {"build": 65, "develop": 80, "refine": 20},
+                  "epics": {
+                      "DBA-101: Reporting Module": {"Done": 5, "Done in Sprint": 5, "Pending": 3, "Dropped": 3},
+                      "DBA-102: Auth Flow": {"Done": 3, "Done in Sprint": 8, "Pending": 1, "Dropped": 1},
+                      "DBA-112: Non-Resident Acct.": {"Done": 3, "Done in Sprint": 5, "Pending": 2, "Dropped": 1},
+                      "DBA-120: New API Specs": {"Done": 8, "Done in Sprint": 13, "Pending": 2, "Dropped": 1},
+                      "DBA-121: DB Schema Refactor": {"Done": 6, "Done in Sprint": 2, "Pending": 1, "Dropped": 2}
+                  },
+                  "run_causes": {"WrongFlow": 10, "ValorMenor": 5, "DepositoFilialMatriz": 8, "SettlementEventDate": 2}
+              },
+              "DBA-2025SP33": {
+                  "effort": {"build": 60, "develop": 90, "refine": 10},
+                  "epics": {
+                      "DBA-105: API Docs Portal": {"Done": 2, "Done in Sprint": 3, "Pending": 3, "Dropped": 5},
+                      "DBA-108: Settlement UX": {"Done": 8, "Done in Sprint": 5, "Pending": 2, "Dropped": 1},
+                      "DBA-115: Withdraw UX": {"Done": 13, "Done in Sprint": 1, "Pending": 3, "Dropped": 1},
+                      "DBA-110: Transfer Receipts": {"Done": 13, "Done in Sprint": 8, "Pending": 1, "Dropped": 1},
+                      "DBA-122: Caching Layer": {"Done": 3, "Done in Sprint": 8, "Pending": 1, "Dropped": 1},
+                      "DBA-109: Notification Svc": {"Done": 2, "Done in Sprint": 2, "Pending": 8, "Dropped": 2}
+                  },
+                  "run_causes": {"WrongFlow": 8, "ValorMenor": 6, "DepositoFilialMatriz": 4, "SettlementEventDate": 5}
+              },
+              "DBA-2025SP34": {
+                  "effort": {"build": 70, "develop": 60, "refine": 40},
+                  "epics": {
+                      "DBA-121: DB Schema Refactor": {"Done": 1, "Done in Sprint": 0, "Pending": 0, "Dropped": 0},
+                      "DBA-120: New API Specs": {"Done": 0, "Done in Sprint": 1, "Pending": 0, "Dropped": 0},
+                      "DBA-130: Fraud Detection": {"Done": 0, "Done in Sprint": 0, "Pending": 1, "Dropped": 0},
+                      "DBA-131: KYC Process": {"Done": 0, "Done in Sprint": 0, "Pending": 1, "Dropped": 0}
+                  },
+                  "run_causes": {"WrongFlow": 12, "ValorMenor": 3, "DepositoFilialMatriz": 3, "SettlementEventDate": 1}
+              },
+              "DBA-2025SP35": {
+                  "effort": {"build": 55, "develop": 70, "refine": 30},
+                  "epics": {
+                      "DBA-122: Caching Layer": {"Done": 1, "Done in Sprint": 0, "Pending": 0, "Dropped": 0},
+                      "DBA-131: KYC Process": {"Done": 0, "Done in Sprint": 1, "Pending": 0, "Dropped": 0},
+                      "DBA-130: Fraud Detection": {"Done": 0, "Done in Sprint": 0, "Pending": 1, "Dropped": 0},
+                      "DBA-140: User Profile Page": {"Done": 0, "Done in Sprint": 0, "Pending": 1, "Dropped": 0}
+                  },
+                  "run_causes": {"WrongFlow": 7, "ValorMenor": 9, "DepositoFilialMatriz": 6, "SettlementEventDate": 3}
+              },
+              "DBA-2526SP1": {
+                  "effort": {"build": 50, "develop": 40, "refine": 60},
+                  "epics": {
+                      "DBA-130: Fraud Detection": {"Done": 8, "Done in Sprint": 5, "Pending": 1, "Dropped": 1},
+                      "DBA-140: User Profile Page": {"Done": 6, "Done in Sprint": 3, "Pending": 1, "Dropped": 0},
+                      "DBA-142: MFA Rollout": {"Done": 6, "Done in Sprint": 3, "Pending": 1, "Dropped": 1},
+                      "DBA-145: Analytics Dashboard": {"Done": 10, "Done in Sprint": 5, "Pending": 1, "Dropped": 1},
+                      "DBA-135: Gamification PoC": {"Done": 13, "Done in Sprint": 3, "Pending": 1, "Dropped": 1}
+                  },
+                  "run_causes": {"WrongFlow": 5, "ValorMenor": 4, "DepositoFilialMatriz": 10, "SettlementEventDate": 6}
+              }
+            };
 
-            // Function to destroy existing chart instances
             function destroyCharts() {
-                if (burndownChartInstance) {
-                    burndownChartInstance.destroy();
-                    burndownChartInstance = null;
-                }
-                if (mttrChartInstance) {
-                    mttrChartInstance.destroy();
-                    mttrChartInstance = null;
-                }
-                if (overviewDeploymentsChartInstance) {
-                    overviewDeploymentsChartInstance.destroy();
-                    overviewDeploymentsChartInstance = null;
-                }
-                if (sprintMetricsChartInstance) {
-                    sprintMetricsChartInstance.destroy();
-                    sprintMetricsChartInstance = null;
-                }
+                if (burndownChartInstance) burndownChartInstance.destroy();
+                if (mttrChartInstance) mttrChartInstance.destroy();
+                if (overviewDeploymentsChartInstance) overviewDeploymentsChartInstance.destroy();
+                if (effortDistributionChartInstance) effortDistributionChartInstance.destroy();
+                if (epicsStatusChartInstance) epicsStatusChartInstance.destroy();
+                if (runCausesChartInstance) runCausesChartInstance.destroy();
+                burndownChartInstance = mttrChartInstance = overviewDeploymentsChartInstance = effortDistributionChartInstance = epicsStatusChartInstance = runCausesChartInstance = null;
             }
 
             nav.addEventListener('click', (e) => {
-                if (e.target.tagName === 'BUTTON') {
-                    const targetId = e.target.getAttribute('data-target');
-
+                const button = e.target.closest('button');
+                if (button) {
+                    const targetId = button.getAttribute('data-target');
                     buttons.forEach(btn => btn.classList.remove('active'));
-                    e.target.classList.add('active');
+                    button.classList.add('active');
 
                     sections.forEach(section => {
-                        if (section.id === targetId) {
-                            section.classList.add('active');
-                        } else {
-                            section.classList.remove('active');
-                        }
+                        section.classList.toggle('active', section.id === targetId);
                     });
+                    
+                    destroyCharts(); // Destroy all charts on tab change
 
-                    // Re-render charts for the active section
-                    destroyCharts(); // Destroy all charts before re-rendering
                     if (targetId === 'release') {
                         createBurndownChart();
                     } else if (targetId === 'overview') {
                         createMttrChart();
                         createOverviewDeploymentsChart();
                     } else if (targetId === 'history') {
-                        // Load sprint data and update metrics/chart for history section
-                        loadSprintData();
+                        updateSprintView(sprintSelect.value, sprintData);
                     }
                 }
             });
 
-            // Set initial width for progress bars
             document.querySelectorAll('.progress-bar').forEach(bar => {
                 const progress = bar.getAttribute('data-progress');
                 bar.style.width = progress + '%';
             });
 
-            // Chart functions
             function createBurndownChart() {
-                if (document.getElementById('burndownChart')) {
-                    const ctx = document.getElementById('burndownChart').getContext('2d');
-                    burndownChartInstance = new Chart(ctx, {
-                        type: 'line',
-                        data: {
-                            labels: ['Start', 'W1', 'W2', 'W3', 'W4', 'W5', 'W6'],
-                            datasets: [
-                                {
-                                    label: 'Ideal',
-                                    data: [310, 258, 206, 155, 103, 52, 0],
-                                    borderColor: '#10b981',
-                                    fill: false,
-                                    tension: 0.2,
-                                    pointRadius: 0
-                                },
-                                {
-                                    label: 'Actual',
-                                    data: [310, 270, 220, 170, 120, 80, 40],
-                                    borderColor: '#4f46e5',
-                                    backgroundColor: '#6366f1',
-                                    fill: false,
-                                    tension: 0.2,
-                                    pointRadius: 4,
-                                    pointBackgroundColor: '#4f46e5'
-                                }
-                            ]
-                        },
-                        options: {
-                            responsive: true,
-                            maintainAspectRatio: false,
-                            plugins: {
-                                legend: { display: true }
+                const ctx = document.getElementById('burndownChart')?.getContext('2d');
+                if (!ctx) return;
+                burndownChartInstance = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: ['Start', 'W1', 'W2', 'W3', 'W4', 'W5', 'W6'],
+                        datasets: [
+                            {
+                                label: 'Ideal',
+                                data: [310, 258, 206, 155, 103, 52, 0],
+                                borderColor: '#10b981',
+                                fill: false,
+                                tension: 0.2,
+                                pointRadius: 0
                             },
-                            scales: {
-                                y: {
-                                    beginAtZero: true,
-                                    title: { display: true, text: 'Story Points' }
-                                },
-                                x: {
-                                    title: { display: true, text: 'Week' }
-                                }
+                            {
+                                label: 'Actual',
+                                data: [310, 270, 220, 170, 120, 80, 40],
+                                borderColor: '#4f46e5',
+                                backgroundColor: '#6366f1',
+                                fill: false,
+                                tension: 0.2,
+                                pointRadius: 4,
+                                pointBackgroundColor: '#4f46e5'
                             }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { display: true } },
+                        scales: {
+                            y: { beginAtZero: true, title: { display: true, text: 'Story Points' } },
+                            x: { title: { display: true, text: 'Week' } }
                         }
-                    });
-                }
+                    }
+                });
             }
 
             function createMttrChart() {
-                if (document.getElementById('mttrChart')) {
-                    const ctx = document.getElementById('mttrChart').getContext('2d');
-                    mttrChartInstance = new Chart(ctx, {
-                        type: 'bar',
-                        data: {
-                            labels: ['DBA-2025SP32', 'DBA-2025SP33', 'DBA-2025SP34', 'DBA-2025SP35', 'DBA-2526SP1'],
-                            datasets: [
-                                {
-                                    label: 'Average Story Points - DBA',
-                                    data: [88, 98, 73, 89.5, 50.5],
-                                    backgroundColor: '#4f46e5'
-                                },
-                                {
-                                    label: 'Story Points Team Z',
-                                    data: [22, 45, 27, 33, 32],
-                                    backgroundColor: '#10b981'
-                                }
-                            ]
-                        },
-                        options: {
-                            responsive: true,
-                            maintainAspectRatio: false,
-                            scales: {
-                                x: { stacked: true },
-                                y: { beginAtZero: true, suggestedMax: 120, stacked: true }
+                const ctx = document.getElementById('mttrChart')?.getContext('2d');
+                if (!ctx) return;
+                mttrChartInstance = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['DBA-2025SP32', 'DBA-2025SP33', 'DBA-2025SP34', 'DBA-2025SP35', 'DBA-2526SP1'],
+                        datasets: [
+                            {
+                                label: 'Average Story Points - DBA',
+                                data: [88, 98, 73, 89.5, 50.5],
+                                backgroundColor: '#4f46e5'
                             },
-                            plugins: {
-                                legend: { display: true }
+                            {
+                                label: 'Story Points Team Z',
+                                data: [22, 45, 27, 33, 32],
+                                backgroundColor: '#10b981'
                             }
-                        }
-                    });
-                }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: { x: { stacked: true }, y: { beginAtZero: true, suggestedMax: 120, stacked: true } },
+                        plugins: { legend: { display: true } }
+                    }
+                });
             }
 
             function createOverviewDeploymentsChart() {
-                if (document.getElementById('deploymentsChart_overview')) {
-                    const ctx = document.getElementById('deploymentsChart_overview').getContext('2d');
-                    overviewDeploymentsChartInstance = new Chart(ctx, {
-                        type: 'pie',
-                        data: {
-                            labels: ['Build', 'Run'],
-                            datasets: [{
-                                label: 'Build & Run',
-                                data: [74, 26],
-                                backgroundColor: ['#4f46e5', '#10b981']
-                            }]
-                        },
-                        options: {
-                            responsive: true,
-                            maintainAspectRatio: false,
-                            plugins: {
-                                legend: { display: true }
-                            }
-                        }
-                    });
-                }
+                const ctx = document.getElementById('deploymentsChart_overview')?.getContext('2d');
+                if(!ctx) return;
+                overviewDeploymentsChartInstance = new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: ['Build', 'Run'],
+                        datasets: [{
+                            label: 'Build & Run',
+                            data: [74, 26],
+                            backgroundColor: ['#4f46e5', '#10b981']
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { display: true } }
+                    }
+                });
             }
 
-            function createSprintMetricsChart(sprintData) {
-                if (document.getElementById('sprintMetricsChart')) {
-                    const ctx = document.getElementById('sprintMetricsChart').getContext('2d');
-                    if (sprintMetricsChartInstance) {
-                        sprintMetricsChartInstance.destroy();
+            function createEffortDistributionChart(effortData) {
+                const ctx = document.getElementById('effortDistributionChart')?.getContext('2d');
+                if (!ctx) return;
+                effortDistributionChartInstance = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Build', 'Develop', 'Refine'],
+                        datasets: [{
+                            label: 'Effort Distribution',
+                            data: Object.values(effortData),
+                            backgroundColor: ['#4f46e5', '#f59e0b', '#10b981'],
+                            hoverOffset: 4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { display: true }
+                        }
                     }
-                    sprintMetricsChartInstance = new Chart(ctx, {
-                        type: 'bar',
-                        data: {
-                            labels: sprintData.chart.labels,
-                            datasets: sprintData.chart.datasets.map(dataset => ({
-                                label: dataset.label,
-                                data: dataset.data,
-                                backgroundColor: dataset.backgroundColor
-                            }))
+                });
+            }
+
+            function createEpicsStatusChart(epicsData) {
+                const ctx = document.getElementById('epicsStatusChart')?.getContext('2d');
+                if (!ctx) return;
+
+                const epicLabels = Object.keys(epicsData);
+                const statusKeys = ["Done", "Done in Sprint", "Pending", "Dropped"];
+                const statusColors = {
+                    "Done": "#4f46e5",
+                    "Done in Sprint": "#f59e0b",
+                    "Pending": "#facc15",
+                    "Dropped": "#ef4444"
+                };
+
+                const datasets = statusKeys.map(status => ({
+                    label: status,
+                    data: epicLabels.map(epic => epicsData[epic][status] || 0),
+                    backgroundColor: statusColors[status]
+                }));
+
+                epicsStatusChartInstance = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: epicLabels,
+                        datasets: datasets
+                    },
+                    options: {
+                        indexAxis: 'y', // <-- horizontal bars
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { display: true, position: 'top' },
                         },
-                        options: {
-                            indexAxis: 'y',
-                            responsive: true,
-                            maintainAspectRatio: false,
-                            plugins: {
-                                legend: { display: true }
+                        scales: {
+                            x: {
+                                stacked: true,
+                                title: { display: true, text: 'Story Count' },
+                                beginAtZero: true
                             },
-                            scales: {
-                                x: { beginAtZero: true, stacked: true, max: 30 },
-                                y: { stacked: true }
+                            y: {
+                                stacked: true,
+                                title: { display: true, text: 'Epic' },
+                                ticks: {
+                                  autoSkip: false,
+                                  maxRotation: 0,
+                                  minRotation: 0
+                                }
                             }
                         }
-                    });
-                }
-            }
-
-            // YAML data loading and processing
-            async function loadSprintData() {
-                try {
-                    const response = await fetch('sprints.yml');
-                    const yamlText = await response.text();
-                    const sprints = jsYaml.load(yamlText); // Use jsYaml.load()
-                    console.log("Loaded Sprints:", sprints); // Log to verify parsing
-
-                    populateSprintDropdown(sprints);
-                    if (sprints.length > 0) {
-                        updateSprintDisplay(sprints[0]);
                     }
-                } catch (error) {
-                    console.error('Error loading or parsing sprint data:', error);
-                }
+                });
             }
 
-            function populateSprintDropdown(sprints) {
+            function createRunCausesChart(runCausesData) {
+                const ctx = document.getElementById('runCausesChart')?.getContext('2d');
+                if (!ctx) return;
+                runCausesChartInstance = new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: Object.keys(runCausesData).map(key => key.replace(/([A-Z])/g, ' $1').trim()), // Add spaces for readability
+                        datasets: [{
+                            label: 'Count',
+                            data: Object.values(runCausesData),
+                            backgroundColor: ['#ef4444', '#f59e0b', '#facc15', '#4f46e5'],
+                            hoverOffset: 4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                            }
+                        }
+                    }
+                });
+            }
+
+            function updateSprintView(sprintId, data) {
+                const sprintMetrics = data[sprintId];
+                if (!sprintMetrics) return;
+
+                // Destroy existing history charts before creating new ones
+                if (effortDistributionChartInstance) effortDistributionChartInstance.destroy();
+                if (epicsStatusChartInstance) epicsStatusChartInstance.destroy();
+                if (runCausesChartInstance) runCausesChartInstance.destroy();
+
+                // Update metric cards
+                document.getElementById('build-metric').textContent = sprintMetrics.effort.build + '%';
+                document.getElementById('run-metric').textContent = sprintMetrics.effort.develop + '%';
+                document.getElementById('refine-metric').textContent = sprintMetrics.effort.refine + '%';
+
+                // Create the 3 charts for the section
+                createEffortDistributionChart(sprintMetrics.effort);
+                createEpicsStatusChart(sprintMetrics.epics);
+                createRunCausesChart(sprintMetrics.run_causes);
+            }
+
+            function initializeHistorySection() {
+                const sprints = Object.keys(sprintData);
+
                 sprintSelect.innerHTML = '';
                 sprints.forEach(sprint => {
                     const option = document.createElement('option');
-                    option.value = sprint.id;
-                    option.textContent = sprint.name;
+                    option.value = sprint;
+                    option.textContent = sprint;
                     sprintSelect.appendChild(option);
                 });
+
                 sprintSelect.addEventListener('change', (e) => {
-                    const selectedSprint = sprints.find(s => s.id === e.target.value);
-                    if (selectedSprint) {
-                        updateSprintDisplay(selectedSprint);
-                    }
+                    updateSprintView(e.target.value, sprintData);
                 });
+
+                if (document.querySelector('.content-section.active')?.id === 'history') {
+                    updateSprintView(sprintSelect.value, sprintData);
+                }
             }
 
-            function updateSprintDisplay(sprint) {
-                document.getElementById('build-metric').textContent = sprint.metrics.build;
-                document.getElementById('run-metric').textContent = sprint.metrics.run;
-                document.getElementById('refine-metric').textContent = sprint.metrics.refine;
-                createSprintMetricsChart(sprint);
-            }
-
-            // Simple YAML parser (for demonstration purposes)
-            // For complex YAML, consider a dedicated library like js-yaml
-            
-
-            // Initial chart rendering when the page loads
-            createBurndownChart();
-            createMttrChart();
-            createOverviewDeploymentsChart();
-            loadSprintData(); // Load sprint data for the history section
-
-            // Ensure charts are redrawn if a section becomes active
-            // This is already handled by the nav click listener and destroyCharts()
+            // Initial setup
+            initializeHistorySection();
+            createBurndownChart(); // Create the chart for the initially active tab
         });
     </script>
+    
 </body>
 </html>
