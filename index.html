@@ -88,11 +88,11 @@
 
         <nav id="main-nav" class="flex justify-center gap-0 mb-8 border-b border-slate-200">
             <div class="flex justify-start gap-0 w-full bg-slate-100 rounded-t-xl p-1 shadow-sm">
-                <button data-target="release" class="nav-button active font-semibold py-2 px-8 border border-b-0 border-transparent text-slate-600 hover:bg-white hover:text-indigo-700 rounded-t-xl transition-all duration-200 flex items-center gap-2">
-                    <i class="fas fa-rocket"></i> Release Dashboard
-                </button>
-                <button data-target="overview" class="nav-button font-semibold py-2 px-8 border border-b-0 border-transparent text-slate-600 hover:bg-white hover:text-indigo-700 rounded-t-xl transition-all duration-200 flex items-center gap-2">
+                <button data-target="overview" class="nav-button active font-semibold py-2 px-8 border border-b-0 border-transparent text-slate-600 hover:bg-white hover:text-indigo-700 rounded-t-xl transition-all duration-200 flex items-center gap-2">
                     <i class="fas fa-chart-bar"></i> Last 6W
+                </button>
+                <button data-target="release" class="nav-button font-semibold py-2 px-8 border border-b-0 border-transparent text-slate-600 hover:bg-white hover:text-indigo-700 rounded-t-xl transition-all duration-200 flex items-center gap-2">
+                    <i class="fas fa-rocket"></i> Release Dashboard
                 </button>
                 <button data-target="history" class="nav-button font-semibold py-2 px-8 border border-b-0 border-transparent text-slate-600 hover:bg-white hover:text-indigo-700 rounded-t-xl transition-all duration-200 flex items-center gap-2">
                     <i class="fas fa-history"></i> Sprint History
@@ -100,7 +100,7 @@
             </div>
         </nav>
         <main>
-            <section id="release" class="content-section active">
+            <section id="release" class="content-section">
                 <div class="bg-white p-6 rounded-xl shadow-sm mb-6">
                     <h2 class="text-2xl font-bold text-slate-900 mb-4">Release Dashboard <i class="fas fa-rocket ml-2 text-indigo-600"></i></h2>
                     <p class="text-slate-600">
@@ -133,11 +133,56 @@
                     </div>
                 </div>
             </section>
-            <section id="overview" class="content-section">
+            <section id="overview" class="content-section active">
                 <div class="bg-white p-6 rounded-xl shadow-sm mb-6">
                     <h2 class="text-2xl font-bold text-slate-900 mb-4">6-Week Overview <i class="fa-solid fa-magnifying-glass ml-2 text-indigo-600"></i></h2>
                     <p class="text-slate-600">The last 6 weeks were focused on innovation, stability, and improving the customer experience. We achieved important milestones that had a direct impact on the business and strengthened our technology platform. This section summarizes our main results.</p>
                 </div>
+                <div class="my-6"></div>
+                <div class="bg-white p-6 rounded-xl shadow-sm mb-6">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">Our Numbers <i class="fas fa-calculator ml-2 text-indigo-600"></i></h2>
+                    <p class="text-slate-600">Data tells the story of our progress. In this section, we present the key metrics we monitor to measure our efficiency, the quality of our deliveries, and the direct business impact.</p>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-6 mt-8">
+                    <div class="bg-white p-4 text-center rounded-xl shadow-sm flex flex-col justify-center items-center">
+                        <i class="metric-icon fas fa-list-check text-indigo-600"></i>
+                        <p class="text-3xl font-bold text-indigo-600">5</p>
+                        <p class="text-slate-500">Epics</p>
+                    </div>
+                    <div class="bg-white p-4 text-center rounded-xl shadow-sm flex flex-col justify-center items-center">
+                        <i class="metric-icon fas fa-star text-teal-600"></i>
+                        <p class="text-3xl font-bold text-teal-600">310</p>
+                        <p class="text-slate-500">Total Story Points</p>
+                    </div>
+                    <div class="bg-white p-4 text-center rounded-xl shadow-sm flex flex-col justify-center items-center">
+                        <i class="metric-icon fas fa-users text-amber-600"></i>
+                        <p class="text-3xl font-bold text-amber-600">10</p>
+                        <p class="text-slate-500">FTEs</p>
+                    </div>
+                </div>
+                <div class="my-6"></div>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="bg-white p-6 rounded-xl shadow-sm flex flex-col items-center">
+                        <h3 class="text-xl font-bold text-center mb-4 text-slate-900">Velocity - Average story points</h3>
+                        <div class="chart-container">
+                            <canvas id="mttrChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm flex flex-col items-center">
+                        <h3 class="text-xl font-bold text-center mb-4 text-slate-900">Build & Run</h3>
+                        <div class="chart-container">
+                            <canvas id="deploymentsChart_overview"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="my-6"></div>
+
+                <div class="bg-white p-6 rounded-xl shadow-sm mb-6">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-4">Some deliverables <i class="fas fa-rocket ml-2 text-indigo-600"></i></h2>
+                    <p class="text-slate-600">Some features that we've been working.</p>
+                </div>
+                <div class="my-6"></div>
+
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-indigo-500 flex flex-col items-start justify-between">
                         <div>
@@ -215,16 +260,9 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="my-6"></div>
-
-                <div class="bg-white p-6 rounded-xl shadow-sm mb-6">
-                    <h2 class="text-2xl font-bold text-slate-900 mb-4">Some deliverables <i class="fas fa-rocket ml-2 text-indigo-600"></i></h2>
-                    <p class="text-slate-600">Some features that we've been working.</p>
-                </div>
-
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <article class="bg-white p-6 rounded-xl shadow-sm flex flex-col items-center text-center">
+                    <article class="bg-white p-6 rounded-xl bg-amber-500 shadow-sm flex flex-col items-center text-center">
                         <div class="flex items-center mb-2">
                             <i class="fas fa-file-code text-3xl text-indigo-600 mr-3"></i>
                             <h3 class="font-bold text-xl text-indigo-600">API Documentation in Open API</h3>
@@ -249,49 +287,6 @@
                         <img src="assets/settlement.png" alt="Settlement screen" class="mx-auto rounded-lg shadow mt-4 w-full h-auto max-w-md object-contain">
                     </article>
                 </div>
-
-                <div class="my-6"></div>
-                <div class="bg-white p-6 rounded-xl shadow-sm mb-6">
-                    <h2 class="text-2xl font-bold text-slate-900 mb-4">Our Numbers <i class="fas fa-calculator ml-2 text-indigo-600"></i></h2>
-                    <p class="text-slate-600">Data tells the story of our progress. In this section, we present the key metrics we monitor to measure our efficiency, the quality of our deliveries, and the direct business impact.</p>
-                </div>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-8">
-                    <div class="bg-white p-4 text-center rounded-xl shadow-sm flex flex-col justify-center items-center">
-                        <i class="metric-icon fas fa-list-check text-teal-600"></i>
-                        <p class="text-3xl font-bold text-teal-600">4</p>
-                        <p class="text-slate-500">Epics</p>
-                    </div>
-                    <div class="bg-white p-4 text-center rounded-xl shadow-sm flex flex-col justify-center items-center">
-                        <i class="metric-icon fas fa-star text-indigo-600"></i>
-                        <p class="text-3xl font-bold text-indigo-600">310</p>
-                        <p class="text-slate-500">Total Story Points</p>
-                    </div>
-                    <div class="bg-white p-4 text-center rounded-xl shadow-sm flex flex-col justify-center items-center">
-                        <i class="metric-icon fas fa-users text-indigo-600"></i>
-                        <p class="text-3xl font-bold text-indigo-600">4</p>
-                        <p class="text-slate-500">FTEs</p>
-                    </div>
-                    <div class="bg-white p-4 text-center rounded-xl shadow-sm flex flex-col justify-center items-center">
-                        <i class="metric-icon fas fa-box-open text-amber-600"></i>
-                        <p class="text-3xl font-bold text-amber-600">48</p>
-                        <p class="text-slate-500">Support Tasks</p>
-                    </div>
-                </div>
-                <div class="my-6"></div>
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    <div class="bg-white p-6 rounded-xl shadow-sm flex flex-col items-center">
-                        <h3 class="text-xl font-bold text-center mb-4 text-slate-900">Velocity - Average story points</h3>
-                        <div class="chart-container">
-                            <canvas id="mttrChart"></canvas>
-                        </div>
-                    </div>
-                    <div class="bg-white p-6 rounded-xl shadow-sm flex flex-col items-center">
-                        <h3 class="text-xl font-bold text-center mb-4 text-slate-900">Build & Run</h3>
-                        <div class="chart-container">
-                            <canvas id="deploymentsChart_overview"></canvas>
-                        </div>
-                    </div>
-                </div>
             </section>
             <section id="history" class="content-section">
                 <div class="bg-white p-6 rounded-xl shadow-sm mb-6">
@@ -314,13 +309,13 @@
                         <p class="text-slate-500">Build</p>
                     </div>
                     <div class="bg-white p-4 text-center rounded-xl shadow-sm flex flex-col justify-center items-center">
-                        <i class="metric-icon fas fa-code-branch text-amber-600"></i>
-                        <p class="text-3xl font-bold text-amber-600" id="run-metric">--</p>
+                        <i class="metric-icon fas fa-code-branch text-teal-600"></i>
+                        <p class="text-3xl font-bold text-teal-600" id="run-metric">--</p>
                         <p class="text-slate-500">Develop</p>
                     </div>
                     <div class="bg-white p-4 text-center rounded-xl shadow-sm flex flex-col justify-center items-center">
-                        <i class="metric-icon fas fa-lightbulb text-teal-600"></i>
-                        <p class="text-3xl font-bold text-teal-600" id="refine-metric">--</p>
+                        <i class="metric-icon fas fa-lightbulb text-amber-600"></i>
+                        <p class="text-3xl font-bold text-amber-600" id="refine-metric">--</p>
                         <p class="text-slate-500">Refine</p>
                     </div>
                 </div>
@@ -540,7 +535,7 @@
                 const ctx = document.getElementById('deploymentsChart_overview')?.getContext('2d');
                 if(!ctx) return;
                 overviewDeploymentsChartInstance = new Chart(ctx, {
-                    type: 'pie',
+                    type: 'doughnut',
                     data: {
                         labels: ['Build', 'Run'],
                         datasets: [{
@@ -637,7 +632,7 @@
                 const ctx = document.getElementById('runCausesChart')?.getContext('2d');
                 if (!ctx) return;
                 runCausesChartInstance = new Chart(ctx, {
-                    type: 'pie',
+                    type: 'doughnut',
                     data: {
                         labels: Object.keys(runCausesData).map(key => key.replace(/([A-Z])/g, ' $1').trim()), // Add spaces for readability
                         datasets: [{
@@ -701,7 +696,19 @@
 
             // Initial setup
             initializeHistorySection();
-            createBurndownChart(); // Create the chart for the initially active tab
+
+            // Detect which tab is active on load and create the appropriate charts
+            const activeSection = document.querySelector('.content-section.active');
+            if (activeSection) {
+                if (activeSection.id === 'overview') {
+                    createMttrChart();
+                    createOverviewDeploymentsChart();
+                } else if (activeSection.id === 'release') {
+                    createBurndownChart();
+                } else if (activeSection.id === 'history') {
+                    updateSprintView(sprintSelect.value, sprintData);
+                }
+            }
         });
     </script>
     
