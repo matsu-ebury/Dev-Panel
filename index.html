@@ -17,7 +17,7 @@
         /* --- Base Styles --- */
         body {
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%);
+            background: linear-gradient(135deg, #f8fcf8 0%, #e0e7ff 100%);
             min-height: 100vh;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
@@ -409,34 +409,31 @@
             <section id="history" class="content-section">
                 
                 <div class="bg-gradient-to-br from-indigo-50 to-white p-8 rounded-2xl shadow-lg mb-8 flex flex-col items-start gap-6 border border-slate-100">
-                    <div class="flex flex-col sm:flex-row items-center justify-between w-full gap-4 mb-4">
-                        <div class="flex items-center gap-3">
-                            <h2 class="text-2xl font-bold text-slate-900 flex items-center">
-                                Sprint History
-                                <i class="fas fa-history ml-3 text-indigo-600"></i>
-                            </h2>
-                        </div>
-                        <div class="flex items-center gap-2 bg-white border border-indigo-100 rounded-lg px-4 py-2 shadow-sm">
-                            <label for="sprint-select" class="text-base font-medium text-slate-700 mr-2 whitespace-nowrap">
-                                <i class="fas fa-calendar-alt text-indigo-500 mr-1"></i>
+                    <div class="flex flex-col sm:flex-row items-center justify-between w-full gap-4 mb-6">
+                        <!-- Sprint Selector Card -->
+                        <div class="flex items-center gap-3 bg-white border border-indigo-200 rounded-xl px-5 py-3 shadow-md hover:shadow-lg transition-shadow duration-200">
+                            <span class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-indigo-100">
+                                <i class="fas fa-calendar-alt text-xl text-indigo-500"></i>
+                            </span>
+                            <label for="sprint-select" class="text-base font-semibold text-slate-700 whitespace-nowrap">
                                 Select Sprint:
                             </label>
-                            <select id="sprint-select" class="block w-full sm:w-auto max-w-xs p-2 border border-indigo-200 rounded-md shadow focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-indigo-400 bg-slate-50 text-slate-800 transition">
+                            <select id="sprint-select" class="block w-full sm:w-auto max-w-xs p-2 border border-indigo-300 rounded-md shadow focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-indigo-400 bg-slate-50 text-slate-800 transition font-medium">
                             </select>
                         </div>
                     </div>
-                    <div class="w-full max-w-2xl mx-auto p-6 bg-white rounded-2xl shadow flex flex-col md:flex-row items-center gap-6 border border-slate-100">
-                        <div class="flex-1 flex flex-col items-center md:items-start">
-                            <h3 class="text-lg font-bold text-slate-800 mb-1 flex items-center gap-2">
-                                <i class="fas fa-bolt text-indigo-500"></i>
-                                Total Development Effort
-                            </h3>
-                            <p class="text-5xl font-extrabold text-indigo-700 mb-1 tracking-tight">
-                                <span id="total-effort-metric">--</span>%
-                            </p>
-                            <p class="text-xs text-slate-500">Combined percentage of active development and refinement.</p>
-                        </div>
-                        <div class="flex-1 w-full">
+                    <div class="w-full max-w-4xl mx-auto flex flex-col md:flex-row gap-8 mb-8">
+                    <!-- Total Dev Effort Card -->
+                    <div class="bg-gradient-to-br from-teal-100 to-white flex-1 p-6 bg-white rounded-2xl shadow flex flex-col items-center md:items-start gap-6 border border-slate-100">
+                        <h3 class="text-lg font-bold text-slate-800 mb-1 flex items-center gap-2">
+                            <i class="fas fa-bolt text-indigo-500"></i>
+                            Total Dev Effort
+                        </h3>
+                        <p class="text-5xl font-extrabold text-indigo-700 mb-1 tracking-tight">
+                            <span id="total-effort-metric">--</span>%
+                        </p>
+                        <p class="text-xs text-slate-500">Combined percentage of active development and refinement.</p>
+                        <div class="w-full">
                             <div class="flex h-8 w-full bg-slate-200 rounded-full overflow-hidden shadow-inner border border-slate-100" aria-label="Development effort breakdown">
                                 <div id="develop-bar" class="flex items-center justify-center bg-indigo-500 text-white text-xs font-bold transition-all duration-1000 rounded-l-full" style="width: 0%;" title="Development"></div>
                                 <div id="refine-bar" class="flex items-center justify-center bg-amber-400 text-white text-xs font-bold transition-all duration-1000 rounded-r-full" style="width: 0%;" title="Refinement"></div>
@@ -453,10 +450,20 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Total Run Effort Card -->
+                    <div class="bg-gradient-to-br from-amber-100 to-white flex-1 p-6 bg-white rounded-2xl shadow flex flex-col items-center md:items-start gap-6 border border-slate-100">
+                        <h3 class="text-lg font-bold text-slate-800 mb-1 flex items-center gap-2">
+                            <i class="fas fa-bolt text-indigo-500"></i>
+                            Total Run Effort
+                        </h3>
+                        <p class="text-5xl font-extrabold text-indigo-700 mb-1 tracking-tight">
+                            <span id="run-effort-metric">--</span>%
+                        </p>
+                        <p class="text-xs text-slate-500">Total run effort.</p>
+                    </div>
+                </div>
                 </div>
                 
-                
-                <div class="my-8"></div>
 
                 <div class="grid grid-cols-1 md:grid-cols-1 gap-8 mb-8">
                     <!-- Epics Status Card -->
@@ -474,7 +481,7 @@
                         </div>
                     </div>
                 </div>
-                    <!-- Run Causes Card -->
+                    <!-- Run Causes chart -->
                 <div class="grid grid-cols-1 md:grid-cols-1 gap-6 mb-6"></div>
                     <div class="bg-gradient-to-br from-indigo-50 to-white p-6 rounded-2xl shadow-lg flex flex-col items-start border border-indigo-100">
                         <div class="flex items-center mb-4">
@@ -515,61 +522,40 @@
             let epicsStatusChartInstance = null;
             let runCausesChartInstance = null;
             
-            // --- Data from sprintData.json is now embedded here ---
+            // --- TODO should be in a separate file ---
             const sprintData = {
-              "DBA-2025SP32": {
-                  "effort": {"build": 65, "develop": 80, "refine": 20},
+              "DBA-2526SP1": {
+                  "effort": {"build": 74, "develop": 85, "refine": 15},
                   "epics": {
-                      "DBA-101: Reporting Module": {"Done": 5, "Done in Sprint": 5, "Pending": 3, "Dropped": 3},
-                      "DBA-102: Auth Flow": {"Done": 3, "Done in Sprint": 8, "Pending": 1, "Dropped": 1},
-                      "DBA-112: Non-Resident Acct.": {"Done": 3, "Done in Sprint": 5, "Pending": 2, "Dropped": 1},
-                      "DBA-120: New API Specs": {"Done": 8, "Done in Sprint": 13, "Pending": 2, "Dropped": 1},
-                      "DBA-121: DB Schema Refactor": {"Done": 6, "Done in Sprint": 2, "Pending": 1, "Dropped": 2}
+                      "Renew PIX Certificates": {"Done": 6, "Done in Sprint": 5, "Pending": 3, "Dropped": 3},
+                      "Internalização Accouts (PayIN)": {"Done": 8, "Done in Sprint": 8, "Pending": 2, "Dropped": 0},
+                      "Melhorias na experiência do withdraw via crossbex": {"Done": 10, "Done in Sprint": 10, "Pending": 2, "Dropped": 0},
+                      "Settlement Filtros": {"Done": 3, "Done in Sprint": 3, "Pending": 10, "Dropped": 0},
+                      "API - Transferência Interna": {"Done": 16, "Done in Sprint": 16, "Pending": 10, "Dropped": 0},
+                      "DBA-1142: Documentação em Open API": {"Done": 15, "Done in Sprint": 15, "Pending": 19, "Dropped": 0},
                   },
-                  "run_causes": {"WrongFlow": 10, "ValorMenor": 5, "DepositoFilialMatriz": 8, "SettlementEventDate": 2}
+                  "run_causes": {"WrongFlow": 5.5, "ValorMenor": 5, "DepositoFilialMatriz": 1.5, "SettlementEventDate": 1}
               },
-              "DBA-2025SP33": {
+              "DBA-2526SP2": {
                   "effort": {"build": 60, "develop": 90, "refine": 10},
                   "epics": {
-                      "DBA-105: API Docs Portal": {"Done": 2, "Done in Sprint": 3, "Pending": 3, "Dropped": 5},
-                      "DBA-108: Settlement UX": {"Done": 8, "Done in Sprint": 5, "Pending": 2, "Dropped": 1},
-                      "DBA-115: Withdraw UX": {"Done": 13, "Done in Sprint": 1, "Pending": 3, "Dropped": 1},
-                      "DBA-110: Transfer Receipts": {"Done": 13, "Done in Sprint": 8, "Pending": 1, "Dropped": 1},
-                      "DBA-122: Caching Layer": {"Done": 3, "Done in Sprint": 8, "Pending": 1, "Dropped": 1},
-                      "DBA-109: Notification Svc": {"Done": 2, "Done in Sprint": 2, "Pending": 8, "Dropped": 2}
-                  },
+                      "DBA-1142: Documentação em Open API": {"Done": 28, "Done in Sprint": 13, "Pending": 6, "Dropped": 0},
+                      "DBA-1463: Comprovantes": {"Done": 7, "Done in Sprint": 13, "Pending": 0, "Dropped": 0},
+                      "DBA-1362: Decomissionamento Payout": {"Done": 4, "Done in Sprint": 6, "Pending": 8, "Dropped": 0}
+                 },
                   "run_causes": {"WrongFlow": 8, "ValorMenor": 6, "DepositoFilialMatriz": 4, "SettlementEventDate": 5}
               },
-              "DBA-2025SP34": {
-                  "effort": {"build": 70, "develop": 60, "refine": 40},
+              "DBA-2526SP3": {
+                  "effort": {"build": 70, "develop": 80, "refine": 20},
                   "epics": {
-                      "DBA-121: DB Schema Refactor": {"Done": 1, "Done in Sprint": 0, "Pending": 0, "Dropped": 0},
-                      "DBA-120: New API Specs": {"Done": 0, "Done in Sprint": 1, "Pending": 0, "Dropped": 0},
-                      "DBA-130: Fraud Detection": {"Done": 0, "Done in Sprint": 0, "Pending": 1, "Dropped": 0},
-                      "DBA-131: KYC Process": {"Done": 0, "Done in Sprint": 0, "Pending": 1, "Dropped": 0}
+                      "DBA-1142: Documentação em Open API": {"Done": 34, "Done in Sprint": 6, "Pending": 0, "Dropped": 0},
+                      "DBA-1272: Melhorias UX Withdraw": {"Done": 57, "Done in Sprint": 6, "Pending": 0, "Dropped": 0},
+                      "DBA-1608: Settlement Filtros": {"Done": 3, "Done in Sprint": 3, "Pending": 22, "Dropped": 0},
+                      "DBA-1659: Front Transferencia interna": {"Done": 0, "Done in Sprint": 13, "Pending": 0, "Dropped": 0},
+                      "DBA-1104: Transferencia Interna": {"Done": 17, "Done in Sprint": 16, "Pending": 0, "Dropped": 0},
+                      "DBA-1005: Transferencias via API": {"Done": 86, "Done in Sprint": 13, "Pending": 0, "Dropped": 0}
                   },
                   "run_causes": {"WrongFlow": 12, "ValorMenor": 3, "DepositoFilialMatriz": 3, "SettlementEventDate": 1}
-              },
-              "DBA-2025SP35": {
-                  "effort": {"build": 55, "develop": 70, "refine": 30},
-                  "epics": {
-                      "DBA-122: Caching Layer": {"Done": 1, "Done in Sprint": 0, "Pending": 0, "Dropped": 0},
-                      "DBA-131: KYC Process": {"Done": 0, "Done in Sprint": 1, "Pending": 0, "Dropped": 0},
-                      "DBA-130: Fraud Detection": {"Done": 0, "Done in Sprint": 0, "Pending": 1, "Dropped": 0},
-                      "DBA-140: User Profile Page": {"Done": 0, "Done in Sprint": 0, "Pending": 1, "Dropped": 0}
-                  },
-                  "run_causes": {"WrongFlow": 7, "ValorMenor": 9, "DepositoFilialMatriz": 6, "SettlementEventDate": 3}
-              },
-              "DBA-2526SP1": {
-                  "effort": {"build": 50, "develop": 40, "refine": 60},
-                  "epics": {
-                      "DBA-130: Fraud Detection": {"Done": 8, "Done in Sprint": 5, "Pending": 1, "Dropped": 1},
-                      "DBA-140: User Profile Page": {"Done": 6, "Done in Sprint": 3, "Pending": 1, "Dropped": 0},
-                      "DBA-142: MFA Rollout": {"Done": 6, "Done in Sprint": 3, "Pending": 1, "Dropped": 1},
-                      "DBA-145: Analytics Dashboard": {"Done": 10, "Done in Sprint": 5, "Pending": 1, "Dropped": 1},
-                      "DBA-135: Gamification PoC": {"Done": 13, "Done in Sprint": 3, "Pending": 1, "Dropped": 1}
-                  },
-                  "run_causes": {"WrongFlow": 5, "ValorMenor": 4, "DepositoFilialMatriz": 10, "SettlementEventDate": 6}
               }
             };
 
@@ -611,7 +597,7 @@
                 const progress = bar.getAttribute('data-progress');
                 bar.style.width = progress + '%';
             });
-
+            // Grafico de Burndown
             function createBurndownChart() {
                 const ctx = document.getElementById('burndownChart')?.getContext('2d');
                 if (!ctx) return;
@@ -630,7 +616,7 @@
                             },
                             {
                                 label: 'Actual',
-                                data: [310, 270, 220, 170, 120, 80, 40],
+                                data: [310, 270, 200, 200, 200, 200, 200],
                                 borderColor: '#4f46e5',
                                 backgroundColor: '#6366f1',
                                 fill: false,
@@ -733,8 +719,8 @@
                 const epicLabels = Object.keys(epicsData);
                 const statusKeys = ["Done", "Done in Sprint", "Pending", "Dropped"];
                 const statusColors = {
-                    "Done": "#4f46e5",
-                    "Done in Sprint": "#f59e0b",
+                    "Done": "#304d1c",
+                    "Done in Sprint": "#02610f",
                     "Pending": "#facc15",
                     "Dropped": "#ef4444"
                 };
@@ -815,14 +801,17 @@
 
                 const developPercent = sprintMetrics.effort.develop;
                 const refinePercent = sprintMetrics.effort.refine;
+                const runPercent = 100 - sprintMetrics.effort.build;
 
                 // Progress bar elements (use unique IDs for bars)
                 const totalEffort = document.getElementById('total-effort-metric');
+                const runEffort = document.getElementById('run-effort-metric');
                 const developBar = document.getElementById('develop-bar');
                 const refineBar = document.getElementById('refine-bar');
 
                 // Update the total percentage display
                 if (totalEffort) totalEffort.textContent = sprintMetrics.effort.build;
+                if (runEffort) runEffort.textContent = runPercent;
 
                 // Update the width of the progress bar segments
                 if (developBar) {
@@ -836,6 +825,7 @@
 
                 // Update metric cards (use unique IDs for metric cards)
                 const buildMetric = document.getElementById('build-metric');
+                const runMetric = document.getElementById('run-metric');
                 const developMetric = document.getElementById('develop-metric-card');
                 const refineMetric = document.getElementById('refine-metric-card');
                 if (buildMetric) buildMetric.textContent = sprintMetrics.effort.build + '%';
