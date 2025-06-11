@@ -14,59 +14,86 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        /* --- Base Styles --- */
         body {
             font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%);
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
-        .chart-container {
+        .container {
+            background: rgba(255,255,255,0.95);
+            border-radius: 1.5rem;
+            box-shadow: 0 8px 32px 0 rgba(79,70,229,0.08), 0 1.5px 4px 0 rgba(16,24,40,0.04);
+        }
+
+        /* --- Navigation --- */
+        #main-nav .nav-button {
+            font-size: 1.08rem;
+            letter-spacing: 0.01em;
+            border: none;
+            box-shadow: none;
             position: relative;
-            width: 100%;
-            max-width: 100%; /* Adjusted for wider charts */
-            margin-left: auto;
-            margin-right: auto;
-            height: 400px; /* Base height for charts */
-        }
-        @media (min-width: 640px) {
-            .chart-container {
-                height: 400px; /* Consistent height on larger screens */
-            }
-        }
-        .nav-button {
+            top: 0;
             transition: all 0.2s ease;
-            position: relative;
-            top: 1px;
         }
-        .nav-button.active {
-            background-color: white;
+        #main-nav .nav-button.active {
+            background: linear-gradient(90deg, #6366f1 0%, #818cf8 100%);
+            color: #fff !important;
+            box-shadow: 0 2px 8px 0 rgba(99,102,241,0.08);
+            z-index: 1;
+        }
+        #main-nav .nav-button:not(.active):hover {
+            background: #f1f5f9;
             color: #4f46e5;
-            border-color: #e2e8f0;
-            border-bottom-color: transparent;
-            border-top-left-radius: 0.5rem;
-            border-top-right-radius: 0.5rem;
-            z-index: 10;
         }
-        .nav-button:not(.active):hover {
-            background-color: #f1f5f9;
-            color: #1a202c;
-        }
+
+        /* --- Section Display & Animation --- */
         .content-section {
             display: none;
+            animation: fadeIn 0.5s;
         }
         .content-section.active {
             display: block;
         }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(16px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+
+        /* --- Cards & Hover Effects --- */
+        .bg-white, .bg-gradient-to-br {
+            border-radius: 1.25rem !important;
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+        .bg-white:hover, .bg-gradient-to-br:hover {
+            box-shadow: 0 4px 24px 0 rgba(99,102,241,0.10), 0 2px 8px 0 rgba(16,24,40,0.06);
+            transform: translateY(-2px) scale(1.01);
+            border-color: #6366f1 !important;
+        }
+        .bg-white .rounded-xl {
+            border-radius: 1.25rem !important;
+        }
+
+        /* --- Icons --- */
         .icon-card {
             font-size: 2.25rem;
             color: #4f46e5;
             margin-bottom: 1rem;
+            filter: drop-shadow(0 2px 8px rgba(99,102,241,0.08));
         }
         .metric-icon {
             font-size: 3rem;
             color: #0c2b68; 
             margin-bottom: 1rem;
+            filter: drop-shadow(0 2px 8px rgba(99,102,241,0.08));
         }
+
+        /* --- Progress Bars --- */
         .progress-bar-container {
             width: 100%;
-            background-color: #e2e8f0;
+            background: linear-gradient(90deg, #e0e7ff 0%, #f1f5f9 100%);
             border-radius: 9999px;
             height: 0.625rem;
         }
@@ -74,6 +101,59 @@
             background-color: #6366f1;
             height: 0.625rem;
             border-radius: 9999px;
+            transition: width 0.8s cubic-bezier(.4,2,.6,1), background 0.2s;
+            box-shadow: 0 1px 4px 0 rgba(99,102,241,0.10);
+        }
+
+        /* --- Chart Containers --- */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            height: 400px;
+            background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%);
+            border-radius: 1rem;
+            box-shadow: 0 1.5px 8px 0 rgba(99,102,241,0.06);
+            padding: 1rem 0.5rem;
+        }
+        @media (min-width: 640px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+
+        /* --- Form Elements --- */
+        select, input, button {
+            outline: none !important;
+        }
+        select:focus, input:focus, button:focus {
+            box-shadow: 0 0 0 2px #6366f1 !important;
+            border-color: #6366f1 !important;
+        }
+
+        /* --- Responsive Tweaks --- */
+        @media (max-width: 640px) {
+            .container {
+                padding: 0.5rem !important;
+            }
+            header {
+                padding: 1.5rem 0.5rem 1rem 0.5rem;
+            }
+            .grid {
+                gap: 1rem !important;
+            }
+        }
+
+        /* --- Custom Scrollbar --- */
+        ::-webkit-scrollbar {
+            width: 8px;
+            background: #e0e7ff;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c7d2fe;
+            border-radius: 8px;
         }
     </style>
 </head>
@@ -81,195 +161,233 @@
 
     <div class="container mx-auto p-4 sm:p-6 md:p-8">
 
-        <header class="text-center mb-8">
+        <header class="text-center mb-12 relative overflow-visible">
             <h1 class="text-3xl sm:text-4xl font-bold text-indigo-700">DBA Development Panel <i class="fas fa-chart-line ml-2"></i></h1>
             <p class="text-slate-500 mt-2 text-lg">An interactive summary of our achievements, metrics, and learnings.</p>
         </header>
 
-        <nav id="main-nav" class="flex justify-center gap-0 mb-8 border-b border-slate-200">
-            <div class="flex justify-start gap-0 w-full bg-slate-100 rounded-t-xl p-1 shadow-sm">
-                <button data-target="overview" class="nav-button active font-semibold py-2 px-8 border border-b-0 border-transparent text-slate-600 hover:bg-white hover:text-indigo-700 rounded-t-xl transition-all duration-200 flex items-center gap-2">
-                    <i class="fas fa-chart-bar"></i> Last 6W
+        <nav id="main-nav" class="flex justify-center mb-12">
+            <div class="flex bg-gradient-to-r from-indigo-100 via-white to-indigo-100 rounded-full shadow-xl border border-indigo-200 px-2 py-1 gap-2 backdrop-blur-sm">
+                <button data-target="overview" class="nav-button active font-semibold py-2 px-8 text-slate-700 rounded-full transition-all duration-200 flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-indigo-400 hover:bg-indigo-50 hover:text-indigo-700 shadow-sm relative">
+                    <span class="flex items-center gap-2">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>Last 6W</span>
+                    </span>                    
                 </button>
-                <button data-target="release" class="nav-button font-semibold py-2 px-8 border border-b-0 border-transparent text-slate-600 hover:bg-white hover:text-indigo-700 rounded-t-xl transition-all duration-200 flex items-center gap-2">
-                    <i class="fas fa-rocket"></i> Release Dashboard
+                <button data-target="release" class="nav-button font-semibold py-2 px-8 text-slate-700 rounded-full transition-all duration-200 flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-indigo-400 hover:bg-indigo-50 hover:text-indigo-700 shadow-sm relative">
+                    <span class="flex items-center gap-2">
+                        <i class="fas fa-rocket"></i>
+                        <span>Release Dashboard</span>
+                    </span>
                 </button>
-                <button data-target="history" class="nav-button font-semibold py-2 px-8 border border-b-0 border-transparent text-slate-600 hover:bg-white hover:text-indigo-700 rounded-t-xl transition-all duration-200 flex items-center gap-2">
-                    <i class="fas fa-history"></i> Sprint History
+                <button data-target="history" class="nav-button font-semibold py-2 px-8 text-slate-700 rounded-full transition-all duration-200 flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-indigo-400 hover:bg-indigo-50 hover:text-indigo-700 shadow-sm relative">
+                    <span class="flex items-center gap-2">
+                        <i class="fas fa-history"></i>
+                        <span>Sprint History</span>
+                    </span>
                 </button>
             </div>
         </nav>
         <main>
             <section id="release" class="content-section">
-                <div class="bg-white p-6 rounded-xl shadow-sm mb-6">
-                    <h2 class="text-2xl font-bold text-slate-900 mb-4">Release Dashboard <i class="fas fa-rocket ml-2 text-indigo-600"></i></h2>
-                    <p class="text-slate-600">
-                        The Release Dashboard provides a comprehensive view of our team's recent delivery performance, highlighting completed epics, ongoing work, and overall progress. Here you can track story points, monitor burndown trends, and review key metrics that reflect our efficiency and impact over the last six weeks.
+                <div class="bg-gradient-to-br from-indigo-50 to-white p-8 rounded-2xl shadow-lg mb-8 flex flex-col items-start gap-6 border border-slate-100">
+                    <h2 class="text-3xl font-extrabold text-indigo-700 mb-2 flex items-center gap-3">
+                        <i class="fas fa-rocket text-indigo-500"></i>
+                        Release Dashboard
+                    </h2>
+                    <p class="text-slate-600 text-lg">
+                        The Release Dashboard provides a comprehensive view of our team's recent delivery performance, highlighting completed epics, ongoing work, and overall progress. Track story points, monitor burndown trends, and review key metrics reflecting our efficiency and impact over the last six weeks.
                     </p>
                 </div>
-                <div class="grid grid-cols-2 md:grid-cols-3 gap-6 mt-8">
-                    <div class="bg-white p-4 text-center rounded-xl shadow-sm flex flex-col justify-center items-center">
-                        <i class="metric-icon fas fa-list-check text-indigo-600"></i>
-                        <p class="text-3xl font-bold text-indigo-600">3</p>
-                        <p class="text-slate-500">Epics Delivered</p>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
+                    <div class="bg-gradient-to-br from-indigo-100 to-white p-6 rounded-2xl shadow flex flex-col items-center border border-indigo-200 hover:scale-105 transition-transform duration-200">
+                        <i class="metric-icon fas fa-list-check text-indigo-600 mb-2"></i>
+                        <p class="text-4xl font-extrabold text-indigo-700 mb-1">3</p>
+                        <p class="text-slate-600 font-medium">Epics Delivered</p>
                     </div>
-                    <div class="bg-white p-4 text-center rounded-xl shadow-sm flex flex-col justify-center items-center">
-                        <i class="metric-icon fas fa-star text-teal-600"></i>
-                        <p class="text-3xl font-bold text-teal-600">3</p>
-                        <p class="text-slate-500">Epics in Progress</p>
+                    <div class="bg-gradient-to-br from-teal-100 to-white p-6 rounded-2xl shadow flex flex-col items-center border border-teal-200 hover:scale-105 transition-transform duration-200">
+                        <i class="metric-icon fas fa-star text-teal-600 mb-2"></i>
+                        <p class="text-4xl font-extrabold text-teal-700 mb-1">3</p>
+                        <p class="text-slate-600 font-medium">Epics in Progress</p>
                     </div>
-                    <div class="bg-white p-4 text-center rounded-xl shadow-sm flex flex-col justify-center items-center">
-                        <i class="metric-icon fas fa-users text-amber-600"></i>
-                        <p class="text-3xl font-bold text-amber-600">210</p>
-                        <p class="text-slate-500">Overall Story Points</p>
+                    <div class="bg-gradient-to-br from-amber-100 to-white p-6 rounded-2xl shadow flex flex-col items-center border border-amber-200 hover:scale-105 transition-transform duration-200">
+                        <i class="metric-icon fas fa-users text-amber-600 mb-2"></i>
+                        <p class="text-4xl font-extrabold text-amber-700 mb-1">210</p>
+                        <p class="text-slate-600 font-medium">Overall Story Points</p>
                     </div>
-                    <div class="bg-white p-4 rounded-xl shadow-sm flex flex-col items-center col-span-2 md:col-span-3">
-                        <h3 class="text-lg font-bold text-slate-900 mb-2 flex items-center gap-2">
-                            <i class="fas fa-fire text-indigo-600"></i> Burndown Chart
-                        </h3>
-                        <div class="chart-container" style="width: 100%; max-width: 100%; height: 400px;">
-                            <canvas id="burndownChart" style="width:100% !important; height:400px !important;"></canvas>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-lg flex flex-col items-center border border-indigo-100">
+                    <h3 class="text-xl font-bold text-center mb-4 text-slate-900 flex items-center gap-2">
+                        <i class="fas fa-fire text-indigo-500"></i>
+                        Burndown Chart
+                    </h3>
+                    <div class="chart-container" style="width: 100%; max-width: 100%; height: 400px;">
+                        <canvas id="burndownChart" style="width:100% !important; height:400px !important;"></canvas>
+                    </div>
+                    <div class="flex flex-wrap justify-center gap-6 mt-8 w-full">
+                        <div class="flex flex-col items-center">
+                            <span class="text-xs text-slate-500 mb-1">Ideal Trend</span>
+                            <span class="inline-block w-8 h-2 rounded-full" style="background: #10b981;"></span>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <span class="text-xs text-slate-500 mb-1">Actual Progress</span>
+                            <span class="inline-block w-8 h-2 rounded-full" style="background: #4f46e5;"></span>
                         </div>
                     </div>
                 </div>
             </section>
             <section id="overview" class="content-section active">
-                <!-- <div class="bg-white p-6 rounded-xl shadow-sm mb-6">
-                    <h2 class="text-2xl font-bold text-slate-900 mb-4">6-Week Overview <i class="fa-solid fa-magnifying-glass ml-2 text-indigo-600"></i></h2>
-                    <p class="text-slate-600">The last 6 weeks were focused on innovation, stability, and improving the customer experience. We achieved important milestones that had a direct impact on the business and strengthened our technology platform. This section summarizes our main results.</p>
-                </div> -->
                 <div class="my-6"></div>
-                <div class="bg-white p-6 rounded-xl shadow-sm mb-6">
-                    <h2 class="text-2xl font-bold text-slate-900 mb-4">6-Week Overview<i class="fas fa-calculator ml-2 text-indigo-600"></i></h2>
-                    <p class="text-slate-600">Data tells the story of our progress. In this section, we present the key metrics we monitor to measure our efficiency, the quality of our deliveries, and the direct business impact.</p>
+                <div class="bg-gradient-to-br from-indigo-50 to-white p-8 rounded-2xl shadow-lg mb-8 flex flex-col items-start gap-6 border border-slate-100">
+                    <h2 class="text-3xl font-extrabold text-indigo-700 mb-2 flex items-center gap-3">
+                        <i class="fas fa-calculator text-indigo-500"></i>
+                        6-Week Overview
+                    </h2>
+                    <p class="text-slate-600 text-lg">Data tells the story of our progress. Here are the key metrics we monitor to measure our efficiency, delivery quality, and business impact.</p>
                 </div>
-                <div class="grid grid-cols-2 md:grid-cols-3 gap-6 mt-8">
-                    <div class="bg-white p-4 text-center rounded-xl shadow-sm flex flex-col justify-center items-center">
-                        <i class="metric-icon fas fa-list-check text-indigo-600"></i>
-                        <p class="text-3xl font-bold text-indigo-600">5</p>
-                        <p class="text-slate-500">Epics</p>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
+                    <div class="bg-gradient-to-br from-indigo-100 to-white p-6 rounded-2xl shadow flex flex-col items-center border border-indigo-200 hover:scale-105 transition-transform duration-200">
+                        <i class="metric-icon fas fa-list-check text-indigo-600 mb-2"></i>
+                        <p class="text-4xl font-extrabold text-indigo-700 mb-1">5</p>
+                        <p class="text-slate-600 font-medium">Epics</p>
                     </div>
-                    <div class="bg-white p-4 text-center rounded-xl shadow-sm flex flex-col justify-center items-center">
-                        <i class="metric-icon fas fa-star text-teal-600"></i>
-                        <p class="text-3xl font-bold text-teal-600">310</p>
-                        <p class="text-slate-500">Total Story Points</p>
+                    <div class="bg-gradient-to-br from-teal-100 to-white p-6 rounded-2xl shadow flex flex-col items-center border border-teal-200 hover:scale-105 transition-transform duration-200">
+                        <i class="metric-icon fas fa-star text-teal-600 mb-2"></i>
+                        <p class="text-4xl font-extrabold text-teal-700 mb-1">310</p>
+                        <p class="text-slate-600 font-medium">Total Story Points</p>
                     </div>
-                    <div class="bg-white p-4 text-center rounded-xl shadow-sm flex flex-col justify-center items-center">
-                        <i class="metric-icon fas fa-users text-amber-600"></i>
-                        <p class="text-3xl font-bold text-amber-600">10</p>
-                        <p class="text-slate-500">FTEs</p>
+                    <div class="bg-gradient-to-br from-amber-100 to-white p-6 rounded-2xl shadow flex flex-col items-center border border-amber-200 hover:scale-105 transition-transform duration-200">
+                        <i class="metric-icon fas fa-users text-amber-600 mb-2"></i>
+                        <p class="text-4xl font-extrabold text-amber-700 mb-1">10</p>
+                        <p class="text-slate-600 font-medium">FTEs</p>
                     </div>
                 </div>
                 <div class="my-6"></div>
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    <div class="bg-white p-6 rounded-xl shadow-sm flex flex-col items-center">
-                        <h3 class="text-xl font-bold text-center mb-4 text-slate-900">Velocity - Average story points</h3>
+                    <div class="bg-white p-8 rounded-2xl shadow-lg flex flex-col items-center border border-indigo-100">
+                        <h3 class="text-xl font-bold text-center mb-4 text-slate-900 flex items-center gap-2">
+                            <i class="fas fa-bolt text-indigo-500"></i>
+                            Velocity - Average Story Points
+                        </h3>
                         <div class="chart-container">
                             <canvas id="mttrChart"></canvas>
                         </div>
                     </div>
-                    <div class="bg-white p-6 rounded-xl shadow-sm flex flex-col items-center">
-                        <h3 class="text-xl font-bold text-center mb-4 text-slate-900">Build & Run</h3>
+                    <div class="bg-white p-8 rounded-2xl shadow-lg flex flex-col items-center border border-teal-100">
+                        <h3 class="text-xl font-bold text-center mb-4 text-slate-900 flex items-center gap-2">
+                            <i class="fas fa-cogs text-teal-500"></i>
+                            Build & Run
+                        </h3>
                         <div class="chart-container">
                             <canvas id="deploymentsChart_overview"></canvas>
                         </div>
                     </div>
                 </div>
-                <div class="my-6"></div>
-
-                <div class="bg-white p-6 rounded-xl shadow-sm mb-6">
-                    <h2 class="text-2xl font-bold text-slate-900 mb-4">Some deliverables <i class="fas fa-rocket ml-2 text-indigo-600"></i></h2>
-                    <p class="text-slate-600">Some features that we've been working.</p>
+                <div class="my-10"></div>
+                <div class="bg-gradient-to-br from-indigo-50 to-white p-8 rounded-2xl shadow-lg mb-8 flex flex-col items-start gap-6 border border-slate-100">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-2 flex items-center gap-2">
+                        <i class="fas fa-rocket text-indigo-600"></i>
+                        Recent Deliverables
+                    </h2>
+                    <p class="text-slate-600">A selection of features and improvements delivered by the team.</p>
                 </div>
-                <div class="my-6"></div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-indigo-500 flex flex-col items-start justify-between">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-10">
+                    <div class="bg-white p-6 rounded-2xl shadow border-l-4 border-indigo-500 flex flex-col items-start hover:shadow-xl transition-shadow duration-200">
                         <div>
                             <i class="icon-card fas fa-hand-holding-usd"></i>
-                            <h3 class="font-bold text-xl mb-2 text-slate-900">UX Improvements - Withdraw</h3>
-                            <p class="text-slate-600">We implemented UX improvements in the transfer flow, making the process more intuitive, faster, and transparent for the user. The changes reduced unnecessary steps, simplified messages, and increased the clarity of the information displayed, resulting in fewer questions and greater customer satisfaction.</p>
+                            <h3 class="font-bold text-lg mb-2 text-slate-900">UX Improvements - Withdraw</h3>
+                            <p class="text-slate-600 mb-2">We improved the transfer flow for a more intuitive, faster, and transparent user experience, reducing steps and clarifying information.</p>
                         </div>
                         <div class="mt-4 w-full">
-                            <p class="text-slate-700 font-semibold text-lg">User Stories: <span class="text-indigo-600">18</span></p>
-                            <p class="text-slate-700 font-semibold text-lg">Story Points: <span class="text-indigo-600">63</span></p>
-                            <div class="progress-bar-container mt-2">
+                            <div class="flex justify-between text-sm mb-1">
+                                <span class="font-semibold text-slate-700">User Stories: <span class="text-indigo-600">18</span></span>
+                                <span class="font-semibold text-slate-700">Story Points: <span class="text-indigo-600">63</span></span>
+                            </div>
+                            <div class="progress-bar-container mt-1">
                                 <div class="progress-bar" data-progress="80" style="width: 80%"></div>
                             </div>
                             <span class="text-xs text-slate-400 mt-1">80% completed</span>
                         </div>
                     </div>
-                    <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-teal-500 flex flex-col items-start justify-between">
+                    <div class="bg-white p-6 rounded-2xl shadow border-l-4 border-teal-500 flex flex-col items-start hover:shadow-xl transition-shadow duration-200">
                         <div>
                             <i class="icon-card fas fa-chart-pie"></i>
-                            <h3 class="font-bold text-xl mb-2 text-slate-900">UX Improvements Settlement</h3>
-                            <p class="text-slate-600">We enhanced the user experience in settlement reports, making navigation clearer and more intuitive. Financial information was reorganized for easier understanding, dynamic filters were added, and data visualization was improved, reducing queries and accelerating decision-making.</p>
+                            <h3 class="font-bold text-lg mb-2 text-slate-900">UX Improvements Settlement</h3>
+                            <p class="text-slate-600 mb-2">Enhanced settlement reports with clearer navigation, reorganized data, dynamic filters, and improved visualization for faster decisions.</p>
                         </div>
                         <div class="mt-4 w-full">
-                            <p class="text-slate-700 font-semibold text-lg">User Stories: <span class="text-teal-600">22</span></p>
-                            <p class="text-slate-700 font-semibold text-lg">Story Points: <span class="text-teal-600">95</span></p>
-                            <div class="progress-bar-container mt-2">
+                            <div class="flex justify-between text-sm mb-1">
+                                <span class="font-semibold text-slate-700">User Stories: <span class="text-teal-600">22</span></span>
+                                <span class="font-semibold text-slate-700">Story Points: <span class="text-teal-600">95</span></span>
+                            </div>
+                            <div class="progress-bar-container mt-1">
                                 <div class="progress-bar bg-teal-500" data-progress="100" style="width: 100%"></div>
                             </div>
                             <span class="text-xs text-slate-400 mt-1">100% completed</span>
                         </div>
                     </div>
-                    <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-amber-500 flex flex-col items-start justify-between">
+                    <div class="bg-white p-6 rounded-2xl shadow border-l-4 border-amber-500 flex flex-col items-start hover:shadow-xl transition-shadow duration-200">
                         <div>
                             <i class="icon-card fas fa-globe-americas"></i>
-                            <h3 class="font-bold text-xl mb-2 text-slate-900">Non Resident's Accounts </h3>
-                            <p class="text-slate-600">We adjusted transfer and account management flows to accommodate Non-Resident Account functionalities.</p>
+                            <h3 class="font-bold text-lg mb-2 text-slate-900">Non Resident's Accounts</h3>
+                            <p class="text-slate-600 mb-2">Adjusted transfer and account flows to support Non-Resident Account functionalities.</p>
                         </div>
                         <div class="mt-4 w-full">
-                            <p class="text-slate-700 font-semibold text-lg">User Stories: <span class="text-amber-600">20</span></p>
-                            <p class="text-slate-700 font-semibold text-lg">Story Points: <span class="text-amber-600">98</span></p>
-                            <div class="progress-bar-container mt-2">
+                            <div class="flex justify-between text-sm mb-1">
+                                <span class="font-semibold text-slate-700">User Stories: <span class="text-amber-600">20</span></span>
+                                <span class="font-semibold text-slate-700">Story Points: <span class="text-amber-600">98</span></span>
+                            </div>
+                            <div class="progress-bar-container mt-1">
                                 <div class="progress-bar bg-amber-500" data-progress="90" style="width: 90%"></div>
                             </div>
                             <span class="text-xs text-slate-400 mt-1">90% completed</span>
                         </div>
                     </div>
-                    <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-indigo-500 flex flex-col items-start justify-between">
+                    <div class="bg-white p-6 rounded-2xl shadow border-l-4 border-indigo-500 flex flex-col items-start hover:shadow-xl transition-shadow duration-200">
                         <div>
                             <i class="icon-card fas fa-receipt"></i>
-                            <h3 class="font-bold text-xl mb-2 text-slate-900">Transfer Receipts</h3>
-                            <p class="text-slate-600">Development of transfer receipts, providing a support tool for operations.</p>
+                            <h3 class="font-bold text-lg mb-2 text-slate-900">Transfer Receipts</h3>
+                            <p class="text-slate-600 mb-2">Developed digital transfer receipts as a support tool for operations.</p>
                         </div>
                         <div class="mt-4 w-full">
-                            <p class="text-slate-700 font-semibold text-lg">User Stories: <span class="text-indigo-600">4</span></p>
-                            <p class="text-slate-700 font-semibold text-lg">Story Points: <span class="text-indigo-600">20</span></p>
-                            <div class="progress-bar-container mt-2">
+                            <div class="flex justify-between text-sm mb-1">
+                                <span class="font-semibold text-slate-700">User Stories: <span class="text-indigo-600">4</span></span>
+                                <span class="font-semibold text-slate-700">Story Points: <span class="text-indigo-600">20</span></span>
+                            </div>
+                            <div class="progress-bar-container mt-1">
                                 <div class="progress-bar" data-progress="100" style="width: 100%"></div>
                             </div>
                             <span class="text-xs text-slate-400 mt-1">100% completed</span>
                         </div>
                     </div>
-                    <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-teal-500 flex flex-col items-start justify-between">
+                    <div class="bg-white p-6 rounded-2xl shadow border-l-4 border-teal-500 flex flex-col items-start hover:shadow-xl transition-shadow duration-200">
                         <div>
                             <i class="icon-card fas fa-book"></i>
-                            <h3 class="font-bold text-xl mb-2 text-slate-900">API Documentation in Open API</h3>
-                            <p class="text-slate-600">Mapping and documentation of all internal and external APIs in Open API.</p>
+                            <h3 class="font-bold text-lg mb-2 text-slate-900">API Documentation in Open API</h3>
+                            <p class="text-slate-600 mb-2">Mapped and documented all internal and external APIs in Open API format.</p>
                         </div>
                         <div class="mt-4 w-full">
-                            <p class="text-slate-700 font-semibold text-lg">User Stories: <span class="text-teal-600">10</span></p>
-                            <p class="text-slate-700 font-semibold text-lg">Story Points: <span class="text-teal-600">34</span></p>
-                            <div class="progress-bar-container mt-2">
+                            <div class="flex justify-between text-sm mb-1">
+                                <span class="font-semibold text-slate-700">User Stories: <span class="text-teal-600">10</span></span>
+                                <span class="font-semibold text-slate-700">Story Points: <span class="text-teal-600">34</span></span>
+                            </div>
+                            <div class="progress-bar-container mt-1">
                                 <div class="progress-bar bg-teal-500" data-progress="70" style="width: 70%"></div>
                             </div>
                             <span class="text-xs text-slate-400 mt-1">70% completed</span>
                         </div>
                     </div>
                 </div>
-                <div class="my-6"></div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <article class="bg-white p-6 rounded-xl bg-amber-500 shadow-sm flex flex-col items-center text-center">
+                <div class="my-10"></div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <article class="bg-gradient-to-br from-indigo-50 to-white p-6 rounded-2xl shadow flex flex-col items-center text-center border border-indigo-100">
                         <div class="flex items-center mb-2">
                             <i class="fas fa-file-code text-3xl text-indigo-600 mr-3"></i>
                             <h3 class="font-bold text-xl text-indigo-600">API Documentation in Open API</h3>
                         </div>
                         <img src="assets/docs.png" alt="Swagger" class="mx-auto rounded-lg shadow mt-4 w-full h-auto max-w-xs object-contain">
                     </article>
-                    <article class="bg-white p-6 rounded-xl shadow-sm flex flex-col items-center text-center">
+                    <article class="bg-gradient-to-br from-indigo-50 to-white p-6 rounded-2xl shadow flex flex-col items-center text-center border border-indigo-100">
                         <div class="flex items-center mb-2">
                             <i class="fas fa-file-invoice-dollar text-3xl text-indigo-600 mr-3"></i>
                             <h3 class="font-bold text-xl text-indigo-600">Transfer Receipts</h3>
@@ -279,7 +397,7 @@
                             <img src="assets/comprovante2.png" alt="Digital receipt example" class="rounded-lg shadow w-full max-w-[220px] h-auto object-contain">
                         </div>
                     </article>
-                    <article class="bg-white p-6 rounded-xl shadow-sm flex flex-col items-center text-center md:col-span-2">
+                    <article class="bg-gradient-to-br from-indigo-50 to-white p-6 rounded-2xl shadow flex flex-col items-center text-center md:col-span-2 border border-indigo-100">
                         <div class="flex items-center mb-2">
                             <i class="fas fa-chart-area text-3xl text-indigo-600 mr-3"></i>
                             <h3 class="font-bold text-xl text-indigo-600">Settlement Experience Improvements</h3>
@@ -340,7 +458,7 @@
                 
                 <div class="my-8"></div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                <div class="grid grid-cols-1 md:grid-cols-1 gap-8 mb-8">
                     <!-- Epics Status Card -->
                     <div class="bg-gradient-to-br from-indigo-50 to-white p-6 rounded-2xl shadow-lg flex flex-col items-start border border-indigo-100">
                         <div class="flex items-center mb-4">
@@ -355,8 +473,10 @@
                             </div>
                         </div>
                     </div>
+                </div>
                     <!-- Run Causes Card -->
-                    <div class="bg-gradient-to-br from-amber-50 to-white p-6 rounded-2xl shadow-lg flex flex-col items-start border border-amber-100">
+                <div class="grid grid-cols-1 md:grid-cols-1 gap-6 mb-6"></div>
+                    <div class="bg-gradient-to-br from-indigo-50 to-white p-6 rounded-2xl shadow-lg flex flex-col items-start border border-indigo-100">
                         <div class="flex items-center mb-4">
                             <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-amber-100 mr-3">
                                 <i class="fas fa-exclamation-circle text-2xl text-amber-500"></i>
