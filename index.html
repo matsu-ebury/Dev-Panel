@@ -13,149 +13,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        /* --- Base Styles --- */
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #f8fcf8 0%, #e0e7ff 100%);
-            min-height: 100vh;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-        .container {
-            background: rgba(255,255,255,0.95);
-            border-radius: 1.5rem;
-            box-shadow: 0 8px 32px 0 rgba(79,70,229,0.08), 0 1.5px 4px 0 rgba(16,24,40,0.04);
-        }
-
-        /* --- Navigation --- */
-        #main-nav .nav-button {
-            font-size: 1.08rem;
-            letter-spacing: 0.01em;
-            border: none;
-            box-shadow: none;
-            position: relative;
-            top: 0;
-            transition: all 0.2s ease;
-        }
-        #main-nav .nav-button.active {
-            background: linear-gradient(90deg, #6366f1 0%, #818cf8 100%);
-            color: #fff !important;
-            box-shadow: 0 2px 8px 0 rgba(99,102,241,0.08);
-            z-index: 1;
-        }
-        #main-nav .nav-button:not(.active):hover {
-            background: #f1f5f9;
-            color: #4f46e5;
-        }
-
-        /* --- Section Display & Animation --- */
-        .content-section {
-            display: none;
-            animation: fadeIn 0.5s;
-        }
-        .content-section.active {
-            display: block;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(16px);}
-            to { opacity: 1; transform: translateY(0);}
-        }
-
-        /* --- Cards & Hover Effects --- */
-        .bg-white, .bg-gradient-to-br {
-            border-radius: 1.25rem !important;
-            transition: box-shadow 0.2s, transform 0.2s;
-        }
-        .bg-white:hover, .bg-gradient-to-br:hover {
-            box-shadow: 0 4px 24px 0 rgba(99,102,241,0.10), 0 2px 8px 0 rgba(16,24,40,0.06);
-            transform: translateY(-2px) scale(1.01);
-            border-color: #6366f1 !important;
-        }
-        .bg-white .rounded-xl {
-            border-radius: 1.25rem !important;
-        }
-
-        /* --- Icons --- */
-        .icon-card {
-            font-size: 2.25rem;
-            color: #4f46e5;
-            margin-bottom: 1rem;
-            filter: drop-shadow(0 2px 8px rgba(99,102,241,0.08));
-        }
-        .metric-icon {
-            font-size: 3rem;
-            color: #0c2b68; 
-            margin-bottom: 1rem;
-            filter: drop-shadow(0 2px 8px rgba(99,102,241,0.08));
-        }
-
-        /* --- Progress Bars --- */
-        .progress-bar-container {
-            width: 100%;
-            background: linear-gradient(90deg, #e0e7ff 0%, #f1f5f9 100%);
-            border-radius: 9999px;
-            height: 0.625rem;
-        }
-        .progress-bar {
-            background-color: #6366f1;
-            height: 0.625rem;
-            border-radius: 9999px;
-            transition: width 0.8s cubic-bezier(.4,2,.6,1), background 0.2s;
-            box-shadow: 0 1px 4px 0 rgba(99,102,241,0.10);
-        }
-
-        /* --- Chart Containers --- */
-        .chart-container {
-            position: relative;
-            width: 100%;
-            max-width: 100%;
-            margin-left: auto;
-            margin-right: auto;
-            height: 400px;
-            background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%);
-            border-radius: 1rem;
-            box-shadow: 0 1.5px 8px 0 rgba(99,102,241,0.06);
-            padding: 1rem 0.5rem;
-        }
-        @media (min-width: 640px) {
-            .chart-container {
-                height: 400px;
-            }
-        }
-
-        /* --- Form Elements --- */
-        select, input, button {
-            outline: none !important;
-        }
-        select:focus, input:focus, button:focus {
-            box-shadow: 0 0 0 2px #6366f1 !important;
-            border-color: #6366f1 !important;
-        }
-
-        /* --- Responsive Tweaks --- */
-        @media (max-width: 640px) {
-            .container {
-                padding: 0.5rem !important;
-            }
-            header {
-                padding: 1.5rem 0.5rem 1rem 0.5rem;
-            }
-            .grid {
-                gap: 1rem !important;
-            }
-        }
-
-        /* --- Custom Scrollbar --- */
-        ::-webkit-scrollbar {
-            width: 8px;
-            background: #e0e7ff;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #c7d2fe;
-            border-radius: 8px;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-slate-50 text-slate-800">
 
@@ -292,7 +150,7 @@
                     <p class="text-slate-600">A selection of features and improvements delivered by the team.</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-10">
-                    <div class="bg-white p-6 rounded-2xl shadow border-l-4 border-indigo-500 flex flex-col items-start hover:shadow-xl transition-shadow duration-200">
+                    <div class="bg-gradient-to-br from-indigo-50 to-white p-8 bg-white p-6 rounded-2xl shadow border-l-4 border-indigo-500 flex flex-col items-start hover:shadow-xl transition-shadow duration-200">
                         <div>
                             <i class="icon-card fas fa-hand-holding-usd"></i>
                             <h3 class="font-bold text-lg mb-2 text-slate-900">UX Improvements - Withdraw</h3>
@@ -309,7 +167,7 @@
                             <span class="text-xs text-slate-400 mt-1">80% completed</span>
                         </div>
                     </div>
-                    <div class="bg-white p-6 rounded-2xl shadow border-l-4 border-teal-500 flex flex-col items-start hover:shadow-xl transition-shadow duration-200">
+                    <div class="bg-gradient-to-br from-teal-50 to-white p-6 rounded-2xl shadow border-l-4 border-teal-500 flex flex-col items-start hover:shadow-xl transition-shadow duration-200">
                         <div>
                             <i class="icon-card fas fa-chart-pie"></i>
                             <h3 class="font-bold text-lg mb-2 text-slate-900">UX Improvements Settlement</h3>
@@ -326,7 +184,7 @@
                             <span class="text-xs text-slate-400 mt-1">100% completed</span>
                         </div>
                     </div>
-                    <div class="bg-white p-6 rounded-2xl shadow border-l-4 border-amber-500 flex flex-col items-start hover:shadow-xl transition-shadow duration-200">
+                    <div class="bg-gradient-to-br from-amber-50 to-white p-6 rounded-2xl shadow border-l-4 border-amber-500 flex flex-col items-start hover:shadow-xl transition-shadow duration-200">
                         <div>
                             <i class="icon-card fas fa-globe-americas"></i>
                             <h3 class="font-bold text-lg mb-2 text-slate-900">Non Resident's Accounts</h3>
@@ -343,7 +201,7 @@
                             <span class="text-xs text-slate-400 mt-1">90% completed</span>
                         </div>
                     </div>
-                    <div class="bg-white p-6 rounded-2xl shadow border-l-4 border-indigo-500 flex flex-col items-start hover:shadow-xl transition-shadow duration-200">
+                    <div class="bg-gradient-to-br from-indigo-50 to-white p-6 rounded-2xl shadow border-l-4 border-indigo-500 flex flex-col items-start hover:shadow-xl transition-shadow duration-200">
                         <div>
                             <i class="icon-card fas fa-receipt"></i>
                             <h3 class="font-bold text-lg mb-2 text-slate-900">Transfer Receipts</h3>
@@ -360,7 +218,7 @@
                             <span class="text-xs text-slate-400 mt-1">100% completed</span>
                         </div>
                     </div>
-                    <div class="bg-white p-6 rounded-2xl shadow border-l-4 border-teal-500 flex flex-col items-start hover:shadow-xl transition-shadow duration-200">
+                    <div class="bg-gradient-to-br from-teal-50 to-white p-6 rounded-2xl shadow border-l-4 border-teal-500 flex flex-col items-start hover:shadow-xl transition-shadow duration-200">
                         <div>
                             <i class="icon-card fas fa-book"></i>
                             <h3 class="font-bold text-lg mb-2 text-slate-900">API Documentation in Open API</h3>
@@ -410,7 +268,6 @@
                 
                 <div class="bg-gradient-to-br from-indigo-50 to-white p-8 rounded-2xl shadow-lg mb-8 flex flex-col items-start gap-6 border border-slate-100">
                     <div class="flex flex-col sm:flex-row items-center justify-between w-full gap-4 mb-6">
-                        <!-- Sprint Selector Card -->
                         <div class="flex items-center gap-3 bg-white border border-indigo-200 rounded-xl px-5 py-3 shadow-md hover:shadow-lg transition-shadow duration-200">
                             <span class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-indigo-100">
                                 <i class="fas fa-calendar-alt text-xl text-indigo-500"></i>
@@ -423,7 +280,6 @@
                         </div>
                     </div>
                     <div class="w-full max-w-4xl mx-auto flex flex-col md:flex-row gap-8 mb-8">
-                    <!-- Total Dev Effort Card -->
                     <div class="bg-gradient-to-br from-teal-100 to-white flex-1 p-6 bg-white rounded-2xl shadow flex flex-col items-center md:items-start gap-6 border border-slate-100">
                         <h3 class="text-lg font-bold text-slate-800 mb-1 flex items-center gap-2">
                             <i class="fas fa-bolt text-indigo-500"></i>
@@ -450,7 +306,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Total Run Effort Card -->
                     <div class="bg-gradient-to-br from-amber-100 to-white flex-1 p-6 bg-white rounded-2xl shadow flex flex-col items-center md:items-start gap-6 border border-slate-100">
                         <h3 class="text-lg font-bold text-slate-800 mb-1 flex items-center gap-2">
                             <i class="fas fa-bolt text-indigo-500"></i>
@@ -466,7 +321,6 @@
                 
 
                 <div class="grid grid-cols-1 md:grid-cols-1 gap-8 mb-8">
-                    <!-- Epics Status Card -->
                     <div class="bg-gradient-to-br from-indigo-50 to-white p-6 rounded-2xl shadow-lg flex flex-col items-start border border-indigo-100">
                         <div class="flex items-center mb-4">
                             <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-indigo-100 mr-3">
@@ -481,8 +335,7 @@
                         </div>
                     </div>
                 </div>
-                    <!-- Run Causes chart -->
-                <div class="grid grid-cols-1 md:grid-cols-1 gap-6 mb-6"></div>
+                    <div class="grid grid-cols-1 md:grid-cols-1 gap-6 mb-6"></div>
                     <div class="bg-gradient-to-br from-indigo-50 to-white p-6 rounded-2xl shadow-lg flex flex-col items-start border border-indigo-100">
                         <div class="flex items-center mb-4">
                             <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-amber-100 mr-3">
@@ -505,377 +358,11 @@
         <footer class="text-center mt-12 pt-6 border-t border-slate-200">
             <p class="text-slate-500">&copy; 2025 DBA Team. All rights reserved.</p>
         </footer>
-
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const nav = document.getElementById('main-nav');
-            const sections = document.querySelectorAll('.content-section');
-            const buttons = nav.querySelectorAll('button');
-            const sprintSelect = document.getElementById('sprint-select');
-
-            let burndownChartInstance = null;
-            let mttrChartInstance = null;
-            let overviewDeploymentsChartInstance = null;
-            let effortDistributionChartInstance = null;
-            let epicsStatusChartInstance = null;
-            let runCausesChartInstance = null;
-            
-            // --- TODO should be in a separate file ---
-            const sprintData = {
-              "DBA-2526SP1": {
-                  "effort": {"build": 74, "develop": 85, "refine": 15},
-                  "epics": {
-                      "Renew PIX Certificates": {"Done": 6, "Done in Sprint": 5, "Pending": 3, "Dropped": 3},
-                      "Internalização Accouts (PayIN)": {"Done": 8, "Done in Sprint": 8, "Pending": 2, "Dropped": 0},
-                      "Melhorias na experiência do withdraw via crossbex": {"Done": 10, "Done in Sprint": 10, "Pending": 2, "Dropped": 0},
-                      "Settlement Filtros": {"Done": 3, "Done in Sprint": 3, "Pending": 10, "Dropped": 0},
-                      "API - Transferência Interna": {"Done": 16, "Done in Sprint": 16, "Pending": 10, "Dropped": 0},
-                      "DBA-1142: Documentação em Open API": {"Done": 15, "Done in Sprint": 15, "Pending": 19, "Dropped": 0},
-                  },
-                  "run_causes": {"WrongFlow": 5.5, "ValorMenor": 5, "DepositoFilialMatriz": 1.5, "SettlementEventDate": 1}
-              },
-              "DBA-2526SP2": {
-                  "effort": {"build": 60, "develop": 90, "refine": 10},
-                  "epics": {
-                      "DBA-1142: Documentação em Open API": {"Done": 28, "Done in Sprint": 13, "Pending": 6, "Dropped": 0},
-                      "DBA-1463: Comprovantes": {"Done": 7, "Done in Sprint": 13, "Pending": 0, "Dropped": 0},
-                      "DBA-1362: Decomissionamento Payout": {"Done": 4, "Done in Sprint": 6, "Pending": 8, "Dropped": 0}
-                 },
-                  "run_causes": {"WrongFlow": 8, "ValorMenor": 6, "DepositoFilialMatriz": 4, "SettlementEventDate": 5}
-              },
-              "DBA-2526SP3": {
-                  "effort": {"build": 70, "develop": 80, "refine": 20},
-                  "epics": {
-                      "DBA-1142: Documentação em Open API": {"Done": 34, "Done in Sprint": 6, "Pending": 0, "Dropped": 0},
-                      "DBA-1272: Melhorias UX Withdraw": {"Done": 57, "Done in Sprint": 6, "Pending": 0, "Dropped": 0},
-                      "DBA-1608: Settlement Filtros": {"Done": 3, "Done in Sprint": 3, "Pending": 22, "Dropped": 0},
-                      "DBA-1659: Front Transferencia interna": {"Done": 0, "Done in Sprint": 13, "Pending": 0, "Dropped": 0},
-                      "DBA-1104: Transferencia Interna": {"Done": 17, "Done in Sprint": 16, "Pending": 0, "Dropped": 0},
-                      "DBA-1005: Transferencias via API": {"Done": 86, "Done in Sprint": 13, "Pending": 0, "Dropped": 0}
-                  },
-                  "run_causes": {"WrongFlow": 12, "ValorMenor": 3, "DepositoFilialMatriz": 3, "SettlementEventDate": 1}
-              }
-            };
-
-            function destroyCharts() {
-                if (burndownChartInstance) burndownChartInstance.destroy();
-                if (mttrChartInstance) mttrChartInstance.destroy();
-                if (overviewDeploymentsChartInstance) overviewDeploymentsChartInstance.destroy();
-                if (effortDistributionChartInstance) effortDistributionChartInstance.destroy();
-                if (epicsStatusChartInstance) epicsStatusChartInstance.destroy();
-                if (runCausesChartInstance) runCausesChartInstance.destroy();
-                burndownChartInstance = mttrChartInstance = overviewDeploymentsChartInstance = effortDistributionChartInstance = epicsStatusChartInstance = runCausesChartInstance = null;
-            }
-
-            nav.addEventListener('click', (e) => {
-                const button = e.target.closest('button');
-                if (button) {
-                    const targetId = button.getAttribute('data-target');
-                    buttons.forEach(btn => btn.classList.remove('active'));
-                    button.classList.add('active');
-
-                    sections.forEach(section => {
-                        section.classList.toggle('active', section.id === targetId);
-                    });
-                    
-                    destroyCharts(); // Destroy all charts on tab change
-
-                    if (targetId === 'release') {
-                        createBurndownChart();
-                    } else if (targetId === 'overview') {
-                        createMttrChart();
-                        createOverviewDeploymentsChart();
-                    } else if (targetId === 'history') {
-                        updateSprintView(sprintSelect.value, sprintData);
-                    }
-                }
-            });
-
-            document.querySelectorAll('.progress-bar').forEach(bar => {
-                const progress = bar.getAttribute('data-progress');
-                bar.style.width = progress + '%';
-            });
-            // Grafico de Burndown
-            function createBurndownChart() {
-                const ctx = document.getElementById('burndownChart')?.getContext('2d');
-                if (!ctx) return;
-                burndownChartInstance = new Chart(ctx, {
-                    type: 'line',
-                    data: {
-                        labels: ['Start', 'W1', 'W2', 'W3', 'W4', 'W5', 'W6'],
-                        datasets: [
-                            {
-                                label: 'Ideal',
-                                data: [310, 258, 206, 155, 103, 52, 0],
-                                borderColor: '#10b981',
-                                fill: false,
-                                tension: 0.2,
-                                pointRadius: 0
-                            },
-                            {
-                                label: 'Actual',
-                                data: [310, 270, 200, 200, 200, 200, 200],
-                                borderColor: '#4f46e5',
-                                backgroundColor: '#6366f1',
-                                fill: false,
-                                tension: 0.2,
-                                pointRadius: 4,
-                                pointBackgroundColor: '#4f46e5'
-                            }
-                        ]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: { legend: { display: true } },
-                        scales: {
-                            y: { beginAtZero: true, title: { display: true, text: 'Story Points' } },
-                            x: { title: { display: true, text: 'Week' } }
-                        }
-                    }
-                });
-            }
-
-            function createMttrChart() {
-                const ctx = document.getElementById('mttrChart')?.getContext('2d');
-                if (!ctx) return;
-                mttrChartInstance = new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        labels: ['DBA-2025SP32', 'DBA-2025SP33', 'DBA-2025SP34', 'DBA-2025SP35', 'DBA-2526SP1'],
-                        datasets: [
-                            {
-                                label: 'Average Story Points - DBA',
-                                data: [88, 98, 73, 89.5, 50.5],
-                                backgroundColor: '#4f46e5'
-                            },
-                            {
-                                label: 'Story Points Team Z',
-                                data: [22, 45, 27, 33, 32],
-                                backgroundColor: '#10b981'
-                            }
-                        ]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        scales: { x: { stacked: true }, y: { beginAtZero: true, suggestedMax: 120, stacked: true } },
-                        plugins: { legend: { display: true } }
-                    }
-                });
-            }
-
-            function createOverviewDeploymentsChart() {
-                const ctx = document.getElementById('deploymentsChart_overview')?.getContext('2d');
-                if(!ctx) return;
-                overviewDeploymentsChartInstance = new Chart(ctx, {
-                    type: 'doughnut',
-                    data: {
-                        labels: ['Build', 'Run'],
-                        datasets: [{
-                            label: 'Build & Run',
-                            data: [74, 26],
-                            backgroundColor: ['#4f46e5', '#10b981']
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: { legend: { display: true } }
-                    }
-                });
-            }
-
-            function createEffortDistributionChart(effortData) {
-                const ctx = document.getElementById('effortDistributionChart')?.getContext('2d');
-                if (!ctx) return;
-                effortDistributionChartInstance = new Chart(ctx, {
-                    type: 'doughnut',
-                    data: {
-                        labels: ['Build', 'Develop', 'Refine'],
-                        datasets: [{
-                            label: 'Effort Distribution',
-                            data: Object.values(effortData),
-                            backgroundColor: ['#4f46e5', '#f59e0b', '#10b981'],
-                            hoverOffset: 4
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: { display: true }
-                        }
-                    }
-                });
-            }
-
-            function createEpicsStatusChart(epicsData) {
-                const ctx = document.getElementById('epicsStatusChart')?.getContext('2d');
-                if (!ctx) return;
-
-                const epicLabels = Object.keys(epicsData);
-                const statusKeys = ["Done", "Done in Sprint", "Pending", "Dropped"];
-                const statusColors = {
-                    "Done": "#304d1c",
-                    "Done in Sprint": "#02610f",
-                    "Pending": "#facc15",
-                    "Dropped": "#ef4444"
-                };
-
-                const datasets = statusKeys.map(status => ({
-                    label: status,
-                    data: epicLabels.map(epic => epicsData[epic][status] || 0),
-                    backgroundColor: statusColors[status]
-                }));
-
-                epicsStatusChartInstance = new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        labels: epicLabels,
-                        datasets: datasets
-                    },
-                    options: {
-                        indexAxis: 'y', // <-- horizontal bars
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: { display: true, position: 'top' },
-                        },
-                        scales: {
-                            x: {
-                                stacked: true,
-                                title: { display: true, text: 'Story Count' },
-                                beginAtZero: true
-                            },
-                            y: {
-                                stacked: true,
-                                title: { display: true, text: 'Epic' },
-                                ticks: {
-                                  autoSkip: false,
-                                  maxRotation: 0,
-                                  minRotation: 0
-                                }
-                            }
-                        }
-                    }
-                });
-            }
-
-            function createRunCausesChart(runCausesData) {
-                const ctx = document.getElementById('runCausesChart')?.getContext('2d');
-                if (!ctx) return;
-                runCausesChartInstance = new Chart(ctx, {
-                    type: 'doughnut',
-                    data: {
-                        labels: Object.keys(runCausesData).map(key => key.replace(/([A-Z])/g, ' $1').trim()), // Add spaces for readability
-                        datasets: [{
-                            label: 'Count',
-                            data: Object.values(runCausesData),
-                            backgroundColor: ['#ef4444', '#f59e0b', '#facc15', '#4f46e5'],
-                            hoverOffset: 4
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: {
-                                position: 'top',
-                            }
-                        }
-                    }
-                });
-            }
-
-            function updateSprintView(sprintId, data) {
-                const sprintMetrics = data[sprintId];
-                if (!sprintMetrics) return;
-
-                // Destroy existing history charts before creating new ones
-                if (effortDistributionChartInstance) effortDistributionChartInstance.destroy();
-                if (epicsStatusChartInstance) epicsStatusChartInstance.destroy();
-                if (runCausesChartInstance) runCausesChartInstance.destroy();
-
-                const developPercent = sprintMetrics.effort.develop;
-                const refinePercent = sprintMetrics.effort.refine;
-                const runPercent = 100 - sprintMetrics.effort.build;
-
-                // Progress bar elements (use unique IDs for bars)
-                const totalEffort = document.getElementById('total-effort-metric');
-                const runEffort = document.getElementById('run-effort-metric');
-                const developBar = document.getElementById('develop-bar');
-                const refineBar = document.getElementById('refine-bar');
-
-                // Update the total percentage display
-                if (totalEffort) totalEffort.textContent = sprintMetrics.effort.build;
-                if (runEffort) runEffort.textContent = runPercent;
-
-                // Update the width of the progress bar segments
-                if (developBar) {
-                    developBar.style.width = developPercent + '%';
-                    developBar.textContent = developPercent + '%';
-                }
-                if (refineBar) {
-                    refineBar.style.width = refinePercent + '%';
-                    refineBar.textContent = refinePercent + '%';
-                }
-
-                // Update metric cards (use unique IDs for metric cards)
-                const buildMetric = document.getElementById('build-metric');
-                const runMetric = document.getElementById('run-metric');
-                const developMetric = document.getElementById('develop-metric-card');
-                const refineMetric = document.getElementById('refine-metric-card');
-                if (buildMetric) buildMetric.textContent = sprintMetrics.effort.build + '%';
-                if (developMetric) developMetric.textContent = sprintMetrics.effort.develop + '%';
-                if (refineMetric) refineMetric.textContent = sprintMetrics.effort.refine + '%';
-
-                // Create the 3 charts for the section
-                createEffortDistributionChart(sprintMetrics.effort);
-                createEpicsStatusChart(sprintMetrics.epics);
-                createRunCausesChart(sprintMetrics.run_causes);
-            }
-
-            function initializeHistorySection() {
-                const sprints = Object.keys(sprintData);
-
-                sprintSelect.innerHTML = '';
-                sprints.forEach(sprint => {
-                    const option = document.createElement('option');
-                    option.value = sprint;
-                    option.textContent = sprint;
-                    sprintSelect.appendChild(option);
-                });
-
-                sprintSelect.addEventListener('change', (e) => {
-                    updateSprintView(e.target.value, sprintData);
-                });
-
-                if (document.querySelector('.content-section.active')?.id === 'history') {
-                    updateSprintView(sprintSelect.value, sprintData);
-                }
-            }
-
-            // Initial setup
-            initializeHistorySection();
-            
-
-            // Detect which tab is active on load and create the appropriate charts
-            const activeSection = document.querySelector('.content-section.active');
-            if (activeSection) {
-                if (activeSection.id === 'overview') {
-                    createMttrChart();
-                    createOverviewDeploymentsChart();
-                } else if (activeSection.id === 'release') {
-                    createBurndownChart();
-                } else if (activeSection.id === 'history') {
-                    updateSprintView(sprintSelect.value, sprintData);
-                }
-            }
-        });
-    </script>
-    
-</body>
+    <script src="data.js"></script>
+    <script src="chart-manager.js"></script>
+    <script src="app.js"></script>
+    <script src="tools.js"></script>
+    </body>
 </html>
