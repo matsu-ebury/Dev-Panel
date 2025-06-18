@@ -9,7 +9,8 @@ const sprintData = {
             "DBA-1104: Transferencia Interna": {"Done": 17, "Done in Sprint": 16, "Pending": 0, "Dropped": 0},
             "DBA-1005: Transferencias via API": {"Done": 86, "Done in Sprint": 13, "Pending": 0, "Dropped": 0},
             "DBA-1339: Habilitar depósitos de qualquer pessoa": {"Done": 12, "Done in Sprint": 3, "Pending": 0, "Dropped": 0},
-            "DBA-1764: Pix Automatico": {"Done": 8, "Done in Sprint": 6, "Pending": 0, "Dropped": 0}
+            "DBA-1764: Pix Automatico": {"Done": 8, "Done in Sprint": 6, "Pending": 0, "Dropped": 0},
+            "DBA-1745: Foundations Expired PIX Certificates": {"Done": 0, "Done in Sprint": 2, "Pending": 8, "Dropped": 0}
         },
         "run_causes": {"WrongFlow": 2, "ValorMenor": 2, "DepositoFilialMatriz": 4, "SettlementEventDate": 0}
     },
