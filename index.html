@@ -335,8 +335,8 @@
                         </div>
                     </div>
                 </div>
-                    <div class="grid grid-cols-1 md:grid-cols-1 gap-6 mb-6"></div>
-                    <div class="bg-gradient-to-br from-indigo-50 to-white p-6 rounded-2xl shadow-lg flex flex-col items-start border border-indigo-100">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                    <div class="bg-gradient-to-br from-indigo-50 to-white p-6 rounded-2xl shadow-lg flex flex-col items-start border border-indigo-100 md:col-span-2">
                         <div class="flex items-center mb-4">
                             <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-amber-100 mr-3">
                                 <i class="fas fa-exclamation-circle text-2xl text-amber-500"></i>
@@ -344,10 +344,27 @@
                             <h3 class="text-xl font-bold text-slate-900">Run Causes</h3>
                         </div>
                         <div class="w-full">
-                            <div class="chart-container" style="height:320px;">
+                            <div class="chart-container" style="height:320px; min-width: 0;">
                                 <canvas id="runCausesChart"></canvas>
                             </div>
                         </div>
+                    </div>
+                    <div class="bg-gradient-to-br from-indigo-50 to-white p-6 rounded-2xl shadow-lg flex flex-col items-start border border-indigo-100 md:col-span-1">
+                        <h3 class="font-semibold mb-2">Run Causes Data</h3>
+                        <table id="runCausesDataTable" class="min-w-full border border-slate-200 rounded-2xl overflow-hidden shadow-md bg-white">
+                            <thead>
+                                <tr>
+                                    <th class="px-6 py-3 bg-gradient-to-r from-indigo-50 to-white text-indigo-700 text-left text-sm font-semibold uppercase tracking-wider border-b border-slate-200">
+                                        <i class="fas fa-exclamation-triangle text-amber-500 mr-2"></i>Cause
+                                    </th>
+                                    <th class="px-6 py-3 bg-gradient-to-r from-indigo-50 to-white text-indigo-700 text-left text-sm font-semibold uppercase tracking-wider border-b border-slate-200">
+                                        <i class="fas fa-hashtag text-indigo-500 mr-2"></i>Count
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100">
+                            </tbody>
+                        </table>
                     </div>
                 </div>
 

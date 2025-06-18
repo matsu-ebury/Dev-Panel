@@ -68,13 +68,57 @@ const ChartManager = {
     createRunCausesChart(runCausesData) {
         const ctx = document.getElementById('runCausesChart')?.getContext('2d');
         if (!ctx) return;
+
+        // Populate the data table
+        this.populateRunCausesTable(runCausesData);
+
+        // Create the chart (with tooltips disabled)
         this.charts.runCauses = new Chart(ctx, {
             type: 'doughnut',
             data: {
                 labels: Object.keys(runCausesData).map(key => key.replace(/([A-Z])/g, ' $1').trim()),
-                datasets: [{ label: 'Count', data: Object.values(runCausesData), backgroundColor: ['#ef4444', '#f59e0b', '#facc15', '#4f46e5'], hoverOffset: 4 }]
+                datasets: [{
+                    label: 'Count',
+                    data: Object.values(runCausesData),
+                    backgroundColor: ['#ef4444', '#f59e0b', '#facc15', '#4f46e5'],
+                    hoverOffset: 4
+                }]
             },
-            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'top' } } }
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top'
+                    },
+                    tooltip: {
+                        enabled: true
+                    }
+                }
+            }
         });
+    },
+
+    populateRunCausesTable(data) {
+        const tableBody = document.querySelector('#runCausesDataTable tbody');
+        if (!tableBody) return;
+
+        // Clear any existing rows
+        tableBody.innerHTML = '';
+
+        // Iterate over the data and add rows to the table
+        for (const key in data) {
+            if (Object.hasOwnProperty.call(data, key)) {
+                const cause = key.replace(/([A-Z])/g, ' $1').trim(); // Format the cause name
+                const count = data[key];
+
+                const row = tableBody.insertRow();
+                const causeCell = row.insertCell();
+                const countCell = row.insertCell();
+
+                causeCell.textContent = cause;
+                countCell.textContent = count;
+            }
+        }
     }
 };
