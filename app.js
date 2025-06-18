@@ -90,6 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             ChartManager.createEpicsStatusChart(data.epics);
             ChartManager.createRunCausesChart(data.run_causes);
+            ChartManager.runCausesDataTable(data.run_causes);
         }
     };
 
