@@ -12,7 +12,7 @@ const sprintData = {
             "DBA-1764: Pix Automatico": {"Done": 8, "Done in Sprint": 6, "Pending": 0, "Dropped": 0},
             "DBA-1745: Foundations Expired PIX Certificates": {"Done": 0, "Done in Sprint": 2, "Pending": 8, "Dropped": 0}
         },
-        "run_causes": {"WrongFlow": 2, "ValorMenor": 2, "DepositoFilialMatriz": 4, "SettlementEventDate": 0}
+        "run_causes": {"WrongFlow": 2, "ValorMenor": 2, "DepositoFilialMatriz": 4, "Others": 12}
     },
     "DBA-2526SP2": {
         "effort": {"build": 60, "develop": 90, "refine": 10},
