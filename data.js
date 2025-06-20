@@ -5,7 +5,7 @@ const sprintData = {
             "DBA-1142: Documentação em Open API": {"Done": 34, "Done in Sprint": 6, "Pending": 0, "Dropped": 0},
             "DBA-1272: Melhorias UX Withdraw": {"Done": 57, "Done in Sprint": 6, "Pending": 0, "Dropped": 0},
             "DBA-1608: Settlement Filtros": {"Done": 6, "Done in Sprint": 3, "Pending": 14, "Dropped": 0},
-            "DBA-1659: Front Transferencia interna": {"Done": 0, "Done in Sprint": 0, "Pending": 13, "Dropped": 0},
+            "DBA-1659: Front Transferencia interna": {"Done": 0, "Done in Sprint": 0, "Pending": 0, "Dropped": 13},
             "DBA-1104: Transferencia Interna": {"Done": 17, "Done in Sprint": 16, "Pending": 0, "Dropped": 0},
             "DBA-1005: Transferencias via API": {"Done": 86, "Done in Sprint": 13, "Pending": 0, "Dropped": 0},
             "DBA-1339: Habilitar depósitos de qualquer pessoa": {"Done": 12, "Done in Sprint": 3, "Pending": 0, "Dropped": 0},

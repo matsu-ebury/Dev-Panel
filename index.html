@@ -79,18 +79,32 @@
                         <i class="fas fa-fire text-indigo-500"></i>
                         Burndown Chart
                     </h3>
-                    <div class="chart-container" style="width: 100%; max-width: 100%; height: 400px;">
+                    <!-- <div class="chart-container" style="width: 100%; max-width: 100%; height: 400px;">
                         <canvas id="burndownChart" style="width:100% !important; height:400px !important;"></canvas>
-                    </div>
+                    </div> -->
+                    <button class="botao flex items-center gap-2 px-6 py-2 rounded-full bg-indigo-600 text-white font-semibold shadow-md hover:bg-indigo-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-400 mt-4"
+                        onclick="abrirNaFrente()">
+                        <i class="fas fa-external-link-alt"></i>
+                        Ver Gráfico Burn Atualizado
+                    </button>
+                    <script>
+                    function abrirNaFrente() {
+                        window.open(
+                        'https://ebury.bank.ebury.com/jira/software/c/projects/DBA/boards/284/reports/version-report?version=10674',
+                        'relatorioJira',
+                        'width=1280,height=800,resizable=yes,scrollbars=yes'
+                        );
+                    }
+                    </script>
                     <div class="flex flex-wrap justify-center gap-6 mt-8 w-full">
-                        <div class="flex flex-col items-center">
+                        <!-- <div class="flex flex-col items-center">
                             <span class="text-xs text-slate-500 mb-1">Ideal Trend</span>
                             <span class="inline-block w-8 h-2 rounded-full" style="background: #10b981;"></span>
                         </div>
                         <div class="flex flex-col items-center">
                             <span class="text-xs text-slate-500 mb-1">Actual Progress</span>
                             <span class="inline-block w-8 h-2 rounded-full" style="background: #4f46e5;"></span>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </section>
@@ -264,8 +278,8 @@
                     </article>
                 </div>
             </section>
-            <section id="history" class="content-section">
-                
+            
+            <section id="history" class="content-section">                
                 <div class="bg-gradient-to-br from-indigo-50 to-white p-8 rounded-2xl shadow-lg mb-8 flex flex-col items-start gap-6 border border-slate-100">
                     <div class="flex flex-col sm:flex-row items-center justify-between w-full gap-4 mb-6">
                         <div class="flex items-center gap-3 bg-white border border-indigo-200 rounded-xl px-5 py-3 shadow-md hover:shadow-lg transition-shadow duration-200">
@@ -280,46 +294,44 @@
                         </div>
                     </div>
                     <div class="w-full max-w-4xl mx-auto flex flex-col md:flex-row gap-8 mb-8">
-                    <div class="bg-gradient-to-br from-teal-100 to-white flex-1 p-6 bg-white rounded-2xl shadow flex flex-col items-center md:items-start gap-6 border border-slate-100">
-                        <h3 class="text-lg font-bold text-slate-800 mb-1 flex items-center gap-2">
-                            <i class="fas fa-bolt text-indigo-500"></i>
-                            Total Dev Effort
-                        </h3>
-                        <p class="text-5xl font-extrabold text-indigo-700 mb-1 tracking-tight">
-                            <span id="total-effort-metric">--</span>%
-                        </p>
-                        <p class="text-xs text-slate-500">Combined percentage of active development and refinement.</p>
-                        <div class="w-full">
-                            <div class="flex h-8 w-full bg-slate-200 rounded-full overflow-hidden shadow-inner border border-slate-100" aria-label="Development effort breakdown">
-                                <div id="develop-bar" class="flex items-center justify-center bg-indigo-500 text-white text-xs font-bold transition-all duration-1000 rounded-l-full" style="width: 0%;" title="Development"></div>
-                                <div id="refine-bar" class="flex items-center justify-center bg-amber-400 text-white text-xs font-bold transition-all duration-1000 rounded-r-full" style="width: 0%;" title="Refinement"></div>
-                            </div>
-                            <div class="flex justify-between mt-3 text-sm">
-                                <div class="flex items-center gap-2">
-                                    <span class="w-3 h-3 rounded-full bg-indigo-500 inline-block"></span>
-                                    <span class="text-slate-700 font-medium">Development</span>
+                        <div class="bg-gradient-to-br from-teal-100 to-white flex-1 p-6 bg-white rounded-2xl shadow flex flex-col items-center md:items-start gap-6 border border-slate-100">
+                            <h3 class="text-lg font-bold text-slate-800 mb-1 flex items-center gap-2">
+                                <i class="fas fa-bolt text-indigo-500"></i>
+                                Total Dev Effort
+                            </h3>
+                            <p class="text-5xl font-extrabold text-indigo-700 mb-1 tracking-tight">
+                                <span id="total-effort-metric">--</span>%
+                            </p>
+                            <p class="text-xs text-slate-500">Combined percentage of active development and refinement.</p>
+                            <div class="w-full">
+                                <div class="flex h-8 w-full bg-slate-200 rounded-full overflow-hidden shadow-inner border border-slate-100" aria-label="Development effort breakdown">
+                                    <div id="develop-bar" class="flex items-center justify-center bg-indigo-500 text-white text-xs font-bold transition-all duration-1000 rounded-l-full" style="width: 0%;" title="Development"></div>
+                                    <div id="refine-bar" class="flex items-center justify-center bg-amber-400 text-white text-xs font-bold transition-all duration-1000 rounded-r-full" style="width: 0%;" title="Refinement"></div>
                                 </div>
-                                <div class="flex items-center gap-2">
-                                    <span class="w-3 h-3 rounded-full bg-amber-400 inline-block"></span>
-                                    <span class="text-slate-700 font-medium">Refinement</span>
+                                <div class="flex justify-between mt-3 text-sm">
+                                    <div class="flex items-center gap-2">
+                                        <span class="w-3 h-3 rounded-full bg-indigo-500 inline-block"></span>
+                                        <span class="text-slate-700 font-medium">Development</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="w-3 h-3 rounded-full bg-amber-400 inline-block"></span>
+                                        <span class="text-slate-700 font-medium">Refinement</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="bg-gradient-to-br from-amber-100 to-white flex-1 p-6 bg-white rounded-2xl shadow flex flex-col items-center md:items-start gap-6 border border-slate-100">
-                        <h3 class="text-lg font-bold text-slate-800 mb-1 flex items-center gap-2">
-                            <i class="fas fa-bolt text-indigo-500"></i>
-                            Total Run Effort
-                        </h3>
-                        <p class="text-5xl font-extrabold text-indigo-700 mb-1 tracking-tight">
-                            <span id="run-effort-metric">--</span>%
-                        </p>
-                        <p class="text-xs text-slate-500">Total run effort.</p>
+                        <div class="bg-gradient-to-br from-amber-100 to-white flex-1 p-6 bg-white rounded-2xl shadow flex flex-col items-center md:items-start gap-6 border border-slate-100">
+                            <h3 class="text-lg font-bold text-slate-800 mb-1 flex items-center gap-2">
+                                <i class="fas fa-bolt text-indigo-500"></i>
+                                Total Run Effort
+                            </h3>
+                            <p class="text-5xl font-extrabold text-indigo-700 mb-1 tracking-tight">
+                                <span id="run-effort-metric">--</span>%
+                            </p>
+                            <p class="text-xs text-slate-500">Total run effort.</p>
+                        </div>
                     </div>
                 </div>
-                </div>
-                
-
                 <div class="grid grid-cols-1 md:grid-cols-1 gap-8 mb-8">
                     <div class="bg-gradient-to-br from-indigo-50 to-white p-6 rounded-2xl shadow-lg flex flex-col items-start border border-indigo-100">
                         <div class="flex items-center mb-4">
@@ -367,8 +379,21 @@
                         </table>
                     </div>
                 </div>
-
-
+                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6"></div>
+                    <div class="bg-gradient-to-br from-indigo-50 to-white p-6 rounded-2xl shadow-lg flex flex-col items-start border border-indigo-100">
+                        <div class="flex items-center mb-4">
+                            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-indigo-100 mr-3">
+                                <i class="fas fa-bolt text-2xl text-indigo-500"></i>
+                            </span>
+                            <h3 class="text-xl font-bold text-slate-900">Velocity</h3>
+                        </div>
+                        <div class="w-full">
+                            <div class="chart-container" style="height:320px; min-width: 0;">
+                                <canvas id="velocityChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
         </main>
 

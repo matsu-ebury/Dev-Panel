@@ -38,6 +38,22 @@ const ChartManager = {
         });
     },
 
+    createVelocityChart() {
+        const ctx = document.getElementById('velocityChart')?.getContext('2d');
+        if (!ctx) return;
+        this.charts.mttr = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['DBA-2025SP34', 'DBA-2025SP35', 'DBA-2526SP1', 'DBA-2526SP2', 'DBA-2526SP3'],
+                datasets: [
+                    { label: 'Build', data: [53, 77, 66.5, 37.5, 62], backgroundColor: '#4f46e5' },
+                    { label: 'Run', data: [21, 21, 23, 13.5, 24], backgroundColor: '#10b981' }
+                ]
+            },
+            options: { responsive: true, maintainAspectRatio: false, scales: { x: { stacked: true }, y: { beginAtZero: true, suggestedMax: 120, stacked: true } }, plugins: { legend: { display: true } } }
+        });
+    },
+
     createOverviewDeploymentsChart() {
         const ctx = document.getElementById('deploymentsChart_overview')?.getContext('2d');
         if (!ctx) return;
