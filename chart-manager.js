@@ -89,28 +89,29 @@ const ChartManager = {
         this.populateRunCausesTable(runCausesData);
 
         // Create the chart (with tooltips disabled)
+        const dataKeys = Object.keys(runCausesData);
         this.charts.runCauses = new Chart(ctx, {
             type: 'doughnut',
             data: {
-                labels: Object.keys(runCausesData).map(key => key.replace(/([A-Z])/g, ' $1').trim()),
-                datasets: [{
-                    label: 'Count',
-                    data: Object.values(runCausesData),
-                    backgroundColor: ['#ef4444', '#f59e0b', '#facc15', '#4f46e5'],
-                    hoverOffset: 4
-                }]
+            labels: dataKeys.map(key => key.replace(/([A-Z])/g, ' $1').trim()),
+            datasets: [{
+                label: 'Count',
+                data: Object.values(runCausesData),
+                backgroundColor: ['#ef4444', '#f59e0b', '#facc15', '#4f46e5', '#10b981', '#22c55e', '#14b8a6', '#0ea5e9', '#6366f1'],
+                hoverOffset: Array(dataKeys.length).fill(4)
+            }]
             },
             options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        position: 'top'
-                    },
-                    tooltip: {
-                        enabled: true
-                    }
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                position: 'top'
+                },
+                tooltip: {
+                enabled: true
                 }
+            }
             }
         });
     },
