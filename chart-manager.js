@@ -139,3 +139,71 @@ const ChartManager = {
         }
     }
 };
+// Function to create a progress bar element
+function createProgressBar(progress) {
+    const progressContainer = document.createElement('div');
+    progressContainer.classList.add('progress-container');
+
+    const progressBar = document.createElement('div');
+    progressBar.classList.add('epic-progress-bar');
+    progressBar.style.width = `${progress}%`;
+    progressBar.textContent = `${progress}%`;
+
+    // Add a class for different colors based on progress (optional)
+    if (progress >= 70) {
+        progressBar.style.backgroundColor = '#28a745'; // Darker green for complete
+    } else if (progress >= 20 && progress < 70 ) {
+        progressBar.style.backgroundColor = '#ffc107'; // Yellow for good progress
+    } else {
+        progressBar.style.backgroundColor = '#FFA500'; // Orange for low progress
+    }
+
+    progressContainer.appendChild(progressBar);
+    return progressContainer;
+}
+
+// Function to render the epic data
+function renderEpicData(data) {
+    const projectListDiv = document.getElementById('project-list');
+    if (!projectListDiv) {
+        console.error("Element with ID 'project-list' not found.");
+        return;
+    }
+
+    for (const projectTitle in data) {
+        const project = data[projectTitle];
+
+        const projectItemDiv = document.createElement('div');
+        projectItemDiv.classList.add('project-item');
+
+        const titleElement = document.createElement('div');
+        titleElement.classList.add('project-title');
+        titleElement.textContent = projectTitle;
+        // Align title to the top
+        titleElement.style.marginBottom = 'auto';
+
+        const detailsElement = document.createElement('div');
+        detailsElement.classList.add('project-details');
+        detailsElement.textContent = `Stories: ${project.Stories} | Story Points: ${project["Story Points"]}`;
+        // Make detailsElement stick to the bottom using flex
+        projectItemDiv.style.display = 'flex';
+        projectItemDiv.style.flexDirection = 'column';
+        projectItemDiv.style.justifyContent = 'flex-end';
+        // projectItemDiv.style.height = '180px'; // Adjust as needed for your card height
+
+        const progressBarElement = createProgressBar(project.Progress);
+
+        projectItemDiv.appendChild(titleElement);
+        projectItemDiv.appendChild(detailsElement);
+        projectItemDiv.appendChild(progressBarElement);
+
+        projectListDiv.appendChild(projectItemDiv);
+    }
+}
+
+// Check if epicData is defined (it should be, as data.js is loaded first)
+if (typeof epicData !== 'undefined') {
+    renderEpicData(epicData);
+} else {
+    console.error("epicData is not defined. Make sure 'data.js' is loaded before 'script.js'.");
+}

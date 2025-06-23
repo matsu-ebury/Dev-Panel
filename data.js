@@ -36,3 +36,20 @@ const sprintData = {
       "run_causes": {"WrongFlow": 5.5, "ValorMenor": 5, "DepositoFilialMatriz": 1.5, "SettlementEventDate": 1}
     }
 };
+const epicData = {
+    "DBA-1142: Documentação em Open API": { "Stories": 10, "Story Points": 40, "Progress": 100},
+    "DBA-1272: Melhorias UX Withdraw": { "Stories": 5, "Story Points": 16, "Progress": 100},
+    "DBA-1104: Transferencia Interna": { "Stories": 5, "Story Points": 32, "Progress": 100},
+    "DBA-1005: Transferencias via API": { "Stories": 2, "Story Points": 13, "Progress": 100},
+    "DBA-1339: Habilitar depósitos de qualquer pessoa": { "Stories": 2, "Story Points": 8, "Progress": 100},
+    "DBA-1764: Pix Automatico": { "Stories": 3, "Story Points": 14, "Progress": 100},
+    "DBA-1362: Descomissionamento Payout": { "Stories": 3, "Story Points": 18, "Progress": 75 },
+    "DBA-1659: Front Transferencia interna": { "Stories": 2, "Story Points": 16, "Progress": 0},
+    "DBA-1608: Settlement Filtros": { "Stories": 7, "Story Points": 23, "Progress": 55},
+    "DBA-1608: Settlement - Filtros": { "Stories": 7, "Story Points": 18, "Progress": 55 },
+    "DBA-1609: Settlement - Melhorias": { "Stories": 4, "Story Points": 12, "Progress": 40 },
+    "DBA-1188: Foundations marcar depósitos e retiradas com flag NRA": { "Stories": 6, "Story Points": 47, "Progress": 0},
+    "DBA-1745: Foundations Expired PIX Certificates": { "Stories": 0, "Story Points": 2, "Progress": 0 },
+    "DBA-1782: Expor Documentação Open API": { "Stories": 2, "Story Points": 10, "Progress": 0 },
+    "DBA-1610: Settlement Consulta de Ajustes": { "Stories": 2, "Story Points": 13, "Progress": 0 }
+};

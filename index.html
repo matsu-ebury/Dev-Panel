@@ -49,39 +49,13 @@
         <main>
             <section id="release" class="content-section active">
                 <div class="bg-gradient-to-br from-indigo-50 to-white p-8 rounded-2xl shadow-lg mb-8 flex flex-col items-start gap-6 border border-slate-100">
-                    <h2 class="text-3xl font-extrabold text-indigo-700 mb-2 flex items-center gap-3">
-                        <i class="fas fa-rocket text-indigo-500"></i>
-                        Release Dashboard
-                    </h2>
-                    <p class="text-slate-600 text-lg">
-                        The Release Dashboard provides a comprehensive view of our team's recent delivery performance, highlighting completed epics, ongoing work, and overall progress. Track story points, monitor burndown trends, and review key metrics reflecting our efficiency and impact over the last six weeks.
-                    </p>
-                </div>
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
-                    <div class="bg-gradient-to-br from-indigo-100 to-white p-6 rounded-2xl shadow flex flex-col items-center border border-indigo-200 hover:scale-105 transition-transform duration-200">
-                        <i class="metric-icon fas fa-list-check text-indigo-600 mb-2"></i>
-                        <p class="text-4xl font-extrabold text-indigo-700 mb-1">10</p>
-                        <p class="text-slate-600 font-medium">Epics Delivered</p>
-                    </div>
-                    <div class="bg-gradient-to-br from-teal-100 to-white p-6 rounded-2xl shadow flex flex-col items-center border border-teal-200 hover:scale-105 transition-transform duration-200">
-                        <i class="metric-icon fas fa-star text-teal-600 mb-2"></i>
-                        <p class="text-4xl font-extrabold text-teal-700 mb-1">8</p>
-                        <p class="text-slate-600 font-medium">Epics in Progress</p>
-                    </div>
-                    <div class="bg-gradient-to-br from-amber-100 to-white p-6 rounded-2xl shadow flex flex-col items-center border border-amber-200 hover:scale-105 transition-transform duration-200">
-                        <i class="metric-icon fas fa-users text-amber-600 mb-2"></i>
-                        <p class="text-4xl font-extrabold text-amber-700 mb-1">230</p>
-                        <p class="text-slate-600 font-medium">Overall Story Points</p>
-                    </div>
-                </div>
-                <div class="bg-white p-8 rounded-2xl shadow-lg flex flex-col items-center border border-indigo-100">
                     <h3 class="text-xl font-bold text-center mb-4 text-slate-900 flex items-center gap-2">
                         <i class="fas fa-fire text-indigo-500"></i>
                         Release Reports
                     </h3>
                     <div class="flex flex-wrap justify-center gap-6 mt-4 w-full">
                         <div class="cursor-pointer group bg-gradient-to-br from-indigo-100 to-white border border-indigo-200 rounded-2xl shadow-lg p-6 flex flex-col items-center transition-transform hover:scale-105 hover:shadow-2xl duration-200 w-64"
-                            onclick="abrirNaFrente('release')">
+                            onclick="openReport('release')">
                             <div class="flex items-center justify-center w-12 h-12 rounded-full bg-indigo-600 mb-3">
                                 <i class="fas fa-external-link-alt text-white text-2xl"></i>
                             </div>
@@ -89,16 +63,27 @@
                             <p class="text-slate-500 text-sm text-center">View the full release version report in Jira.</p>
                         </div>
                         <div class="cursor-pointer group bg-gradient-to-br from-indigo-100 to-white border border-indigo-200 rounded-2xl shadow-lg p-6 flex flex-col items-center transition-transform hover:scale-105 hover:shadow-2xl duration-200 w-64"
-                            onclick="abrirNaFrente('burndown')">
+                            onclick="openReport('burndown')">
                             <div class="flex items-center justify-center w-12 h-12 rounded-full bg-indigo-600 mb-3">
                                 <i class="fas fa-chart-line text-white text-2xl"></i>
                             </div>
                             <h4 class="text-lg font-bold text-indigo-700 mb-1 group-hover:text-indigo-900 transition-colors">Open Burndown Report</h4>
                             <p class="text-slate-500 text-sm text-center">See the burndown chart and progress details in Jira.</p>
                         </div>
-                    </div>
+                    </div>                    
+                </div>
+                <div class="my-6"></div>
+                <div class="bg-gradient-to-br from-indigo-50 to-white p-8 rounded-2xl shadow-lg mb-8 flex flex-col items-start gap-6 border border-slate-100">
+                    <h2 class="text-3xl font-extrabold text-indigo-700 mb-2 flex items-center gap-3">
+                        <i class="fas fa-rocket text-indigo-500"></i>
+                        Release Epics
+                    </h2>
+                    <p class="text-slate-600 text-lg">
+                        <div id="project-list" class="grid grid-cols-1 md:grid-cols-2 md:grid-cols-3 gap-3 w-full"></div>
+                    </p>
                 </div>
             </section>
+
             <section id="overview" class="content-section">
                 <div class="my-6"></div>
                 <div class="bg-gradient-to-br from-indigo-50 to-white p-8 rounded-2xl shadow-lg mb-8 flex flex-col items-start gap-6 border border-slate-100">
@@ -392,26 +377,9 @@
             <p class="text-slate-500">&copy; 2025 DBA Team. All rights reserved.</p>
         </footer>
     </div>
-    <script>
-        // Function to open links in a new tab
-        function abrirNaFrente(target) {
-            const urls = {
-            'release': 'https://ebury.bank.ebury.com/jira/software/c/projects/DBA/boards/284/reports/version-report?version=10674',
-            'burndown': 'https://ebury.bank.ebury.com/jira/software/c/projects/DBA/boards/284/reports/release-burndown?version=10674'
-            };
-            if (urls[target]) {
-            window.open(urls[target], '_blank', 'noopener,noreferrer,width=1200,height=800');
-            }
-        }
-
-        // Initialize the app
-        document.addEventListener('DOMContentLoaded', () => {
-            initApp();
-        });
-    </script>
     <script src="data.js"></script>
     <script src="chart-manager.js"></script>
     <script src="app.js"></script>
     <script src="tools.js"></script>
-    </body>
+</body>
 </html>
