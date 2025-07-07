@@ -71,7 +71,7 @@ const ChartManager = {
                     //     pointRadius: 0 
                     // },
                     { 
-                        label: 'Average', 
+                        label: 'Average: '+ avgCompleted.toFixed(2), 
                         data: Array(labels.length).fill(avgCompleted), 
                         type: 'line', 
                         borderColor: '#22c55e', 
