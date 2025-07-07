@@ -49,13 +49,36 @@ const ChartManager = {
         const commitedData = labels.map(label => velocity[label].commited);
         const completedData = labels.map(label => velocity[label].completed);
 
+        // Calculate averages
+        // const avgCommited = commitedData.length ? (commitedData.reduce((a, b) => a + b, 0) / commitedData.length) : 0;
+        const avgCompleted = completedData.length ? (completedData.reduce((a, b) => a + b, 0) / completedData.length) : 0;
+
         this.charts.velocity = new Chart(ctx, {
             type: 'bar',
             data: {
                 labels: labels,
                 datasets: [
                     { label: 'Commited', data: commitedData, backgroundColor: '#4f46e5' },
-                    { label: 'Completed', data: completedData, backgroundColor: '#10b981' }
+                    { label: 'Completed', data: completedData, backgroundColor: '#10b981' },
+                    // Average lines as "line" datasets
+                    // { 
+                    //     label: 'Avg Commited', 
+                    //     data: Array(labels.length).fill(avgCommited), 
+                    //     type: 'line', 
+                    //     borderColor: '#6366f1', 
+                    //     borderDash: [6, 6], 
+                    //     fill: false, 
+                    //     pointRadius: 0 
+                    // },
+                    { 
+                        label: 'Average', 
+                        data: Array(labels.length).fill(avgCompleted), 
+                        type: 'line', 
+                        borderColor: '#22c55e', 
+                        borderDash: [6, 6], 
+                        fill: false, 
+                        pointRadius: 0 
+                    }
                 ]
             },
             options: { 
