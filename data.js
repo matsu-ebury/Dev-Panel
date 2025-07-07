@@ -69,11 +69,11 @@ const epicData = {
 };
 
 const velocity = {
-    "DBA-2526SP3": {"commited": 81, "completed": 87},
     "DBA-2025SP33": {"commited": 53, "completed": 65},
     "DBA-2025SP34": {"commited": 77, "completed": 74},
     "DBA-2025SP35": {"commited": 66, "completed": 68},
-    "DBA-2526SP1": {"commited": 48, "completed": 79.5},
-    "DBA-2526SP2": {"commited": 69, "completed": 50.5},
-    "DBA-2526SP4": {"commited": 100, "completed": 60},
+    "DBA-2526SP1": {"commited": 65, "completed": 89.5},
+    "DBA-2526SP2": {"commited": 31.5, "completed": 50.5},
+    "DBA-2526SP3": {"commited": 56, "completed": 86},
+    "DBA-2526SP4": {"commited": 51, "completed": 60},
 }
