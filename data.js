@@ -65,7 +65,8 @@ const epicData = {
     "DBA-1188: Foundations marcar depósitos e retiradas com flag NRA": { "Stories": 7, "Story Points": 63, "Progress": 66},
     "DBA-1745: Foundations Expired PIX Certificates": { "Stories": 0, "Story Points": 15, "Progress": 66 },
     "DBA-1610: Settlement Consulta de Ajustes": { "Stories": 2, "Story Points": 13, "Progress": 0 },
-    "DBA-1782: Expor Documentação Open API": { "Stories": 2, "Story Points": 10, "Progress": 0 }
+    "DBA-1782: Expor Documentação Open API": { "Stories": 2, "Story Points": 10, "Progress": 0 },
+    "DBA-1909: Contrato Retroativo:": { "Stories": 2, "Story Points": 7, "Progress": 0 }
 };
 
 const velocity = {
