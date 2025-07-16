@@ -6,21 +6,21 @@ const ChartManager = {
         this.charts = {};
     },
 
-    createBurndownChart() {
-        const ctx = document.getElementById('burndownChart')?.getContext('2d');
-        if (!ctx) return;
-        this.charts.burndown = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ['Start', 'W1', 'W2', 'W3', 'W4', 'W5', 'W6'],
-                datasets: [
-                    { label: 'Ideal', data: [230, 191, 152, 113, 74, 35, 0], borderColor: '#10b981', fill: false, tension: 0.2, pointRadius: 0 },
-                    { label: 'Actual', data: [230, 191, 160, 160, 160, 160, 160], borderColor: '#4f46e5', backgroundColor: '#6366f1', fill: false, tension: 0.2, pointRadius: 4, pointBackgroundColor: '#4f46e5' }
-                ]
-            },
-            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: true } }, scales: { y: { beginAtZero: true, title: { display: true, text: 'Story Points' } }, x: { title: { display: true, text: 'Week' } } } }
-        });
-    },
+    // createBurndownChart() {
+    //     const ctx = document.getElementById('burndownChart')?.getContext('2d');
+    //     if (!ctx) return;
+    //     this.charts.burndown = new Chart(ctx, {
+    //         type: 'line',
+    //         data: {
+    //             labels: ['Start', 'W1', 'W2', 'W3', 'W4', 'W5', 'W6'],
+    //             datasets: [
+    //                 { label: 'Ideal', data: [230, 191, 152, 113, 74, 35, 0], borderColor: '#10b981', fill: false, tension: 0.2, pointRadius: 0 },
+    //                 { label: 'Actual', data: [230, 191, 160, 160, 160, 160, 160], borderColor: '#4f46e5', backgroundColor: '#6366f1', fill: false, tension: 0.2, pointRadius: 4, pointBackgroundColor: '#4f46e5' }
+    //             ]
+    //         },
+    //         options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: true } }, scales: { y: { beginAtZero: true, title: { display: true, text: 'Story Points' } }, x: { title: { display: true, text: 'Week' } } } }
+    //     });
+    // },
 
     createMttrChart() {
         const ctx = document.getElementById('mttrChart')?.getContext('2d');
@@ -28,10 +28,10 @@ const ChartManager = {
         this.charts.mttr = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ['DBA-2025SP32', 'DBA-2025SP33', 'DBA-2025SP34', 'DBA-2025SP35', 'DBA-2526SP1'],
+                labels: ['DBA-2526SP3', 'DBA-2526SP4', 'DBA-2526SP5'],
                 datasets: [
-                    { label: 'Average Story Points - DBA', data: [88, 98, 73, 89.5, 50.5], backgroundColor: '#4f46e5' },
-                    { label: 'Story Points Team Z', data: [22, 45, 27, 33, 32], backgroundColor: '#10b981' }
+                    { label: 'Commited', data: [56, 51, 73], backgroundColor: '#4f46e5' },
+                    { label: 'Delivered', data: [86, 60, 75], backgroundColor: '#10b981' }
                 ]
             },
             options: { responsive: true, maintainAspectRatio: false, scales: { x: { stacked: true }, y: { beginAtZero: true, suggestedMax: 120, stacked: true } }, plugins: { legend: { display: true } } }

@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         loadView(viewId) {
             if (viewId === 'release') {
-                ChartManager.createBurndownChart();
+                // ChartManager.createBurndownChart();
             } else if (viewId === 'overview') {
                 ChartManager.createMttrChart();
                 ChartManager.createOverviewDeploymentsChart();

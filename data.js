@@ -1,4 +1,15 @@
 const sprintData = {
+    "DBA-2526SP5": {
+        "effort": {"build": 78, "develop": 41, "refine": 59},
+        "epics": {
+            "DBA-1609: Adição de dados no relatório de liquidação": {"Done": 6, "Done in Sprint": 4, "Pending": 0, "Dropped": 0},
+            "DBA-1610: Criação de consulta de histórico de ajustes": {"Done": 0, "Done in Sprint": 13, "Pending": 0, "Dropped": 0},
+            "DBA-1909: Contratos Retroativos": {"Done": 0, "Done in Sprint": 5, "Pending": 0, "Dropped": 0},
+            "DBA-1188: Foundations marcar depósitos e retiradas com flag NRA": {"Done": 13, "Done in Sprint": 37, "Pending": 0, "Dropped": 0},
+            "DBA-1694: Expor documentação": {"Done": 5, "Done in Sprint": 5, "Pending": 5, "Dropped": 0},
+        },
+        "run_causes": {"EngineTax": 1, "AccountCreation": 1, "SettlementEventDate": 2, "PartialCancelled":1, "ValuePaidWrong":5, "WrongFlow": 2}
+    },
         "DBA-2526SP4": {
         "effort": {"build": 82, "develop": 75, "refine": 25},
         "epics": {     
@@ -55,18 +66,31 @@ const epicData = {
     "DBA-1272: Melhorias UX Withdraw": { "Stories": 5, "Story Points": 16, "Progress": 100},
     "DBA-1104: Transferencia Interna": { "Stories": 5, "Story Points": 32, "Progress": 100},
     "DBA-1005: Transferencias via API": { "Stories": 2, "Story Points": 13, "Progress": 100},
-    "DBA-1339: Habilitar depósitos de qualquer pessoa": { "Stories": 2, "Story Points": 8, "Progress": 100},
+    "DBA-1339: Habilitar depósitos de qualquer pessoa": { "Stories": 6, "Story Points": 13, "Progress": 100},
     "DBA-1764: Pix Automatico": { "Stories": 3, "Story Points": 14, "Progress": 100},
     "DBA-1659: Front Transferencia interna": { "Stories": 2, "Story Points": 16, "Progress": 100},
     "DBA-1608: Settlement Filtros": { "Stories": 7, "Story Points": 23, "Progress": 100},
     "DBA-1694: Settlement - Melhorias no fluxo de liquidação": { "Stories": 2, "Story Points": 5, "Progress": 100},
-    // "DBA-1362: Descomissionamento Payout": { "Stories": 3, "Story Points": 18, "Progress": 75 },
-    "DBA-1609: Adição de dados no relatório de liquidação": { "Stories": 4, "Story Points": 10, "Progress": 80 },
-    "DBA-1188: Foundations marcar depósitos e retiradas com flag NRA": { "Stories": 7, "Story Points": 63, "Progress": 66},
-    "DBA-1745: Foundations Expired PIX Certificates": { "Stories": 0, "Story Points": 15, "Progress": 66 },
-    "DBA-1610: Settlement Consulta de Ajustes": { "Stories": 2, "Story Points": 13, "Progress": 0 },
-    "DBA-1782: Expor Documentação Open API": { "Stories": 2, "Story Points": 10, "Progress": 0 },
-    "DBA-1909: Contrato Retroativo:": { "Stories": 2, "Story Points": 7, "Progress": 0 }
+    "DBA-1609: Adição de dados no relatório de liquidação": { "Stories": 4, "Story Points": 10, "Progress": 100 },
+    "DBA-1188: Foundations marcar depósitos e retiradas com flag NRA": { "Stories": 7, "Story Points": 63, "Progress": 100},
+    "DBA-1610: Settlement Consulta de Ajustes": { "Stories": 2, "Story Points": 13, "Progress": 100 },
+    "DBA-1782: Expor Documentação Open API": { "Stories": 2, "Story Points": 10, "Progress": 88 },
+    "DBA-1909: Contrato Retroativo:": { "Stories": 1, "Story Points": 5, "Progress": 100 }
+};
+
+const epicDataR2 = {
+    "DBA-1783: Acccount - Conciliação a menor": { "Stories": 3, "Story Points": 21, "Progress": 0},
+    "DBA-1862: Settlement - Conciliação a menor": { "Stories": 5, "Story Points": 27, "Progress": 0},
+    "DBA-1956: Receber finalidade e merchant no depósito - NRA": { "Stories": 8, "Story Points": 25, "Progress": 0},
+    "DBA-1972: Receber finalidade e merchant no withdrawal - NRA": { "Stories": 4, "Story Points": 11, "Progress": 0},
+    "DBA-1957: Receber status dos profiles via fila do Digital - NRA": { "Stories": 1, "Story Points": 5, "Progress": 0},
+    "DBA-1958: Relatório de transações - NRA": { "Stories": 3, "Story Points": 13, "Progress": 0},
+    "DBA-1959: Telas para exibir e filtrar novos dados - NRA": { "Stories": 7, "Story Points": 0, "Progress": 0},
+    "DBA-1949: Postmortem - Expired PIX Certificates": { "Stories": 2, "Story Points": 0, "Progress": 0},
+    "DBA-1911: SWIFT | Foundations - Adoption of the ISO 20022": { "Stories": 1, "Story Points": 0, "Progress": 0},
+    "DBA-1774: Foundations - Melhorias na Aba de Extrato": { "Stories": 2, "Story Points": 0, "Progress": 0 },
+    "DBA-1773: Foundations - Dados Adicionais na Tela": { "Stories": 2, "Story Points": 0, "Progress": 0},
+    "DBA-1912: Atualização da Documentação Externa": { "Stories": 1, "Story Points": 8, "Progress": 0}
 };
 
 const velocity = {
@@ -77,4 +101,5 @@ const velocity = {
     "DBA-2526SP2": {"commited": 31.5, "completed": 50.5},
     "DBA-2526SP3": {"commited": 56, "completed": 86},
     "DBA-2526SP4": {"commited": 51, "completed": 60},
+    "DBA-2526SP5": {"commited": 79, "completed": 91}
 }
