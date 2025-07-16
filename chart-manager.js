@@ -98,7 +98,7 @@ const ChartManager = {
         if (!ctx) return;
         this.charts.overviewDeployments = new Chart(ctx, {
             type: 'doughnut',
-            data: { labels: ['Build', 'Run'], datasets: [{ label: 'Build & Run', data: [74, 26], backgroundColor: ['#4f46e5', '#10b981'] }] },
+            data: { labels: ['Build', 'Run'], datasets: [{ label: 'Build & Run', data: [77, 23], backgroundColor: ['#4f46e5', '#10b981'] }] },
             options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: true } } }
         });
     },
