@@ -1,12 +1,12 @@
 const sprintData = {
     "DBA-2526SP5": {
-        "effort": {"build": 78, "develop": 41, "refine": 59},
+        "effort": {"build": 78, "develop": 49, "refine": 51},
         "epics": {
             "DBA-1609: Adição de dados no relatório de liquidação": {"Done": 6, "Done in Sprint": 4, "Pending": 0, "Dropped": 0},
             "DBA-1610: Criação de consulta de histórico de ajustes": {"Done": 0, "Done in Sprint": 13, "Pending": 0, "Dropped": 0},
             "DBA-1909: Contratos Retroativos": {"Done": 0, "Done in Sprint": 5, "Pending": 0, "Dropped": 0},
             "DBA-1188: Foundations marcar depósitos e retiradas com flag NRA": {"Done": 13, "Done in Sprint": 37, "Pending": 0, "Dropped": 0},
-            "DBA-1694: Expor documentação": {"Done": 5, "Done in Sprint": 5, "Pending": 5, "Dropped": 0},
+            "DBA-1694: Expor documentação": {"Done": 5, "Done in Sprint": 5, "Pending": 0, "Dropped": 5},
         },
         "run_causes": {"EngineTax": 1, "AccountCreation": 1, "SettlementEventDate": 2, "PartialCancelled":1, "ValuePaidWrong":5, "WrongFlow": 2}
     },
