@@ -7,6 +7,7 @@ const sprintData = {
             "DBA-1909: Contratos Retroativos": {"Done": 0, "Done in Sprint": 5, "Pending": 0, "Dropped": 0},
             "DBA-1188: Foundations marcar depósitos e retiradas com flag NRA": {"Done": 13, "Done in Sprint": 37, "Pending": 0, "Dropped": 0},
             "DBA-1694: Expor documentação": {"Done": 5, "Done in Sprint": 5, "Pending": 0, "Dropped": 5},
+            "DBA-1927: Automação de Notificações de Mensagens SWIFT (MT199 e MT999)": {"Done": 0, "Done in Sprint": 5, "Pending": 0, "Dropped": 0}
         },
         "run_causes": {"EngineTax": 1, "AccountCreation": 1, "SettlementEventDate": 2, "PartialCancelled":1, "ValuePaidWrong":5, "WrongFlow": 2}
     },
@@ -84,12 +85,9 @@ const epicDataR2 = {
     "DBA-1956: Receber finalidade e merchant no depósito - NRA": { "Stories": 8, "Story Points": 25, "Progress": 0},
     "DBA-1972: Receber finalidade e merchant no withdrawal - NRA": { "Stories": 4, "Story Points": 11, "Progress": 0},
     "DBA-1957: Receber status dos profiles via fila do Digital - NRA": { "Stories": 1, "Story Points": 5, "Progress": 0},
+    "DBA-1996: Transferência interna - NRA": { "Stories": 1, "Story Points": 5, "Progress": 0},
     "DBA-1958: Relatório de transações - NRA": { "Stories": 3, "Story Points": 13, "Progress": 0},
-    "DBA-1959: Telas para exibir e filtrar novos dados - NRA": { "Stories": 7, "Story Points": 0, "Progress": 0},
-    "DBA-1949: Postmortem - Expired PIX Certificates": { "Stories": 2, "Story Points": 0, "Progress": 0},
     "DBA-1911: SWIFT | Foundations - Adoption of the ISO 20022": { "Stories": 1, "Story Points": 0, "Progress": 0},
-    "DBA-1774: Foundations - Melhorias na Aba de Extrato": { "Stories": 2, "Story Points": 0, "Progress": 0 },
-    "DBA-1773: Foundations - Dados Adicionais na Tela": { "Stories": 2, "Story Points": 0, "Progress": 0},
     "DBA-1912: Atualização da Documentação Externa": { "Stories": 1, "Story Points": 8, "Progress": 0}
 };
 
