@@ -62,7 +62,7 @@ const sprintData = {
     }
 };
 
-const epicData = {
+const epicDataR1 = {
     "DBA-1142: Documentação em Open API": { "Stories": 10, "Story Points": 40, "Progress": 100},
     "DBA-1272: Melhorias UX Withdraw": { "Stories": 5, "Story Points": 16, "Progress": 100},
     "DBA-1104: Transferencia Interna": { "Stories": 5, "Story Points": 32, "Progress": 100},
@@ -79,7 +79,7 @@ const epicData = {
     "DBA-1909: Contrato Retroativo:": { "Stories": 1, "Story Points": 5, "Progress": 100 }
 };
 
-const epicDataR2 = {
+const epicData = {
     "DBA-1783: Acccount - Conciliação a menor": { "Stories": 3, "Story Points": 21, "Progress": 0},
     "DBA-1862: Settlement - Conciliação a menor": { "Stories": 5, "Story Points": 27, "Progress": 0},
     "DBA-1956: Receber finalidade e merchant no depósito - NRA": { "Stories": 8, "Story Points": 25, "Progress": 0},
