@@ -80,6 +80,7 @@ const epicDataR1 = {
 };
 
 const epicData = {
+    "DBA-1782: Expor Documentação Open API": { "Stories": 2, "Story Points": 10, "Progress": 88 },
     "DBA-1783: Acccount - Conciliação a menor": { "Stories": 3, "Story Points": 21, "Progress": 0},
     "DBA-1862: Settlement - Conciliação a menor": { "Stories": 5, "Story Points": 27, "Progress": 0},
     "DBA-1956: Receber finalidade e merchant no depósito - NRA": { "Stories": 8, "Story Points": 25, "Progress": 0},
