@@ -1,4 +1,19 @@
 const sprintData = {
+    "DBA-2526SP7": {
+        "effort": {"build": 75, "develop": 88, "refine": 12},
+        "epics": {
+            "DBA-1972: Receber finalidade e merchant no withdrawal - NRA": {"Done": 5, "Done in Sprint": 8, "Pending": 0, "Dropped": 3},
+            "DBA-1956: Receber finalidade e merchant no depósito - NRA": {"Done": 8, "Done in Sprint": 8, "Pending": 6, "Dropped": 5},
+            "DBA-1957: Receber status dos profiles via fila do Digital - NRA": {"Done": 0, "Done in Sprint": 0, "Pending": 0, "Dropped": 8},
+            "DBA-1958: Relatório de transações - NRA": {"Done": 5, "Done in Sprint": 3, "Pending": 0, "Dropped": 5},
+            "DBA-1862: Settlement - Conciliacao A Menor": {"Done": 13, "Done in Sprint": 6, "Pending": 0, "Dropped": 8},
+            "DBA-1783: Account - Conciliacao A Menor": {"Done": 3, "Done in Sprint": 13, "Pending": 5, "Dropped": 0},
+            "DBA-1912: Atualização da Documentação Externa": {"Done": 10, "Done in Sprint": 5, "Pending": 0, "Dropped": 0},
+            "DBA-1911: SWIFT | Foundations - Adoption of the ISO 20022": {"Done": 0, "Done in Sprint": 8, "Pending": 8, "Dropped": 0},
+            "DBA-2052: Disponibilizar campo infEntreClientes": {"Done": 0, "Done in Sprint": 5, "Pending": 23, "Dropped": 0},
+        },
+        "run_causes": {"ValuePaidWrong":8, "DoubleClickConcMN": 1, "AccountCreation": 1, "CreatePixKey": 1}
+    },
     "DBA-2526SP6": {
         "effort": {"build": 75, "develop": 88, "refine": 12},
         "epics": {
@@ -95,18 +110,16 @@ const epicDataR1 = {
 };
 
 const epicData = {
-    "DBA-1782: Expor Documentação Open API": { "Stories": 2, "Story Points": 10, "Progress": 100 },
-    "DBA-1972: Receber finalidade e merchant no withdrawal - NRA": { "Stories": 4, "Story Points": 11, "Progress": 50},
-    "DBA-1862: Settlement - Conciliação a menor": { "Stories": 5, "Story Points": 27, "Progress": 40},
-    "DBA-1783: Acccount - Conciliação a menor": { "Stories": 3, "Story Points": 21, "Progress": 33},
-    "DBA-1958: Relatório de transações - NRA": { "Stories": 3, "Story Points": 13, "Progress": 33},
-    "DBA-1956: Receber finalidade e merchant no depósito - NRA": { "Stories": 8, "Story Points": 25, "Progress": 25},
+    "DBA-1972: Receber finalidade e merchant no withdrawal - NRA": { "Stories": 4, "Story Points": 16, "Progress": 75},
+    "DBA-1956: Receber finalidade e merchant no depósito - NRA": { "Stories": 8, "Story Points": 27, "Progress": 50},
+    "DBA-1862: Settlement - Conciliação a menor": { "Stories": 5, "Story Points": 27, "Progress": 80},
+    "DBA-1783: Acccount - Conciliação a menor": { "Stories": 3, "Story Points": 21, "Progress": 66},
+    "DBA-1958: Relatório de transações - NRA": { "Stories": 3, "Story Points": 13, "Progress": 66},
     "DBA-1912: Atualização da Documentação Externa": { "Stories": 3, "Story Points": 20, "Progress": 25},
-    "DBA-1957: Receber status dos profiles via fila do Digital - NRA": { "Stories": 1, "Story Points": 5, "Progress": 0},
-    "DBA-1911: SWIFT | Foundations - Adoption of the ISO 20022": { "Stories": 1, "Story Points": 0, "Progress": 0},
-    "DBA-1774: Foundations Melhorias no Extrato": { "Stories": 2, "Story Points": 13, "Progress": 0},
-    "DBA-1773: Foundations - Melhorias Dados da Conta": { "Stories": 2, "Story Points": 13, "Progress": 0},
-    "DBA-1949: Postmorten Expired Pix Certificates": { "Stories": 2, "Story Points": 7, "Progress": 0}
+    "DBA-1957: Receber status dos profiles via fila do Digital - NRA": { "Stories": 1, "Story Points": 8, "Progress": 0},
+    "DBA-1911: SWIFT | Foundations - Adoption of the ISO 20022": { "Stories": 2, "Story Points": 16, "Progress": 50},
+    "DBA-2052: Disponibilizar campo infEntreClientes": { "Stories": 4, "Story Points": 28, "Progress": 25},
+    "DBA-1912: Atualização da Documentação Externa": { "Stories": 3, "Story Points": 10, "Progress": 100}
 };
 
 const velocity = {
@@ -118,5 +131,6 @@ const velocity = {
     "DBA-2526SP3": {"commited": 56, "completed": 86},
     "DBA-2526SP4": {"commited": 51, "completed": 60},
     "DBA-2526SP5": {"commited": 79, "completed": 91},
-    "DBA-2526SP6": {"commited": 78, "completed": 61.5}
+    "DBA-2526SP6": {"commited": 78, "completed": 61.5},
+    "DBA-2526SP7": {"commited": 86, "completed": 81.5}
 }
