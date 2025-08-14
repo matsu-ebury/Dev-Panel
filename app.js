@@ -75,6 +75,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const runEffortMetric = document.getElementById('run-effort-metric');
             const developBar = document.getElementById('develop-bar');
             const refineBar = document.getElementById('refine-bar');
+            const plannedDroppedMetric = document.getElementById('planned-dropped-metric');
+            const runTicketsMetric = document.getElementById('run-tickets-metric'); 
+            const notPlannedMetric = document.getElementById('not-planned-metric');
+
+            if (plannedDroppedMetric) plannedDroppedMetric.textContent = data.effort.plannedDropped;
+            if (runTicketsMetric) runTicketsMetric.textContent = data.effort.runTickets;
+            if (notPlannedMetric) notPlannedMetric.textContent = data.effort.notPlanned;
 
             if (totalEffortMetric) totalEffortMetric.textContent = data.effort.build;
             if (runEffortMetric) runEffortMetric.textContent = 100 - data.effort.build;

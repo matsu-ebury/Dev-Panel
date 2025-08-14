@@ -1,6 +1,6 @@
 const sprintData = {
     "DBA-2526SP7": {
-        "effort": {"build": 75, "develop": 88, "refine": 12},
+        "effort": {"build": 86, "develop": 83, "refine": 17, "plannedDropped": 21, "runTickets": 18, "notPlanned": 16.5},
         "epics": {
             "DBA-1972: Receber finalidade e merchant no withdrawal - NRA": {"Done": 5, "Done in Sprint": 8, "Pending": 0, "Dropped": 3},
             "DBA-1956: Receber finalidade e merchant no depósito - NRA": {"Done": 8, "Done in Sprint": 8, "Pending": 6, "Dropped": 5},
@@ -9,13 +9,13 @@ const sprintData = {
             "DBA-1862: Settlement - Conciliacao A Menor": {"Done": 13, "Done in Sprint": 6, "Pending": 0, "Dropped": 8},
             "DBA-1783: Account - Conciliacao A Menor": {"Done": 3, "Done in Sprint": 13, "Pending": 5, "Dropped": 0},
             "DBA-1912: Atualização da Documentação Externa": {"Done": 10, "Done in Sprint": 5, "Pending": 0, "Dropped": 0},
-            "DBA-1911: SWIFT | Foundations - Adoption of the ISO 20022": {"Done": 0, "Done in Sprint": 8, "Pending": 8, "Dropped": 0},
+            "DBA-1911: SWIFT | Foundations - Adoption of the ISO 20022": {"Done": 0, "Done in Sprint": 8, "Pending": 5, "Dropped": 0},
             "DBA-2052: Disponibilizar campo infEntreClientes": {"Done": 0, "Done in Sprint": 5, "Pending": 23, "Dropped": 0},
         },
-        "run_causes": {"ValuePaidWrong":8, "DoubleClickConcMN": 1, "AccountCreation": 1, "CreatePixKey": 1}
+        "run_causes": {"ValuePaidWrong":4, "PartialCancelled": 2, "AccountCreation": 10, "CreatePixKey": 1, "TreeIntegrationPIX":1}
     },
     "DBA-2526SP6": {
-        "effort": {"build": 75, "develop": 88, "refine": 12},
+        "effort": {"build": 75, "develop": 88, "refine": 12, "plannedDropped": 26, "runTickets": 11, "notPlanned": 16.5},
         "epics": {
             "DBA-1972: Receber finalidade e merchant no withdrawal - NRA": {"Done": 0, "Done in Sprint": 5, "Pending": 6, "Dropped": 0},
             "DBA-1956: Receber finalidade e merchant no depósito - NRA": {"Done": 0, "Done in Sprint": 8, "Pending": 14, "Dropped": 3},
