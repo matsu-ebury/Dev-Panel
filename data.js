@@ -1,4 +1,13 @@
 const sprintData = {
+    "DBA-2526SP12": {
+        "effort": {"build": 93, "develop": 100, "refine": 0, "plannedDropped": 43, "runTickets": 10, "notPlanned": 15},
+        "epics": {                
+            "DBA-2217: [BK15] Cobrando  Pix para pessoas não cadastradas": {"Done": 1, "Done in Sprint": 3, "Pending": 2, "Dropped": 2},
+            "DBA-2216: [BK15] Pagando  Pix para pessoas não cadastradas": {"Done": 3, "Done in Sprint": 3, "Pending": 3, "Dropped": 2},
+            "DBA-2182: Sistemas que se integram com Conectores Parceiros": {"Done": 0, "Done in Sprint": 1, "Pending": 0, "Dropped": 1}
+        },
+        "run_causes": {"AccountCreation": 6,"TravaJD":3, "WrongFlow": 1}
+    },
     "DBA-2526SP11": {
         "effort": {"build": 67, "develop": 100, "refine": 0, "plannedDropped": 31, "runTickets": 15, "notPlanned": 15},
         "epics": {                
@@ -180,8 +189,9 @@ const epicData = {
     "DBA-2052: Disponibilizar campo infEntreClientes": { "Stories": 6, "Story Points": 30, "Progress": 100},
     "DBA-2039: Iniciativas de Plataforma [NOT PLANNED]": { "Stories": 6, "Story Points": 24, "Progress": 100},
     "DBA-2082: [Foundations] Nova Arquitetura de Testes Automatizados": { "Stories": 1, "Story Points": 3, "Progress": 100},
-    "DBA-2216: [BK15] Pagando  Pix para pessoas não cadastradas": { "Stories": 8, "Story Points": 39, "Progress": 44},
-    "DBA-2217: [BK15] Cobrando Pix para pessoas não cadastradas": { "Stories": 6, "Story Points": 27, "Progress": 16},
+    "DBA-2263: Nova Arquitetura de Testes Automatizados": { "Stories": 11, "Story Points": 22, "Progress": 0},
+    "DBA-2216: [BK15] Pagando  Pix para pessoas não cadastradas": { "Stories": 9, "Story Points": 50, "Progress": 70},
+    "DBA-2217: [BK15] Cobrando Pix para pessoas não cadastradas": { "Stories": 6, "Story Points": 29, "Progress": 66},
     "DBA-2176: [Epic] Conectores Parceiros (JD)": { "Stories": 4, "Story Points": 27, "Progress": 100}
     // "DBA-185: [Foundations] FROM Bacen Adapter TO  SPB-STR (Size M)": { "Stories": 11, "Story Points": 33, "Progress": 36},
     // "DBA-2144: Postmortem - Account Status": { "Stories": 3, "Story Points": 14, "Progress": 33},
@@ -201,5 +211,6 @@ const velocity = {
     "DBA-2526SP8": {"commited": 75, "completed": 99},
     "DBA-2526SP9": {"commited": 1, "completed": 39},
     "DBA-2526SP10": {"commited": 13, "completed": 21},
-    "DBA-2526SP11": {"commited": 84, "completed": 52}
+    "DBA-2526SP11": {"commited": 84, "completed": 52},
+    "DBA-2526SP12": {"commited": 98, "completed": 44}
 }
