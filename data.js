@@ -1,4 +1,14 @@
 const sprintData = {
+    "DBA-2526SP13": {
+        "effort": {"build": 83, "develop": 88, "refine": 12, "plannedDropped": 8, "runTickets": 10, "notPlanned": 12},
+        "epics": {                
+            "DBA-2217: [BK15] Cobrando  Pix para pessoas não cadastradas": {"Done": 18, "Done in Sprint": 13, "Pending": 0, "Dropped": 0},
+            "DBA-2216: [BK15] Pagando  Pix para pessoas não cadastradas": {"Done": 31, "Done in Sprint": 15, "Pending": 16, "Dropped": 19},
+            "DBA-2182: Sistemas que se integram com Conectores Parceiros": {"Done": 8, "Done in Sprint": 21, "Pending": 23, "Dropped": 0},
+            "DBA-2319: [FOUNDATIONS] BCProtege+": {"Done": 0, "Done in Sprint": 8, "Pending": 5, "Dropped": 21}
+        },
+        "run_causes": {"AccountCreation": 4,"TravaJD":3, "DesligamentoJD": 1, "pixKeyManagement": 1, "WrongFlow": 1}
+    },
     "DBA-2526SP12": {
         "effort": {"build": 93, "develop": 100, "refine": 0, "plannedDropped": 43, "runTickets": 10, "notPlanned": 15},
         "epics": {                
@@ -189,10 +199,12 @@ const epicData = {
     "DBA-2052: Disponibilizar campo infEntreClientes": { "Stories": 6, "Story Points": 30, "Progress": 100},
     "DBA-2039: Iniciativas de Plataforma [NOT PLANNED]": { "Stories": 6, "Story Points": 24, "Progress": 100},
     "DBA-2082: [Foundations] Nova Arquitetura de Testes Automatizados": { "Stories": 1, "Story Points": 3, "Progress": 100},
+    "DBA-2217: [BK15] Cobrando Pix para pessoas não cadastradas": { "Stories": 6, "Story Points": 29, "Progress": 100},
+    "DBA-2176: [Epic] Conectores Parceiros (JD)": { "Stories": 4, "Story Points": 27, "Progress": 100},
     "DBA-2263: Nova Arquitetura de Testes Automatizados": { "Stories": 11, "Story Points": 22, "Progress": 0},
-    "DBA-2216: [BK15] Pagando  Pix para pessoas não cadastradas": { "Stories": 9, "Story Points": 50, "Progress": 70},
-    "DBA-2217: [BK15] Cobrando Pix para pessoas não cadastradas": { "Stories": 6, "Story Points": 29, "Progress": 66},
-    "DBA-2176: [Epic] Conectores Parceiros (JD)": { "Stories": 4, "Story Points": 27, "Progress": 100}
+    "DBA-2216: [BK15] Pagando  Pix para pessoas não cadastradas": { "Stories": 9, "Story Points": 50, "Progress": 69},
+    "DBA-2182: Sistemas que se integram com Conectores Parceiros": { "Stories": 52, "Story Points": 32, "Progress": 42}
+
     // "DBA-185: [Foundations] FROM Bacen Adapter TO  SPB-STR (Size M)": { "Stories": 11, "Story Points": 33, "Progress": 36},
     // "DBA-2144: Postmortem - Account Status": { "Stories": 3, "Story Points": 14, "Progress": 33},
 };
@@ -212,5 +224,6 @@ const velocity = {
     "DBA-2526SP9": {"commited": 1, "completed": 39},
     "DBA-2526SP10": {"commited": 13, "completed": 21},
     "DBA-2526SP11": {"commited": 84, "completed": 52},
-    "DBA-2526SP12": {"commited": 98, "completed": 44}
+    "DBA-2526SP12": {"commited": 98, "completed": 44},
+    "DBA-2526SP13": {"commited": 54, "completed": 69}
 }
