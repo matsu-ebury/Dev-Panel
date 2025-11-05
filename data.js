@@ -2,12 +2,12 @@ const sprintData = {
     "DBA-2526SP13": {
         "effort": {"build": 83, "develop": 88, "refine": 12, "plannedDropped": 8, "runTickets": 10, "notPlanned": 12},
         "epics": {                
-            "DBA-2217: [BK15] Cobrando  Pix para pessoas não cadastradas": {"Done": 18, "Done in Sprint": 13, "Pending": 0, "Dropped": 0},
-            "DBA-2216: [BK15] Pagando  Pix para pessoas não cadastradas": {"Done": 31, "Done in Sprint": 15, "Pending": 16, "Dropped": 19},
-            "DBA-2182: Sistemas que se integram com Conectores Parceiros": {"Done": 8, "Done in Sprint": 21, "Pending": 23, "Dropped": 0},
-            "DBA-2319: [FOUNDATIONS] BCProtege+": {"Done": 0, "Done in Sprint": 8, "Pending": 5, "Dropped": 21}
+            "DBA-2217: [BK15] Cobrando  Pix para pessoas não cadastradas": {"Done": 6, "Done in Sprint": 2, "Pending": 0, "Dropped": 0},
+            "DBA-2216: [BK15] Pagando  Pix para pessoas não cadastradas": {"Done": 6, "Done in Sprint": 2, "Pending": 5, "Dropped": 2},
+            "DBA-2182: Sistemas que se integram com Conectores Parceiros": {"Done": 2, "Done in Sprint": 1, "Pending": 4, "Dropped": 0},
+            "DBA-2319: [FOUNDATIONS] BCProtege+": {"Done": 0, "Done in Sprint": 1, "Pending": 2, "Dropped": 2}
         },
-        "run_causes": {"AccountCreation": 4,"TravaJD":3, "DesligamentoJD": 1, "pixKeyManagement": 1, "WrongFlow": 1}
+        "run_causes": {"AccountCreation": 4,"15KPixRule":3, "SPBAlert": 1, "pixKeyManagement": 1, "WrongFlow": 1}
     },
     "DBA-2526SP12": {
         "effort": {"build": 93, "develop": 100, "refine": 0, "plannedDropped": 43, "runTickets": 10, "notPlanned": 15},
@@ -16,7 +16,7 @@ const sprintData = {
             "DBA-2216: [BK15] Pagando  Pix para pessoas não cadastradas": {"Done": 3, "Done in Sprint": 3, "Pending": 3, "Dropped": 2},
             "DBA-2182: Sistemas que se integram com Conectores Parceiros": {"Done": 0, "Done in Sprint": 1, "Pending": 0, "Dropped": 1}
         },
-        "run_causes": {"AccountCreation": 6,"TravaJD":3, "WrongFlow": 1}
+        "run_causes": {"AccountCreation": 6,"15KPixRule":3, "WrongFlow": 1}
     },
     "DBA-2526SP11": {
         "effort": {"build": 67, "develop": 100, "refine": 0, "plannedDropped": 31, "runTickets": 15, "notPlanned": 15},
@@ -26,7 +26,7 @@ const sprintData = {
             "DBA-2176: [Epic] Conectores Parceiros (JD)": {"Done": 0, "Done in Sprint": 4, "Pending": 1, "Dropped": 1},
             "DBA-2263: Nova Arquitetura de Testes Automatizados": {"Done": 0, "Done in Sprint": 0, "Pending": 11, "Dropped": 1}
         },
-        "run_causes": {"TravaJD":8, "AccountCreation": 2, "WrongFlow": 2, "WrongAccountData": 3}
+        "run_causes": {"15KPixRule":8, "AccountCreation": 2, "WrongFlow": 2, "WrongAccountData": 3}
     },
     "DBA-2526SP10": {
         "effort": {"build": 69, "develop": 57, "refine": 43, "plannedDropped": 13, "runTickets": 10, "notPlanned": 18},
@@ -37,7 +37,7 @@ const sprintData = {
             "DBA-2176: [Epic] Conectores Parceiros (JD)": {"Done": 0, "Done in Sprint": 0, "Pending": 4, "Dropped": 3},
         },
 
-        "run_causes": {"TravaJD":4, "AccountCreation": 6}
+        "run_causes": {"15KPixRule":4, "AccountCreation": 6}
     },
     "DBA-2526SP9": {
         "effort": {"build": 72, "develop": 50, "refine": 50, "plannedDropped": 14, "runTickets": 9, "notPlanned": 18},
@@ -53,7 +53,7 @@ const sprintData = {
             "DBA-185: [Foundations] FROM Bacen Adapter TO  SPB-STR (Size M)": {"Done": 1, "Done in Sprint": 1, "Pending": 6, "Dropped": 0},
             "DBA-2082: [Foundations] Nova Arquitetura de Testes Automatizados": {"Done": 0, "Done in Sprint": 1, "Pending": 0, "Dropped": 0}
         },
-        "run_causes": {"TravaJD":2, "AccountCreation": 2, "WrongFlow": 1, "PartialCancelled": 1, "Indevido": 1}
+        "run_causes": {"15KPixRule":2, "AccountCreation": 2, "WrongFlow": 1, "PartialCancelled": 1, "Indevido": 1}
     },
     "DBA-2526SP8": {
         "effort": {"build": 84, "develop": 84, "refine": 16, "plannedDropped": 13, "runTickets": 15, "notPlanned": 27},
