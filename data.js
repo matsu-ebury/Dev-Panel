@@ -1,4 +1,16 @@
 const sprintData = {
+    "DBA-2526SP14": {
+        "effort": {"build": 73, "develop": 64, "refine": 36, "plannedDropped": 29, "runTickets": 20, "notPlanned": 54},
+        "epics": {          
+            "DBA-2144: Postmortem - Account Status": {"Done": 1, "Done in Sprint": 1, "Pending": 1, "Dropped": 0},      
+            "DBA-2216: [BK15] Pagando  Pix para pessoas não cadastradas": {"Done": 11, "Done in Sprint": 3, "Pending": 3, "Dropped": 3},
+            "DBA-2182: Sistemas que se integram com Conectores Parceiros": {"Done": 4, "Done in Sprint": 1, "Pending": 4, "Dropped": 0},
+            "DBA-2319: [FOUNDATIONS] BCProtege+": {"Done": 1, "Done in Sprint": 3, "Pending": 1, "Dropped": 1},
+            "DBA-2301: [BK-TECH] HSM - JD": {"Done": 2, "Done in Sprint": 0, "Pending": 5, "Dropped": 1},
+            "DBA-2263: Nova Arquitetura de Testes Automatizados": {"Done": 0, "Done in Sprint": 1, "Pending": 11, "Dropped": 0}
+        },
+        "run_causes": {"15KPixRule":10, "AccountCreation": 5,"PartialCancelled": 2, "WrongFlow": 2, "N/A":1}
+    },
     "DBA-2526SP13": {
         "effort": {"build": 83, "develop": 88, "refine": 12, "plannedDropped": 8, "runTickets": 10, "notPlanned": 12},
         "epics": {                
@@ -225,5 +237,6 @@ const velocity = {
     "DBA-2526SP10": {"commited": 13, "completed": 21},
     "DBA-2526SP11": {"commited": 84, "completed": 52},
     "DBA-2526SP12": {"commited": 98, "completed": 44},
-    "DBA-2526SP13": {"commited": 54, "completed": 69}
+    "DBA-2526SP13": {"commited": 54, "completed": 69},
+    "DBA-2526SP14": {"commited": 50, "completed": 81}
 }
