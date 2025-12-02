@@ -1,4 +1,15 @@
 const sprintData = {
+    "DBA-2526SP15": {
+        "effort": {"build": 70, "develop": 94, "refine": 6, "plannedDropped": 3, "runTickets": 7, "notPlanned": 42},
+        "epics": {          
+            "DBA-2383: [BC Protege +] Integracao Manual": {"Done": 0, "Done in Sprint": 1, "Pending": 0, "Dropped": 0},  
+            "DBA-2301: [BK-TECH] HSM - JD": {"Done": 2, "Done in Sprint": 3, "Pending": 2, "Dropped": 0},    
+            "DBA-2182: Sistemas que se integram com Conectores Parceiros": {"Done": 4, "Done in Sprint": 1, "Pending": 3, "Dropped": 2},
+            "DBA-2216: [BK15] Pagando  Pix para pessoas não cadastradas": {"Done": 11, "Done in Sprint": 3, "Pending": 1, "Dropped": 0},
+            "DBA-2319: [FOUNDATIONS] BCProtege+": {"Done": 4, "Done in Sprint": 1, "Pending": 0, "Dropped": 0}
+        },
+        "run_causes": {"15KPixRule":2, "Questions": 2,"MissingFeature": 1, "AccountCreation":1, "N/A":1}
+    },
     "DBA-2526SP14": {
         "effort": {"build": 73, "develop": 64, "refine": 36, "plannedDropped": 29, "runTickets": 20, "notPlanned": 54},
         "epics": {          
@@ -214,11 +225,11 @@ const epicData = {
     "DBA-2217: [BK15] Cobrando Pix para pessoas não cadastradas": { "Stories": 6, "Story Points": 29, "Progress": 100},
     "DBA-2176: [Epic] Conectores Parceiros (JD)": { "Stories": 4, "Story Points": 27, "Progress": 100},
     "DBA-2263: Nova Arquitetura de Testes Automatizados": { "Stories": 11, "Story Points": 22, "Progress": 0},
-    "DBA-2216: [BK15] Pagando  Pix para pessoas não cadastradas": { "Stories": 9, "Story Points": 50, "Progress": 69},
-    "DBA-2182: Sistemas que se integram com Conectores Parceiros": { "Stories": 52, "Story Points": 32, "Progress": 42}
-
-    // "DBA-185: [Foundations] FROM Bacen Adapter TO  SPB-STR (Size M)": { "Stories": 11, "Story Points": 33, "Progress": 36},
-    // "DBA-2144: Postmortem - Account Status": { "Stories": 3, "Story Points": 14, "Progress": 33},
+    "DBA-2216: [BK15] Pagando  Pix para pessoas não cadastradas": { "Stories": 15, "Story Points": 58, "Progress": 93},
+    "DBA-2182: Sistemas que se integram com Conectores Parceiros": { "Stories": 8, "Story Points": 65, "Progress": 62},
+    "DBA-2319: [FOUNDATIONS] BCProtege+": { "Stories": 5, "Story Points": 40, "Progress": 100},
+    "DBA-2301: [BK-TECH] HSM - JD": { "Stories": 10, "Story Points": 39, "Progress": 60},
+    "DBA-2383: [BC Protege +] Integracao Manual": { "Stories": 1, "Story Points": 3, "Progress": 100}
 };
 
 const velocity = {
@@ -238,5 +249,6 @@ const velocity = {
     "DBA-2526SP11": {"commited": 84, "completed": 52},
     "DBA-2526SP12": {"commited": 98, "completed": 44},
     "DBA-2526SP13": {"commited": 54, "completed": 69},
-    "DBA-2526SP14": {"commited": 50, "completed": 81}
+    "DBA-2526SP14": {"commited": 50, "completed": 81},    
+    "DBA-2526SP15": {"commited": 81, "completed": 90},
 }
