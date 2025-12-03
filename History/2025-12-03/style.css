@@ -1,0 +1,195 @@
+/* --- Base Styles --- */
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #f8fcf8 0%, #e0e7ff 100%);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.container {
+    background: rgba(255,255,255,0.95);
+    border-radius: 1.5rem;
+    box-shadow: 0 8px 32px 0 rgba(79,70,229,0.08), 0 1.5px 4px 0 rgba(16,24,40,0.04);
+}
+
+/* --- Navigation --- */
+#main-nav .nav-button {
+    font-size: 1.08rem;
+    letter-spacing: 0.01em;
+    border: none;
+    box-shadow: none;
+    position: relative;
+    top: 0;
+    transition: all 0.2s ease;
+    -webkit-tap-highlight-color: transparent; /* Remove tap highlight on mobile */
+}
+#main-nav .nav-button.active {
+    background: linear-gradient(90deg, #6366f1 0%, #818cf8 100%);
+    color: #fff !important;
+    box-shadow: 0 2px 8px 0 rgba(99,102,241,0.08);
+    z-index: 1;
+}
+#main-nav .nav-button:not(.active):hover {
+    background: #f1f5f9;
+    color: #4f46e5;
+}
+
+/* --- Section Display & Animation --- */
+.content-section {
+    display: none;
+    animation: fadeIn 0.5s ease-out;
+}
+.content-section.active {
+    display: block;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Cards & Hover Effects --- */
+.bg-white, .bg-gradient-to-br {
+    border-radius: 1.25rem !important;
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+.bg-white:hover, .bg-gradient-to-br:hover {
+    box-shadow: 0 4px 24px 0 rgba(99,102,241,0.10), 0 2px 8px 0 rgba(16,24,40,0.06);
+    transform: translateY(-2px) scale(1.01);
+    border-color: #6366f1 !important;
+}
+.bg-white .rounded-xl {
+    border-radius: 1.25rem !important;
+}
+
+/* --- Icons --- */
+.icon-card, .metric-icon {
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 2px 8px rgba(99,102,241,0.08));
+}
+.icon-card { font-size: 2.25rem; color: #4f46e5; }
+.metric-icon { font-size: 3rem; color: #0c2b68; }
+
+/* --- Progress Bars --- */
+.progress-bar-container {
+    width: 100%;
+    background: linear-gradient(90deg, #e0e7ff 0%, #f1f5f9 100%);
+    border-radius: 9999px;
+    height: 0.625rem;
+}
+.progress-bar {
+    background-color: #6366f1;
+    height: 0.625rem;
+    border-radius: 9999px;
+    transition: width 0.8s cubic-bezier(.4,2,.6,1), background 0.2s;
+    box-shadow: 0 1px 4px 0 rgba(99,102,241,0.10);
+}
+
+/* --- Chart Containers --- */
+.chart-container {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    margin: auto;
+    height: 400px;
+    background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%);
+    border-radius: 1rem;
+    box-shadow: 0 1.5px 8px 0 rgba(99,102,241,0.06);
+    padding: 1rem 0.5rem;
+}
+
+/* --- Form Elements --- */
+select, input, button {
+    outline: none !important;
+}
+select:focus, input:focus, button:focus-visible {
+    box-shadow: 0 0 0 2px #6366f1 !important;
+    border-color: #6366f1 !important;
+}
+
+/* --- Responsive Tweaks --- */
+@media (max-width: 640px) {
+    .container { padding: 0.5rem !important; }
+    header { padding: 1.5rem 0.5rem 1rem 0.5rem; }
+    .grid { gap: 1rem !important; }
+}
+
+/* --- Custom Scrollbar --- */
+::-webkit-scrollbar {
+    width: 8px;
+    background: #e0e7ff;
+}
+::-webkit-scrollbar-thumb {
+    background: #c7d2fe;
+    border-radius: 8px;
+}
+h1 {
+    color: #3730a3;
+    font-size: 2.1rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.5px;
+}
+
+.project-item {
+    background: linear-gradient(100deg, #f8fafc 60%, #e0e7ff 100%);
+    border: 1.5px solid #c7d2fe;
+    border-radius: 1.25rem;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1.25rem;
+    box-shadow: 0 4px 16px 0 rgba(99,102,241,0.07), 0 1.5px 4px 0 rgba(16,24,40,0.04);
+    transition: box-shadow 0.2s, border-color 0.2s, transform 0.15s;
+    position: relative;
+}
+.project-item:hover, .project-item.selected {
+    border-color: #6366f1;
+    box-shadow: 0 8px 32px 0 rgba(99,102,241,0.13), 0 2px 8px 0 rgba(16,24,40,0.08);
+    transform: translateY(-2px) scale(1.01);
+    background: linear-gradient(100deg, #e0e7ff 60%, #f8fafc 100%);
+}
+.project-item.selected::before {
+    content: '';
+    position: absolute;
+    left: -6px;
+    top: 18px;
+    height: 60%;
+    width: 4px;
+    border-radius: 6px;
+    background: linear-gradient(180deg, #6366f1 0%, #818cf8 100%);
+    box-shadow: 0 0 8px #6366f1aa;
+}
+
+.project-title {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #3730a3;
+    font-size: 1.18rem;
+    letter-spacing: 0.01em;
+}
+
+.progress-container {
+    width: 100%;
+    background: linear-gradient(90deg, #f4f7ff 0%, #f1f5f9 100%);
+    border-radius: 9999px;
+    overflow: hidden;
+    height: 1.1rem;
+    margin-top: 0.5rem;
+    box-shadow: 0 1px 4px 0 rgba(99,102,241,0.07);
+}
+
+.epic-progress-bar {
+    height: 100%;
+    background-color: #4CAF50; /* Green progress bar */
+    width: 0%; /* Initial width */
+    text-align: center;
+    line-height: 20px; /* Vertically center text */
+    color: rgb(14, 11, 11);
+    transition: width 0.5s ease-in-out; /* Smooth transition for progress */
+    font-size: 0.9em;
+}
+
+.project-details {
+    font-size: 0.97em;
+    color: #191a30;
+    margin-top: 0.5rem;
+    letter-spacing: 0.01em;
+}
