@@ -6,21 +6,6 @@ const ChartManager = {
         this.charts = {};
     },
 
-    // createBurndownChart() {
-    //     const ctx = document.getElementById('burndownChart')?.getContext('2d');
-    //     if (!ctx) return;
-    //     this.charts.burndown = new Chart(ctx, {
-    //         type: 'line',
-    //         data: {
-    //             labels: ['Start', 'W1', 'W2', 'W3', 'W4', 'W5', 'W6'],
-    //             datasets: [
-    //                 { label: 'Ideal', data: [230, 191, 152, 113, 74, 35, 0], borderColor: '#10b981', fill: false, tension: 0.2, pointRadius: 0 },
-    //                 { label: 'Actual', data: [230, 191, 160, 160, 160, 160, 160], borderColor: '#4f46e5', backgroundColor: '#6366f1', fill: false, tension: 0.2, pointRadius: 4, pointBackgroundColor: '#4f46e5' }
-    //             ]
-    //         },
-    //         options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: true } }, scales: { y: { beginAtZero: true, title: { display: true, text: 'Story Points' } }, x: { title: { display: true, text: 'Week' } } } }
-    //     });
-    // },
 
     createMttrChart() {
         const ctx = document.getElementById('mttrChart')?.getContext('2d');
@@ -28,10 +13,10 @@ const ChartManager = {
         this.charts.mttr = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ['DBA-2526SP12', 'DBA-2526SP13', 'DBA-2526SP14'],
+                labels: ['DBA-2526SP15', 'DBA-2526SP16', 'DBA-2526SP17'],
                 datasets: [
-                    { label: 'Commited', data: [98, 54, 50], backgroundColor: '#4f46e5' },
-                    { label: 'Delivered', data: [44, 69, 81], backgroundColor: '#10b981' }
+                    { label: 'Commited', data: [81, 83, 75], backgroundColor: '#4f46e5' },
+                    { label: 'Delivered', data: [90, 81, 76], backgroundColor: '#10b981' }
                 ]
             },
             options: { responsive: true, maintainAspectRatio: false, scales: { x: { stacked: true }, y: { beginAtZero: true, suggestedMax: 120, stacked: true } }, plugins: { legend: { display: true } } }
@@ -98,7 +83,7 @@ const ChartManager = {
         if (!ctx) return;
         this.charts.overviewDeployments = new Chart(ctx, {
             type: 'doughnut',
-            data: { labels: ['Build', 'Run'], datasets: [{ label: 'Build & Run', data: [83, 17], backgroundColor: ['#4f46e5', '#10b981'] }] },
+            data: { labels: ['Build', 'Run'], datasets: [{ label: 'Build & Run', data: [73, 27], backgroundColor: ['#4f46e5', '#10b981'] }] },
             options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: true } } }
         });
     },

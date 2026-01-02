@@ -1,6 +1,21 @@
 const sprintData = {
+    "DBA-2526SP17": {
+        "effort": {"build": 72, "develop": 100, "refine": 0, "plannedDropped": 35, "runTickets": 19, "notPlanned": 19},
+        "epics": {          
+            "DBA-2144: Postmortem - Account Status": {"Done": 3, "Done in Sprint": 2, "Pending": 1, "Dropped": 0},  
+            "DBA-2301: [BK-TECH] HSM - JD": {"Done": 6, "Done in Sprint": 2, "Pending": 3, "Dropped": 1},    
+            "DBA-2263: [Testes] Withdrawal": {"Done": 5, "Done in Sprint": 1, "Pending": 10, "Dropped": 3},
+            "DBA-2182: Sistemas que se integram com Conectores Parceiros": {"Done": 4, "Done in Sprint": 1, "Pending": 1, "Dropped": 0},
+            "DBA-2217: [BK15] Cobrando  Pix para pessoas não cadastradas": {"Done": 6, "Done in Sprint": 1, "Pending": 0, "Dropped": 0},
+            "DBA-2216: [BK15] Pagando  Pix para pessoas não cadastradas": {"Done": 14, "Done in Sprint": 1, "Pending": 0, "Dropped": 0},
+            "DBA-2551: Ações Retro - Sprint 16": {"Done": 0, "Done in Sprint": 2, "Pending": 0, "Dropped": 0},
+            "DBA-2543: Dashboards de métricas de disponibilidade": {"Done": 0, "Done in Sprint": 2, "Pending": 0, "Dropped": 2},
+
+        },
+        "run_causes": {"AccountCreation":11, "15KPixRule":5, "DevolutionTransfer": 1,"PartialCancelled": 1, "SettlementVLFalse":1}
+    },
     "DBA-2526SP16": {
-        "effort": {"build": 76, "develop": 61, "refine": 39, "plannedDropped": 18, "runTickets": 7, "notPlanned": 42},
+        "effort": {"build": 76, "develop": 61, "refine": 39, "plannedDropped": 18, "runTickets": 7, "notPlanned": 10},
         "epics": {          
             "DBA-2144: Postmortem - Account Status": {"Done": 2, "Done in Sprint": 1, "Pending": 2, "Dropped": 0},  
             "DBA-2301: [BK-TECH] HSM - JD": {"Done": 6, "Done in Sprint": 2, "Pending": 4, "Dropped": 2},    
@@ -230,6 +245,26 @@ const epicDataR2 = {
     "DBA-1912: Atualização da Documentação Externa": { "Stories": 3, "Story Points": 10, "Progress": 100}
 };
 
+const epicDataR3 = {
+    "DBA-1949: Postmortem - Expired PIX Certificates": { "Stories": 4, "Story Points": 9, "Progress": 100},
+    "DBA-2052: Disponibilizar campo infEntreClientes": { "Stories": 6, "Story Points": 30, "Progress": 100},
+    "DBA-2039: Iniciativas de Plataforma [NOT PLANNED]": { "Stories": 6, "Story Points": 24, "Progress": 100},
+    "DBA-2082: [Foundations] Nova Arquitetura de Testes Automatizados": { "Stories": 1, "Story Points": 3, "Progress": 100},
+    "DBA-2217: [BK15] Cobrando Pix para pessoas não cadastradas": { "Stories": 6, "Story Points": 29, "Progress": 100},
+    "DBA-2176: [Epic] Conectores Parceiros (JD)": { "Stories": 4, "Story Points": 27, "Progress": 100},
+    "DBA-2216: [BK15] Pagando  Pix para pessoas não cadastradas": { "Stories": 16, "Story Points": 63, "Progress": 94},
+    "DBA-2182: Sistemas que se integram com Conectores Parceiros": { "Stories": 8, "Story Points": 65, "Progress": 75},
+    "DBA-2319: [FOUNDATIONS] BCProtege+": { "Stories": 5, "Story Points": 40, "Progress": 100},
+    "DBA-2383: [BC Protege +] Integracao Manual": { "Stories": 1, "Story Points": 3, "Progress": 100},
+    "DBA-2419: [BK-REG] JDSPB - Catálogo de Mensagens 5.11 e Implementações de Segurança": { "Stories": 2, "Story Points": 8, "Progress": 100},
+    "DBA-2319: [FOUNDATIONS] Metricas de disponibilidade": { "Stories": 1, "Story Points": 5, "Progress": 100},
+    "DBA-2419: [BK-REG] JDSPB - Catálogo de Mensagens 5.11 e Implementações de Segurança": { "Stories": 2, "Story Points": 8, "Progress": 100},
+    "DBA-2342: Dashboard com visualizações de negócios - Wallet": { "Stories": 1, "Story Points": 5, "Progress": 100},
+    "DBA-2263: [Testes] Withdrawal": { "Stories": 14, "Story Points": 58, "Progress": 41},
+    "DBA-2301: [BK-TECH] HSM - JD": { "Stories": 12, "Story Points": 39, "Progress": 75},
+    "DBA-2144: Postmortem - Account Status": { "Stories": 6, "Story Points": 32, "Progress": 71}
+};
+
 const epicData = {
     "DBA-1949: Postmortem - Expired PIX Certificates": { "Stories": 4, "Story Points": 9, "Progress": 100},
     "DBA-2052: Disponibilizar campo infEntreClientes": { "Stories": 6, "Story Points": 30, "Progress": 100},
@@ -240,14 +275,14 @@ const epicData = {
     "DBA-2216: [BK15] Pagando  Pix para pessoas não cadastradas": { "Stories": 16, "Story Points": 63, "Progress": 94},
     "DBA-2182: Sistemas que se integram com Conectores Parceiros": { "Stories": 8, "Story Points": 65, "Progress": 75},
     "DBA-2319: [FOUNDATIONS] BCProtege+": { "Stories": 5, "Story Points": 40, "Progress": 100},
-    "DBA-2301: [BK-TECH] HSM - JD": { "Stories": 12, "Story Points": 39, "Progress": 66},
     "DBA-2383: [BC Protege +] Integracao Manual": { "Stories": 1, "Story Points": 3, "Progress": 100},
     "DBA-2419: [BK-REG] JDSPB - Catálogo de Mensagens 5.11 e Implementações de Segurança": { "Stories": 2, "Story Points": 8, "Progress": 100},
-    "DBA-2263: [Testes] Withdrawal": { "Stories": 14, "Story Points": 58, "Progress": 40},
     "DBA-2319: [FOUNDATIONS] Metricas de disponibilidade": { "Stories": 1, "Story Points": 5, "Progress": 100},
-    "DBA-2144: Postmortem - Account Status": { "Stories": 6, "Story Points": 32, "Progress": 50},
     "DBA-2419: [BK-REG] JDSPB - Catálogo de Mensagens 5.11 e Implementações de Segurança": { "Stories": 2, "Story Points": 8, "Progress": 100},
-    "DBA-2342: Dashboard com visualizações de negócios - Wallet": { "Stories": 1, "Story Points": 5, "Progress": 100}
+    "DBA-2342: Dashboard com visualizações de negócios - Wallet": { "Stories": 1, "Story Points": 5, "Progress": 100},
+    "DBA-2263: [Testes] Withdrawal": { "Stories": 14, "Story Points": 58, "Progress": 41},
+    "DBA-2301: [BK-TECH] HSM - JD": { "Stories": 12, "Story Points": 39, "Progress": 75},
+    "DBA-2144: Postmortem - Account Status": { "Stories": 6, "Story Points": 32, "Progress": 71}
 };
 
 const velocity = {
@@ -270,4 +305,5 @@ const velocity = {
     "DBA-2526SP14": {"commited": 50, "completed": 81},    
     "DBA-2526SP15": {"commited": 81, "completed": 90},
     "DBA-2526SP16": {"commited": 83, "completed": 81},   
+    "DBA-2526SP17": {"commited": 75, "completed": 76}   
 }
