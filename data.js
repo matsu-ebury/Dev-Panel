@@ -1,4 +1,19 @@
 const sprintData = {
+    "DBA-2526SP18": {
+        "effort": {"build": 16, "develop": 100, "refine": 0, "plannedDropped": 56, "runTickets": 16, "notPlanned": 40},
+        "epics": {          
+            "DBA-2427: [BC Protege +] Account - Mudanças na Conta": {"Done": 1, "Done in Sprint": 2, "Pending": 2, "Dropped": 0},
+            "DBA-2386: [BC Protege +] Service": {"Done": 0, "Done in Sprint": 0, "Pending": 11, "Dropped": 3},
+            "DBA-2144: Postmortem - Account Status": {"Done": 3, "Done in Sprint": 1, "Pending": 0, "Dropped": 0},  
+            "DBA-2455: Postmortem - Withdraws reverted": {"Done": 0, "Done in Sprint": 0, "Pending": 4, "Dropped": 4},
+            "DBA-2301: [BK-TECH] HSM - JD": {"Done": 6, "Done in Sprint": 0, "Pending": 3, "Dropped": 2},    
+            "DBA-2263: [Testes] Withdrawal": {"Done": 5, "Done in Sprint": 0, "Pending": 10, "Dropped": 3},
+            "DBA-2543: Dashboards de métricas de disponibilidade": {"Done": 0, "Done in Sprint": 0, "Pending": 0, "Dropped": 2},
+            "DBA-2098: [BK][Foundations] Parametrização de produtos da conta": {"Done": 0, "Done in Sprint": 0, "Pending": 2, "Dropped": 1}
+
+        },
+        "run_causes": {"PixMesaRegistration":4, "15KPixRule":3, "AccountCreation": 3,"PartialCancelled": 3, "DB_Partition":1, "JD_Error":1, "SettlementRegistration":1}
+    },
     "DBA-2526SP17": {
         "effort": {"build": 72, "develop": 100, "refine": 0, "plannedDropped": 35, "runTickets": 19, "notPlanned": 19},
         "epics": {          
@@ -30,7 +45,7 @@ const sprintData = {
     "DBA-2526SP15": {
         "effort": {"build": 70, "develop": 94, "refine": 6, "plannedDropped": 3, "runTickets": 7, "notPlanned": 42},
         "epics": {          
-            "DBA-2383: [BC Protege +] Integracao Manual": {"Done": 0, "Done in Sprint": 1, "Pending": 0, "Dropped": 0},  
+            "DBA-2383: [BC 4}Protege +] Integracao Manual": {"Done": 0, "Done in Sprint": 1, "Pending": 0, "Dropped": 0},  
             "DBA-2301: [BK-TECH] HSM - JD": {"Done": 2, "Done in Sprint": 3, "Pending": 2, "Dropped": 0},    
             "DBA-2182: Sistemas que se integram com Conectores Parceiros": {"Done": 4, "Done in Sprint": 1, "Pending": 3, "Dropped": 2},
             "DBA-2216: [BK15] Pagando  Pix para pessoas não cadastradas": {"Done": 11, "Done in Sprint": 3, "Pending": 1, "Dropped": 0},
@@ -305,5 +320,6 @@ const velocity = {
     "DBA-2526SP14": {"commited": 50, "completed": 81},    
     "DBA-2526SP15": {"commited": 81, "completed": 90},
     "DBA-2526SP16": {"commited": 83, "completed": 81},   
-    "DBA-2526SP17": {"commited": 75, "completed": 76}   
+    "DBA-2526SP17": {"commited": 75, "completed": 76},
+    "DBA-2526SP18": {"commited": 64, "completed": 49},   
 }
