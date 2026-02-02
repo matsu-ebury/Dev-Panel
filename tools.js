@@ -28,8 +28,8 @@
 // Function to open links in a new tab
 function openReport(target) {
     const urls = {
-    'release': 'https://ebury.bank.ebury.com/jira/software/c/projects/DBA/boards/284/reports/version-report?version=10674',
-    'burndown': 'https://ebury.bank.ebury.com/jira/software/c/projects/DBA/boards/284/reports/release-burndown?version=10674'
+    'release': 'https://ebury.core.ebury.com/jira/software/c/projects/DBA/boards/9618/reports/version-report?version=68552',
+    'burndown': 'https://ebury.core.ebury.com/jira/software/c/projects/DBA/boards/9618/reports/release-burndown?version=68552'
     };
     if (urls[target]) {
     window.open(urls[target], '_blank', 'noopener,noreferrer,width=1200,height=800');
