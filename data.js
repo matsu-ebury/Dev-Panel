@@ -1,4 +1,19 @@
 const sprintData = {
+    "DBA-2526SP20": {
+        "effort": {"build": 65, "develop": 97, "refine": 3, "plannedDropped": 24, "runTickets": 15 , "notPlanned": 36},
+        "epics": {          
+            "DBA-2386: [BC Protege +] Service": {"Done": 2, "Done in Sprint": 3, "Pending": 7, "Dropped": 1},
+            "DBA-2301: [BK-TECH] HSM - JD": {"Done": 6, "Done in Sprint": 2, "Pending": 1, "Dropped": 0}, 
+            "DBA-2671: [Testes] Setup Withdrawal e2e": {"Done": 6, "Done in Sprint": 1, "Pending": 0, "Dropped": 0},
+            "DBA-2583: [BK-REG] JDPI - Lista de APIv5.4.5": {"Done": 0, "Done in Sprint": 1, "Pending": 0, "Dropped": 0},  
+            "DBA-2263: [Testes] Withdrawal - E2E": {"Done": 4, "Done in Sprint": 2, "Pending": 13, "Dropped": 2},
+            "DBA-2455: Postmortem - Withdraws reverted": {"Done": 1, "Done in Sprint": 0, "Pending": 3, "Dropped": 1},
+            "DBA-2543: Dashboards de métricas de disponibilidade": {"Done": 0, "Done in Sprint": 0, "Pending": 0, "Dropped": 2},
+            "DBA-2668: [BK-Tech]Atualização Cabine Web + Servidor de Criptografia": {"Done": 1, "Done in Sprint": 1, "Pending": 0, "Dropped": 0},
+
+        },
+        "run_causes": {"AccountCreation": 6, "STR6DocIgnored":2, "Questions":2, "AccountReactivation": 1, "CrossbexsWithdrawError":1, "NRADeposit":1, "SettlementRegistration":1, "15KPixRule":1}
+    },
     "DBA-2526SP19": {
         "effort": {"build": 65, "develop": 100, "refine": 0, "plannedDropped": 10, "runTickets": 24, "notPlanned": 45},
         "epics": {          
@@ -7,7 +22,7 @@ const sprintData = {
             "DBA-2620: Postmortem - Inconsistências no extrato": {"Done": 0, "Done in Sprint": 2, "Pending": 2, "Dropped": 0},  
             "DBA-2455: Postmortem - Withdraws reverted": {"Done": 0, "Done in Sprint": 1, "Pending": 3, "Dropped": 1},
             "DBA-2301: [BK-TECH] HSM - JD": {"Done": 6, "Done in Sprint": 0, "Pending": 3, "Dropped": 3},    
-            "DBA-2263: [Testes] Withdrawal": {"Done": 4, "Done in Sprint": 2, "Pending": 13, "Dropped": 2},
+            "DBA-2263: [Testes] Withdrawal - E2E": {"Done": 4, "Done in Sprint": 2, "Pending": 13, "Dropped": 2},
             "DBA-2671: [Testes] Setup Withdrawal e2e": {"Done": 4, "Done in Sprint": 2, "Pending": 0, "Dropped": 0},
             "DBA-2668: [BK-Tech]Atualização Cabine Web + Servidor de Criptografia": {"Done": 0, "Done in Sprint": 1, "Pending": 1, "Dropped": 0},
 
@@ -303,7 +318,7 @@ const epicData = {
     "DBA-2082: [Foundations] Nova Arquitetura de Testes Automatizados": { "Stories": 1, "Story Points": 3, "Progress": 100},
     "DBA-2217: [BK15] Cobrando Pix para pessoas não cadastradas": { "Stories": 6, "Story Points": 29, "Progress": 100},
     "DBA-2176: [Epic] Conectores Parceiros (JD)": { "Stories": 4, "Story Points": 27, "Progress": 100},
-    "DBA-2216: [BK15] Pagando  Pix para pessoas não cadastradas": { "Stories": 16, "Story Points": 63, "Progress": 94},
+    "DBA-2216: [BK15] Pagando  Pix para pessoas não cadastradas": { "Stories": 16, "Story Points": 63, "Progress": 100},
     "DBA-2182: Sistemas que se integram com Conectores Parceiros": { "Stories": 8, "Story Points": 65, "Progress": 100},
     "DBA-2319: [FOUNDATIONS] BCProtege+": { "Stories": 5, "Story Points": 40, "Progress": 100},
     "DBA-2383: [BC Protege +] Integracao Manual": { "Stories": 1, "Story Points": 3, "Progress": 100},
@@ -311,8 +326,8 @@ const epicData = {
     "DBA-2319: [FOUNDATIONS] Metricas de disponibilidade": { "Stories": 1, "Story Points": 5, "Progress": 100},
     "DBA-2419: [BK-REG] JDSPB - Catálogo de Mensagens 5.11 e Implementações de Segurança": { "Stories": 2, "Story Points": 8, "Progress": 100},
     "DBA-2342: Dashboard com visualizações de negócios - Wallet": { "Stories": 1, "Story Points": 5, "Progress": 100},
-    "DBA-2263: [Testes] Withdrawal": { "Stories": 14, "Story Points": 58, "Progress": 27},
-    "DBA-2301: [BK-TECH] HSM - JD": { "Stories": 12, "Story Points": 39, "Progress": 75},
+    "DBA-2263: [Testes] Withdrawal": { "Stories": 14, "Story Points": 58, "Progress": 50},
+    "DBA-2301: [BK-TECH] HSM - JD": { "Stories": 12, "Story Points": 39, "Progress": 92},
     "DBA-2144: Postmortem - Account Status": { "Stories": 6, "Story Points": 32, "Progress": 100}
 };
 
@@ -339,4 +354,5 @@ const velocity = {
     "DBA-2526SP17": {"commited": 75, "completed": 76},
     "DBA-2526SP18": {"commited": 64, "completed": 49},  
     "DBA-2526SP19": {"commited": 99, "completed": 109},   
+    "DBA-2526SP20": {"commited": 66, "completed": 82},  
 }
