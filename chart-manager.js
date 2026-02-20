@@ -13,10 +13,10 @@ const ChartManager = {
         this.charts.mttr = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ['DBA-2526SP15', 'DBA-2526SP16', 'DBA-2526SP17'],
+                labels: ['DBA-2526SP18', 'DBA-2526SP19', 'DBA-2526SP20'],
                 datasets: [
-                    { label: 'Commited', data: [81, 83, 75], backgroundColor: '#4f46e5' },
-                    { label: 'Delivered', data: [90, 81, 76], backgroundColor: '#10b981' }
+                    { label: 'Commited', data: [64, 99, 66], backgroundColor: '#4f46e5' },
+                    { label: 'Delivered', data: [49, 109, 82], backgroundColor: '#10b981' }
                 ]
             },
             options: { responsive: true, maintainAspectRatio: false, scales: { x: { stacked: true }, y: { beginAtZero: true, suggestedMax: 120, stacked: true } }, plugins: { legend: { display: true } } }
@@ -83,7 +83,7 @@ const ChartManager = {
         if (!ctx) return;
         this.charts.overviewDeployments = new Chart(ctx, {
             type: 'doughnut',
-            data: { labels: ['Build', 'Run'], datasets: [{ label: 'Build & Run', data: [73, 27], backgroundColor: ['#4f46e5', '#10b981'] }] },
+            data: { labels: ['Build', 'Run'], datasets: [{ label: 'Build & Run', data: [48, 52], backgroundColor: ['#4f46e5', '#10b981'] }] },
             options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: true } } }
         });
     },
