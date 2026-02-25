@@ -1,4 +1,16 @@
 const sprintData = {
+    "DBA-2526SP21": {
+        "effort": {"build": 68, "develop": 86, "refine": 14, "plannedDropped": 8, "runTickets": 9 , "notPlanned": 26},
+        "epics": {        
+            "DBA-2721: [BK-TEC] Plataforma - Migração Digital": {"Done": 0, "Done in Sprint": 2, "Pending": 1, "Dropped": 0},
+            "DBA-2681: [BK-Tech] Postmortem - Lock for same document from Partner": {"Done": 0, "Done in Sprint": 2, "Pending": 0, "Dropped": 0},
+            "DBA-2455: Postmortem - Withdraws reverted": {"Done": 1, "Done in Sprint": 1, "Pending": 2, "Dropped": 0},
+            "DBA-2263: [Testes] Withdrawal - E2E": {"Done": 6, "Done in Sprint": 4, "Pending": 5, "Dropped": 0},
+            "DBA-2543: Dashboards de métricas de disponibilidade": {"Done": 2, "Done in Sprint": 1, "Pending": 0, "Dropped": 1}
+
+        },
+        "run_causes": {"STR6DocIgnored": 4, "AccountCreation":2, "SettlementForPartners":1, "NRADepositWhitelist": 1, "Question":1}
+    },
     "DBA-2526SP20": {
         "effort": {"build": 65, "develop": 97, "refine": 3, "plannedDropped": 24, "runTickets": 15 , "notPlanned": 36},
         "epics": {          
@@ -355,4 +367,5 @@ const velocity = {
     "DBA-2526SP18": {"commited": 64, "completed": 49},  
     "DBA-2526SP19": {"commited": 99, "completed": 109},   
     "DBA-2526SP20": {"commited": 66, "completed": 82},  
+    "DBA-2526SP21": {"commited": 54, "completed": 72}
 }
