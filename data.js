@@ -323,7 +323,7 @@ const epicDataR3 = {
     "DBA-2144: Postmortem - Account Status": { "Stories": 6, "Story Points": 32, "Progress": 71}
 };
 
-const epicData = {
+const epicDataR4 = {
     "DBA-1949: Postmortem - Expired PIX Certificates": { "Stories": 4, "Story Points": 9, "Progress": 100},
     "DBA-2052: Disponibilizar campo infEntreClientes": { "Stories": 6, "Story Points": 30, "Progress": 100},
     "DBA-2039: Iniciativas de Plataforma [NOT PLANNED]": { "Stories": 6, "Story Points": 24, "Progress": 100},
@@ -341,6 +341,19 @@ const epicData = {
     "DBA-2263: [Testes] Withdrawal": { "Stories": 14, "Story Points": 58, "Progress": 50},
     "DBA-2301: [BK-TECH] HSM - JD": { "Stories": 12, "Story Points": 39, "Progress": 92},
     "DBA-2144: Postmortem - Account Status": { "Stories": 6, "Story Points": 32, "Progress": 100}
+};
+
+const epicData = {
+    "DBA-2342: Dashboard com visualizações de negócios": { "Stories": 1, "Story Points": 5, "Progress": 100},
+    "DBA-2144: Postmortem - Account Status": { "Stories": 6, "Story Points": 32, "Progress": 100},
+    "DBA-2263: [Testes] Withdrawal e2e": { "Stories": 14, "Story Points": 58, "Progress": 78},
+    "DBA-2455: Postmortem - Withdraws Reverted": { "Stories": 4, "Story Points": 18, "Progress": 75},
+    "DBA-2721: Plataforma - Migração digital": { "Stories": 3, "Story Points": 13, "Progress": 66},
+    "DBA-2386: [BC Protege +] Account - mudanças na conta": { "Stories": 5, "Story Points": 29, "Progress": 60},
+    "DBA-2386: [BC Protege +] Service": { "Stories": 14, "Story Points": 69, "Progress": 50},
+    "DBA-2620: Postmortem - Inconsistências no extrato": { "Stories": 4, "Story Points": 12, "Progress": 50},
+    "DBA-2767: Plataforma - Migração Accounts": { "Stories": 3, "Story Points": 0, "Progress": 0},
+
 };
 
 const velocity = {
