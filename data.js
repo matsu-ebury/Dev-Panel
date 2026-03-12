@@ -12,7 +12,7 @@ const sprintData = {
             "DBA-2758: [Foundations] Refund Overview ": {"Done": 0, "Done in Sprint": 1, "Pending": 3, "Dropped": 2}
 
         },
-        "run_causes": {"PiXMesaRegistration": 8, "AccountCreation":4, "SettlementEventDate":2, "STR6DocIgnored": 1, "Question":1, "SettlementVLFalse":1, "WrongFlow":1}
+        "run_causes": {"PixMesaRegistration": 8, "AccountCreation":4, "SettlementEventDate":2, "Str6DocIgnored": 1, "Question":1, "SettlementVlFalse":1, "WrongFlow":1}
     },
     "DBA-2526SP21": {
         "effort": {"build": 68, "develop": 86, "refine": 14, "plannedDropped": 8, "runTickets": 9 , "notPlanned": 26},
