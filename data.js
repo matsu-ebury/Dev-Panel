@@ -1,4 +1,18 @@
 const sprintData = {
+    "DBA-2526SP23": {
+        "effort": {"build": 88, "develop": 60, "refine": 40, "plannedDropped": 14, "runTickets": 6 , "notPlanned": 23
+        },
+        "epics": {    
+            "DBA-2767: Plataforma - Migração Accounts": {"Done": 3, "Done in Sprint": 4, "Pending": 8, "Dropped": 2},    
+            "DBA-2386: [BC Protege +] Service": {"Done": 7, "Done in Sprint": 2, "Pending": 3, "Dropped": 1},
+            "DBA-2620: Postmortem - Inconsistências no extrato": {"Done": 2, "Done in Sprint": 1, "Pending": 1, "Dropped": 0},
+            "DBA-2680: Postmortem - Lock for same document from Partner": {"Done": 2, "Done in Sprint": 1, "Pending": 0, "Dropped": 0},
+            "DBA-2263: [Testes] Withdrawal - E2E": {"Done": 8, "Done in Sprint": 2, "Pending": 0, "Dropped": 0},
+            "DBA-2758: [Foundations] Refund Overview ": {"Done": 1, "Done in Sprint": 4, "Pending": 0, "Dropped": 0}
+
+        },
+        "run_causes": {"EngineTax": 2, "WrongSubAccount":2, "AccountCreation":1, "Questions": 1}
+    },
     "DBA-2526SP22": {
         "effort": {"build": 58, "develop": 68, "refine": 32, "plannedDropped": 34, "runTickets": 19 , "notPlanned": 26},
         "epics": {                    
@@ -397,5 +411,6 @@ const velocity = {
     "DBA-2526SP20": {"commited": 66, "completed": 82},  
     "DBA-2526SP21": {"commited": 54, "completed": 72},  
     "DBA-2526SP22": {"commited": 77, "completed": 99},
+    "DBA-2526SP23": {"commited": 115, "completed": 100},
     
 }
