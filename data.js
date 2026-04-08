@@ -1,4 +1,19 @@
 const sprintData = {
+    "DBA-2526SP24": {
+        "effort": {"build": 85, "develop": 77, "refine": 23, "plannedDropped": 11, "runTickets": 11, "notPlanned": 22
+        },
+        "epics": {    
+            "DBA-2427: [BC Protege +] Account - Mudanças na Conta": {"Done": 3, "Done in Sprint": 1, "Pending": 1, "Dropped": 0},
+            "DBA-2386: [BC Protege +] Service": {"Done": 9, "Done in Sprint": 2, "Pending": 1, "Dropped": 0},
+            "DBA-2767: Plataforma - Migração Accounts": {"Done": 7, "Done in Sprint": 2, "Pending": 8, "Dropped": 0},  
+            "DBA-2801: Postmortem - Legal Proceedings": {"Done": 3, "Done in Sprint": 2, "Pending": 2, "Dropped": 0},  
+            "DBA-2455: Postmortem - Withdraws reverted": {"Done": 3, "Done in Sprint": 1, "Pending": 0, "Dropped": 0},
+            "DBA-2758: [Foundations] SoC withdraw ": {"Done": 0, "Done in Sprint": 1, "Pending": 0, "Dropped": 0},
+            "DBA-2758: [Foundations] Refund Overview ": {"Done": 4, "Done in Sprint": 2, "Pending": 0, "Dropped": 1},
+            "DBA-2543: Dashboards de métricas de disponibilidade": {"Done": 4, "Done in Sprint": 1, "Pending": 0, "Dropped": 0}
+        },
+        "run_causes": {"AccountCreation": 2, "STR6DocIgnored":2, "CJ_timeout":1, "DevolutionTransfer": 1, "SettlementRegistration":1, "SettlementVlFalse":1, "BalanceReconciliation":2, "QueryNraData":1}
+    },
     "DBA-2526SP23": {
         "effort": {"build": 88, "develop": 60, "refine": 40, "plannedDropped": 14, "runTickets": 6 , "notPlanned": 23
         },
@@ -375,13 +390,14 @@ const epicDataR4 = {
 const epicData = {
     "DBA-2342: Dashboard com visualizações de negócios": { "Stories": 1, "Story Points": 5, "Progress": 100},
     "DBA-2144: Postmortem - Account Status": { "Stories": 6, "Story Points": 32, "Progress": 100},
-    "DBA-2263: [Testes] Withdrawal e2e": { "Stories": 14, "Story Points": 58, "Progress": 78},
-    "DBA-2455: Postmortem - Withdraws Reverted": { "Stories": 4, "Story Points": 18, "Progress": 75},
-    "DBA-2721: Plataforma - Migração digital": { "Stories": 3, "Story Points": 13, "Progress": 66},
-    "DBA-2386: [BC Protege +] Account - mudanças na conta": { "Stories": 5, "Story Points": 29, "Progress": 60},
-    "DBA-2386: [BC Protege +] Service": { "Stories": 14, "Story Points": 69, "Progress": 50},
-    "DBA-2620: Postmortem - Inconsistências no extrato": { "Stories": 4, "Story Points": 12, "Progress": 50},
-    "DBA-2767: Plataforma - Migração Accounts": { "Stories": 3, "Story Points": 0, "Progress": 0},
+    "DBA-2263: [Testes] Withdrawal e2e": { "Stories": 14, "Story Points": 58, "Progress": 100},
+    "DBA-2455: Postmortem - Withdraws Reverted": { "Stories": 4, "Story Points": 18, "Progress": 100},
+    "DBA-2721: Plataforma - Migração digital": { "Stories": 3, "Story Points": 13, "Progress": 100},
+    "DBA-2386: [BC Protege +] Account - mudanças na conta": { "Stories": 5, "Story Points": 29, "Progress": 83},
+    "DBA-2386: [BC Protege +] Service": { "Stories": 14, "Story Points": 69, "Progress": 92},
+    "DBA-2620: Postmortem - Inconsistências no extrato": { "Stories": 4, "Story Points": 12, "Progress": 75},
+    "DBA-2767: Plataforma - Migração Accounts": { "Stories": 3, "Story Points": 0, "Progress": 52},
+    "DBA-2758: [Foundations] Refund Overview": { "Stories": 7, "Story Points": 56, "Progress": 85},
 
 };
 
@@ -409,8 +425,8 @@ const velocity = {
     "DBA-2526SP18": {"commited": 64, "completed": 49},  
     "DBA-2526SP19": {"commited": 99, "completed": 109},   
     "DBA-2526SP20": {"commited": 66, "completed": 82},  
-    "DBA-2526SP21": {"commited": 54, "completed": 72},  
-    "DBA-2526SP22": {"commited": 77, "completed": 99},
-    "DBA-2526SP23": {"commited": 115, "completed": 100},
-    
+    "DBA-2526SP21": {"commited": 69, "completed": 75},  
+    "DBA-2526SP22": {"commited": 68, "completed": 92},
+    "DBA-2526SP23": {"commited": 84, "completed": 93},    
+    "DBA-2526SP24": {"commited": 80, "completed": 96}
 }
