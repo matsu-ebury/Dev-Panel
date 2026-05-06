@@ -1,4 +1,30 @@
 const sprintData = {
+    "DBA-2526SP26": {
+        "effort": {"build": 63, "develop": 94, "refine": 6, "plannedDropped": 26, "runTickets": 11, "notPlanned": 22
+        },
+        "epics": {    
+            "DBA-2386: [BC Protege +] Service": {"Done": 12, "Done in Sprint": 1, "Pending": 0, "Dropped": 0},
+            "DBA-2767: Plataforma - Migração Accounts": {"Done": 11, "Done in Sprint": 1, "Pending": 3, "Dropped": 1},  
+            "DBA-2301: [BK-TECH] HSM - JD": {"Done": 6, "Done in Sprint": 0, "Pending": 0, "Dropped": 1}, 
+            "DBA-2857: Pix Refund - Services": {"Done": 4, "Done in Sprint": 3, "Pending": 6, "Dropped": 3}
+        },
+        "run_causes": {"AccountCreation": 6, "EngineTax":2, "PartialCancelled":1, "DevolutionTransfer": 1, "Questions": 1}
+    },
+    "DBA-2526SP25": {
+        "effort": {"build": 85, "develop": 70, "refine": 30, "plannedDropped": 16, "runTickets": 11, "notPlanned": 19
+        },
+        "epics": {    
+            "DBA-2427: [BC Protege +] Account - Mudanças na Conta": {"Done": 4, "Done in Sprint": 1, "Pending": 0, "Dropped": 0},
+            "DBA-2386: [BC Protege +] Service": {"Done": 11, "Done in Sprint": 1, "Pending": 0, "Dropped": 0},
+            "DBA-2767: Plataforma - Migração Accounts": {"Done": 9, "Done in Sprint": 1, "Pending": 5, "Dropped": 1},  
+            "DBA-2801: Postmortem - Legal Proceedings": {"Done": 3, "Done in Sprint": 0, "Pending": 0, "Dropped": 1}, 
+            "DBA-2758: [Foundations] Refund Overview ": {"Done": 6, "Done in Sprint": 1, "Pending": 0, "Dropped": 0},
+            "DBA-2301: [BK-TECH] HSM - JD": {"Done": 6, "Done in Sprint": 0, "Pending": 0, "Dropped": 1}, 
+            "DBA-2741: JDPI - Lista de API v5.4.7 e v5.4.8": {"Done": 0, "Done in Sprint": 1, "Pending": 0, "Dropped": 0},
+            "DBA-2857: Pix Refund - Services": {"Done": 1, "Done in Sprint": 2, "Pending": 6, "Dropped": 2}
+        },
+        "run_causes": {"AccountCreation": 5, "EngineTax":2, "WrongFlow":2, "FX_Buy": 1}
+    },
     "DBA-2526SP24": {
         "effort": {"build": 85, "develop": 77, "refine": 23, "plannedDropped": 11, "runTickets": 11, "notPlanned": 22
         },
@@ -393,11 +419,14 @@ const epicData = {
     "DBA-2263: [Testes] Withdrawal e2e": { "Stories": 14, "Story Points": 58, "Progress": 100},
     "DBA-2455: Postmortem - Withdraws Reverted": { "Stories": 4, "Story Points": 18, "Progress": 100},
     "DBA-2721: Plataforma - Migração digital": { "Stories": 3, "Story Points": 13, "Progress": 100},
-    "DBA-2386: [BC Protege +] Account - mudanças na conta": { "Stories": 5, "Story Points": 29, "Progress": 83},
-    "DBA-2386: [BC Protege +] Service": { "Stories": 14, "Story Points": 69, "Progress": 92},
+    "DBA-2386: [BC Protege +] Account - mudanças na conta": { "Stories": 5, "Story Points": 29, "Progress": 100},
+    "DBA-2427: [BC Protege +] Service": { "Stories": 14, "Story Points": 69, "Progress": 100},
+    "DBA-2758: [Foundations] Refund Overview": { "Stories": 7, "Story Points": 56, "Progress": 100},
     "DBA-2620: Postmortem - Inconsistências no extrato": { "Stories": 4, "Story Points": 12, "Progress": 75},
-    "DBA-2767: Plataforma - Migração Accounts": { "Stories": 3, "Story Points": 0, "Progress": 52},
-    "DBA-2758: [Foundations] Refund Overview": { "Stories": 7, "Story Points": 56, "Progress": 85},
+    "DBA-2767: Plataforma - Migração Accounts": { "Stories": 3, "Story Points": 0, "Progress": 66},
+    "DBA-2857: Pix Refund - Services": { "Stories": 10, "Story Points": 54, "Progress": 40},
+    "DBA-2896: Pix Refund - UX": { "Stories": 5, "Story Points": 34, "Progress": 0},
+    "DBA-2983: QRCode estático - Caminho Critico": { "Stories": 9, "Story Points": 107, "Progress": 0},
 
 };
 
@@ -428,5 +457,7 @@ const velocity = {
     "DBA-2526SP21": {"commited": 69, "completed": 75},  
     "DBA-2526SP22": {"commited": 68, "completed": 92},
     "DBA-2526SP23": {"commited": 84, "completed": 93},    
-    "DBA-2526SP24": {"commited": 80, "completed": 96}
+    "DBA-2526SP24": {"commited": 80, "completed": 96},
+    "DBA-2526SP25": {"commited": 89, "completed": 39},
+    "DBA-2526SP26": {"commited": 98, "completed": 49},
 }
