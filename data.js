@@ -1,4 +1,15 @@
 const sprintData = {
+    "DBA-2526SP28": {
+        "effort": {"build": 87, "develop": 98, "refine": 2, "plannedDropped": 18, "runTickets": 9, "notPlanned": 8
+        },
+        "epics": {
+            "DBA-2767: Plataforma - Migração Accounts": {"Done": 16, "Done in Sprint": 4, "Pending": 0, "Dropped": 0},  
+            "DBA-2983: QR Code estático - Caminho crítico": {"Done": 2, "Done in Sprint": 7, "Pending": 0, "Dropped": 2},
+            "DBA-2963: QR Code estático": {"Done": 0, "Done in Sprint": 2, "Pending": 4, "Dropped": 0},
+            "DBA-3078: JDPI - Lista de APIv5.5.0 / JDPI - Anexo Pix Automático": {"Done": 0, "Done in Sprint": 1, "Pending": 0, "Dropped": 0}
+        },
+        "run_causes": {"AccountCreation": 3, "STR6DocIgnored":1, "WrongFlow":3, "SettlementVlFalse": 1}
+    },
     "DBA-2526SP27": {
         "effort": {"build": 73, "develop": 85, "refine": 15, "plannedDropped": 35, "runTickets": 14, "notPlanned": 24
         },
@@ -433,9 +444,10 @@ const epicData = {
     "DBA-2386: [BC Protege +] Account - mudanças na conta": { "Stories": 5, "Story Points": 29, "Progress": 100},
     "DBA-2427: [BC Protege +] Service": { "Stories": 14, "Story Points": 69, "Progress": 100},
     "DBA-2758: [Foundations] Refund Overview": { "Stories": 7, "Story Points": 56, "Progress": 100},
+    "DBA-2767: Plataforma - Migração Accounts": { "Stories": 3, "Story Points": 0, "Progress": 100},
+    "DBA-2983: QRCode estático - Caminho Critico": { "Stories": 9, "Story Points": 107, "Progress": 81},
+    "DBA-2963: QRCode estático": { "Stories": 6, "Story Points": 58, "Progress": 42},
     "DBA-2620: Postmortem - Inconsistências no extrato": { "Stories": 4, "Story Points": 12, "Progress": 75},
-    "DBA-2767: Plataforma - Migração Accounts": { "Stories": 3, "Story Points": 0, "Progress": 78},
-    "DBA-2983: QRCode estático - Caminho Critico": { "Stories": 9, "Story Points": 107, "Progress": 45},
     "DBA-2857: Pix Refund - Services": { "Stories": 10, "Story Points": 54, "Progress": 40},
     "DBA-2896: Pix Refund - UX": { "Stories": 5, "Story Points": 34, "Progress": 0},
 
@@ -472,4 +484,5 @@ const velocity = {
     "DBA-2526SP25": {"commited": 89, "completed": 39},
     "DBA-2526SP26": {"commited": 98, "completed": 49},
     "DBA-2526SP27": {"commited": 12, "completed": 84},
+    "DBA-2526SP28": {"commited": 102, "completed": 110},
 }
