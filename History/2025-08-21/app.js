@@ -74,6 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const totalEffortMetric = document.getElementById('total-effort-metric');
             const runEffortMetric = document.getElementById('run-effort-metric');
             const developBar = document.getElementById('develop-bar');
+            const effortBar = document.getElementById('effort-bar');
             const refineBar = document.getElementById('refine-bar');
             const plannedDroppedMetric = document.getElementById('planned-dropped-metric');
             const runTicketsMetric = document.getElementById('run-tickets-metric'); 
@@ -90,6 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 developBar.style.width = `${data.effort.develop}%`;
                 developBar.textContent = `${data.effort.develop}%`;
             }
+            
             if (refineBar) {
                 refineBar.style.width = `${data.effort.refine}%`;
                 refineBar.textContent = `${data.effort.refine}%`;

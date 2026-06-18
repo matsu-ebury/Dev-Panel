@@ -78,6 +78,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const plannedDroppedMetric = document.getElementById('planned-dropped-metric');
             const runTicketsMetric = document.getElementById('run-tickets-metric'); 
             const notPlannedMetric = document.getElementById('not-planned-metric');
+            const velocityCommitedMetric = document.getElementById('velocity-commited-metric');
+            const velocityCompletedMetric = document.getElementById('velocity-completed-metric');
+            const velocityDonePercentage = document.getElementById('velocity-done-percentage');
+            const velocityCompletedBar = document.getElementById('velocity-completed-bar');
+            const velocityRemainingBar = document.getElementById('velocity-remaining-bar');
+            const velocityOverrunMetric = document.getElementById('velocity-overrun-metric');
 
             if (plannedDroppedMetric) plannedDroppedMetric.textContent = data.effort.plannedDropped;
             if (runTicketsMetric) runTicketsMetric.textContent = data.effort.runTickets;
@@ -94,11 +100,61 @@ document.addEventListener('DOMContentLoaded', () => {
                 refineBar.style.width = `${data.effort.refine}%`;
                 refineBar.textContent = `${data.effort.refine}%`;
             }
+
+            const velocityData = typeof velocity === 'object' ? velocity[sprintId] : null;
+            if (velocityData) {
+                const commited = Number(velocityData.commited) || 0;
+                const completed = Number(velocityData.completed) || 0;
+                const completedPctRaw = commited > 0 ? (completed / commited) * 100 : 0;
+                const completedPct = Math.min(completedPctRaw, 100);
+                const remainingPct = commited > 0 ? Math.max(100 - completedPct, 0) : 0;
+                const overrun = completed - commited;
+
+                if (velocityCommitedMetric) velocityCommitedMetric.textContent = commited;
+                if (velocityCompletedMetric) velocityCompletedMetric.textContent = completed;
+                if (velocityDonePercentage) velocityDonePercentage.textContent = `${completedPctRaw.toFixed(0)}`;
+
+                if (velocityCompletedBar) {
+                    velocityCompletedBar.style.width = `${completedPct}%`;
+                    velocityCompletedBar.textContent = completedPct >= 18 ? `${completedPct.toFixed(0)}%` : '';
+                }
+
+                if (velocityRemainingBar) {
+                    velocityRemainingBar.style.width = `${remainingPct}%`;
+                    velocityRemainingBar.textContent = remainingPct >= 18 ? `${remainingPct.toFixed(0)}%` : '';
+                }
+
+                if (velocityOverrunMetric) {
+                    if (overrun > 0) {
+                        velocityOverrunMetric.textContent = `+${overrun} above planned`;
+                        velocityOverrunMetric.classList.remove('hidden');
+                    } else {
+                        velocityOverrunMetric.classList.add('hidden');
+                        velocityOverrunMetric.textContent = '';
+                    }
+                }
+            } else {
+                if (velocityCommitedMetric) velocityCommitedMetric.textContent = '--';
+                if (velocityCompletedMetric) velocityCompletedMetric.textContent = '--';
+                if (velocityDonePercentage) velocityDonePercentage.textContent = '--';
+                if (velocityCompletedBar) {
+                    velocityCompletedBar.style.width = '0%';
+                    velocityCompletedBar.textContent = '';
+                }
+                if (velocityRemainingBar) {
+                    velocityRemainingBar.style.width = '0%';
+                    velocityRemainingBar.textContent = '';
+                }
+                if (velocityOverrunMetric) {
+                    velocityOverrunMetric.classList.add('hidden');
+                    velocityOverrunMetric.textContent = '';
+                }
+            }
             
             ChartManager.createEpicsStatusChart(data.epics);
             ChartManager.createRunCausesChart(data.run_causes);
             ChartManager.populateRunCausesTable(data.run_causes);
-            ChartManager.createVelocityChart()
+            ChartManager.createVelocityChart();
         }
     };
 
