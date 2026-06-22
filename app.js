@@ -75,6 +75,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const runEffortMetric = document.getElementById('run-effort-metric');
             const developBar = document.getElementById('develop-bar');
             const refineBar = document.getElementById('refine-bar');
+            const developLabelMetric = document.getElementById('develop-label-metric');
+            const refineLabelMetric = document.getElementById('refine-label-metric');
             const plannedDroppedMetric = document.getElementById('planned-dropped-metric');
             const runTicketsMetric = document.getElementById('run-tickets-metric'); 
             const notPlannedMetric = document.getElementById('not-planned-metric');
@@ -89,8 +91,28 @@ document.addEventListener('DOMContentLoaded', () => {
             if (runTicketsMetric) runTicketsMetric.textContent = data.effort.runTickets;
             if (notPlannedMetric) notPlannedMetric.textContent = data.effort.notPlanned;
 
-            if (totalEffortMetric) totalEffortMetric.textContent = data.effort.build;
-            if (runEffortMetric) runEffortMetric.textContent = 100 - data.effort.build;
+            const devPct = data.effort.develop;
+            const buildPct = data.effort.build;
+            const runPct = 100 - buildPct;
+
+            if (totalEffortMetric) totalEffortMetric.textContent = devPct;
+            if (runEffortMetric) runEffortMetric.textContent = runPct;
+
+            const runBuildBar = document.getElementById('run-build-bar');
+            const runRunBar = document.getElementById('run-run-bar');
+            const runBuildMetric = document.getElementById('run-build-metric');
+            const runEffortMetricLabel = document.getElementById('run-effort-metric-label');
+
+            if (runBuildBar) {
+                runBuildBar.style.width = `${buildPct}%`;
+                runBuildBar.textContent = buildPct >= 18 ? `${buildPct}%` : '';
+            }
+            if (runRunBar) {
+                runRunBar.style.width = `${runPct}%`;
+                runRunBar.textContent = runPct >= 18 ? `${runPct}%` : '';
+            }
+            if (runBuildMetric) runBuildMetric.textContent = buildPct;
+            if (runEffortMetricLabel) runEffortMetricLabel.textContent = runPct;
             
             if (developBar) {
                 developBar.style.width = `${data.effort.develop}%`;
@@ -100,10 +122,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 refineBar.style.width = `${data.effort.refine}%`;
                 refineBar.textContent = `${data.effort.refine}%`;
             }
+            if (developLabelMetric) developLabelMetric.textContent = data.effort.develop;
+            if (refineLabelMetric) refineLabelMetric.textContent = data.effort.refine;
 
-            const velocityData = typeof velocity === 'object' ? velocity[sprintId] : null;
+            const velocityData = typeof progress === 'object' ? progress[sprintId] : null;
             if (velocityData) {
-                const commited = Number(velocityData.commited) || 0;
+                const commited = Number(velocityData.planned) || 0;
                 const completed = Number(velocityData.completed) || 0;
                 const completedPctRaw = commited > 0 ? (completed / commited) * 100 : 0;
                 const completedPct = Math.min(completedPctRaw, 100);

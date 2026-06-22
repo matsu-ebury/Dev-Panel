@@ -533,5 +533,5 @@ const progress = {
     "DBA-2526SP26": {"planned": 98, "completed": 49},
     "DBA-2526SP27": {"planned": 12, "completed": 84},
     "DBA-2526SP28": {"planned": 102, "completed": 110},
-    "DBA-2627SP03": {"planned": 153, "completed": 85},
+    "DBA-2627SP03": {"planned": 112, "completed": 98},
 }

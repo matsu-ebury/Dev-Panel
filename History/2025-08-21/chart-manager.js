@@ -6,21 +6,6 @@ const ChartManager = {
         this.charts = {};
     },
 
-    // createBurndownChart() {
-    //     const ctx = document.getElementById('burndownChart')?.getContext('2d');
-    //     if (!ctx) return;
-    //     this.charts.burndown = new Chart(ctx, {
-    //         type: 'line',
-    //         data: {
-    //             labels: ['Start', 'W1', 'W2', 'W3', 'W4', 'W5', 'W6'],
-    //             datasets: [
-    //                 { label: 'Ideal', data: [230, 191, 152, 113, 74, 35, 0], borderColor: '#10b981', fill: false, tension: 0.2, pointRadius: 0 },
-    //                 { label: 'Actual', data: [230, 191, 160, 160, 160, 160, 160], borderColor: '#4f46e5', backgroundColor: '#6366f1', fill: false, tension: 0.2, pointRadius: 4, pointBackgroundColor: '#4f46e5' }
-    //             ]
-    //         },
-    //         options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: true } }, scales: { y: { beginAtZero: true, title: { display: true, text: 'Story Points' } }, x: { title: { display: true, text: 'Week' } } } }
-    //     });
-    // },
 
     createMttrChart() {
         const ctx = document.getElementById('mttrChart')?.getContext('2d');
