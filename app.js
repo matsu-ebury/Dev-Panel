@@ -75,16 +75,44 @@ document.addEventListener('DOMContentLoaded', () => {
             const runEffortMetric = document.getElementById('run-effort-metric');
             const developBar = document.getElementById('develop-bar');
             const refineBar = document.getElementById('refine-bar');
+            const developLabelMetric = document.getElementById('develop-label-metric');
+            const refineLabelMetric = document.getElementById('refine-label-metric');
             const plannedDroppedMetric = document.getElementById('planned-dropped-metric');
             const runTicketsMetric = document.getElementById('run-tickets-metric'); 
             const notPlannedMetric = document.getElementById('not-planned-metric');
+            const velocityCommitedMetric = document.getElementById('velocity-commited-metric');
+            const velocityCompletedMetric = document.getElementById('velocity-completed-metric');
+            const velocityDonePercentage = document.getElementById('velocity-done-percentage');
+            const velocityCompletedBar = document.getElementById('velocity-completed-bar');
+            const velocityRemainingBar = document.getElementById('velocity-remaining-bar');
+            const velocityOverrunMetric = document.getElementById('velocity-overrun-metric');
 
             if (plannedDroppedMetric) plannedDroppedMetric.textContent = data.effort.plannedDropped;
             if (runTicketsMetric) runTicketsMetric.textContent = data.effort.runTickets;
             if (notPlannedMetric) notPlannedMetric.textContent = data.effort.notPlanned;
 
-            if (totalEffortMetric) totalEffortMetric.textContent = data.effort.build;
-            if (runEffortMetric) runEffortMetric.textContent = 100 - data.effort.build;
+            const devPct = data.effort.develop;
+            const buildPct = data.effort.build;
+            const runPct = 100 - buildPct;
+
+            if (totalEffortMetric) totalEffortMetric.textContent = devPct;
+            if (runEffortMetric) runEffortMetric.textContent = runPct;
+
+            const runBuildBar = document.getElementById('run-build-bar');
+            const runRunBar = document.getElementById('run-run-bar');
+            const runBuildMetric = document.getElementById('run-build-metric');
+            const runEffortMetricLabel = document.getElementById('run-effort-metric-label');
+
+            if (runBuildBar) {
+                runBuildBar.style.width = `${buildPct}%`;
+                runBuildBar.textContent = buildPct >= 18 ? `${buildPct}%` : '';
+            }
+            if (runRunBar) {
+                runRunBar.style.width = `${runPct}%`;
+                runRunBar.textContent = runPct >= 18 ? `${runPct}%` : '';
+            }
+            if (runBuildMetric) runBuildMetric.textContent = buildPct;
+            if (runEffortMetricLabel) runEffortMetricLabel.textContent = runPct;
             
             if (developBar) {
                 developBar.style.width = `${data.effort.develop}%`;
@@ -94,11 +122,63 @@ document.addEventListener('DOMContentLoaded', () => {
                 refineBar.style.width = `${data.effort.refine}%`;
                 refineBar.textContent = `${data.effort.refine}%`;
             }
+            if (developLabelMetric) developLabelMetric.textContent = data.effort.develop;
+            if (refineLabelMetric) refineLabelMetric.textContent = data.effort.refine;
+
+            const velocityData = typeof progress === 'object' ? progress[sprintId] : null;
+            if (velocityData) {
+                const commited = Number(velocityData.planned) || 0;
+                const completed = Number(velocityData.completed) || 0;
+                const completedPctRaw = commited > 0 ? (completed / commited) * 100 : 0;
+                const completedPct = Math.min(completedPctRaw, 100);
+                const remainingPct = commited > 0 ? Math.max(100 - completedPct, 0) : 0;
+                const overrun = completed - commited;
+
+                if (velocityCommitedMetric) velocityCommitedMetric.textContent = commited;
+                if (velocityCompletedMetric) velocityCompletedMetric.textContent = completed;
+                if (velocityDonePercentage) velocityDonePercentage.textContent = `${completedPctRaw.toFixed(0)}`;
+
+                if (velocityCompletedBar) {
+                    velocityCompletedBar.style.width = `${completedPct}%`;
+                    velocityCompletedBar.textContent = completedPct >= 18 ? `${completedPct.toFixed(0)}%` : '';
+                }
+
+                if (velocityRemainingBar) {
+                    velocityRemainingBar.style.width = `${remainingPct}%`;
+                    velocityRemainingBar.textContent = remainingPct >= 18 ? `${remainingPct.toFixed(0)}%` : '';
+                }
+
+                if (velocityOverrunMetric) {
+                    if (overrun > 0) {
+                        velocityOverrunMetric.textContent = `+${overrun} above planned`;
+                        velocityOverrunMetric.classList.remove('hidden');
+                    } else {
+                        velocityOverrunMetric.classList.add('hidden');
+                        velocityOverrunMetric.textContent = '';
+                    }
+                }
+            } else {
+                if (velocityCommitedMetric) velocityCommitedMetric.textContent = '--';
+                if (velocityCompletedMetric) velocityCompletedMetric.textContent = '--';
+                if (velocityDonePercentage) velocityDonePercentage.textContent = '--';
+                if (velocityCompletedBar) {
+                    velocityCompletedBar.style.width = '0%';
+                    velocityCompletedBar.textContent = '';
+                }
+                if (velocityRemainingBar) {
+                    velocityRemainingBar.style.width = '0%';
+                    velocityRemainingBar.textContent = '';
+                }
+                if (velocityOverrunMetric) {
+                    velocityOverrunMetric.classList.add('hidden');
+                    velocityOverrunMetric.textContent = '';
+                }
+            }
             
             ChartManager.createEpicsStatusChart(data.epics);
             ChartManager.createRunCausesChart(data.run_causes);
             ChartManager.populateRunCausesTable(data.run_causes);
-            ChartManager.createVelocityChart()
+            ChartManager.createVelocityChart();
         }
     };
 
