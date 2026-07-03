@@ -1,4 +1,16 @@
 const sprintData = {
+    "DBA-2627SP04": {
+        "effort": {"build": 76, "develop": 100, "refine": 0, "plannedDropped": 18, "runTickets": 17, "notPlanned": 36
+        },
+        "epics": {
+            "DBA-2857: PIX Refund Services": {"Done": 5, "Done in Sprint": 3, "Pending": 0, "Dropped": 1},  
+            "DBA-2896: PIX Refund UX": {"Done": 0, "Done in Sprint": 4, "Pending": 0, "Dropped": 1},  
+            "DBA-2963: QR Code estático": {"Done": 4, "Done in Sprint": 1, "Pending": 2, "Dropped": 0},
+            "DBA-3103: Transaction Monitoring API Integration": {"Done": 2, "Done in Sprint": 1, "Pending": 5, "Dropped": 1},
+            "DBA-3108: Crossbanking - Tela de Retiradas para Contas NRA": {"Done": 1, "Done in Sprint": 2, "Pending": 0, "Dropped": 0}
+        },
+        "run_causes": {"AccountCreation": 12, "PixKeyManagement":2, "WrongFlow":1, "SettlementVlFalse": 1, "Questions": 1}
+    },
     "DBA-2627SP03": {
         "effort": {"build": 92, "develop": 94, "refine": 6, "plannedDropped": 21, "runTickets": 6, "notPlanned": 9
         },
@@ -499,6 +511,7 @@ const velocity = {
     "DBA-2526SP27": {"commited": 12, "completed": 84},
     "DBA-2526SP28": {"commited": 102, "completed": 110},
     "DBA-2627SP03": {"commited": 153, "completed": 85},
+    "DBA-2627SP04": {"commited": 143, "completed": 157}
 }
 
 const progress = {
@@ -534,4 +547,5 @@ const progress = {
     "DBA-2526SP27": {"planned": 12, "completed": 84},
     "DBA-2526SP28": {"planned": 102, "completed": 110},
     "DBA-2627SP03": {"planned": 112, "completed": 98},
+    "DBA-2627SP04": {"planned": 136, "completed": 130}
 }
