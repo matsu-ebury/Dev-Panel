@@ -1,4 +1,20 @@
 const sprintData = {
+    "DBA-2627SP05": {
+        "effort": {"build": 77, "develop": 79, "refine": 21, "plannedDropped": 17, "runTickets": 9, "notPlanned": 11
+        },
+        "epics": {
+            "DBA-2857: PIX Refund Services": {"Done": 8, "Done in Sprint": 1, "Pending": 2, "Dropped": 0},  
+            "DBA-2896: PIX Refund UX": {"Done": 4, "Done in Sprint": 0, "Pending": 0, "Dropped": 1},  
+            "DBA-2963: QR Code estático": {"Done": 6, "Done in Sprint": 0, "Pending": 1, "Dropped": 1},
+            "DBA-3103: Transaction Monitoring API Integration": {"Done": 3, "Done in Sprint": 1, "Pending": 4, "Dropped": 1},
+            "DBA-3226: [Cross-banking] - Melhorias Front-end": {"Done": 0, "Done in Sprint": 1, "Pending": 5, "Dropped": 1},
+            "DBA-2896: PIX Refund APIX": {"Done": 0, "Done in Sprint": 1, "Pending": 2, "Dropped": 0}, 
+            "DBA-3263: PIX Refund Retrial": {"Done": 0, "Done in Sprint": 2, "Pending": 1, "Dropped": 1}, 
+            "DBA-3103: Transaction Monitoring API Integration": {"Done": 3, "Done in Sprint": 1, "Pending": 5, "Dropped": 1},
+
+        },
+        "run_causes": {"WrongFlow":3, "AccountCreation": 1, "EngineTax":1, "SettlementVlFalse": 1, "RetroactiveDateContract": 1, "MVP_PSAV":1, "IR_Calculation":1}
+    },
     "DBA-2627SP04": {
         "effort": {"build": 76, "develop": 100, "refine": 0, "plannedDropped": 18, "runTickets": 17, "notPlanned": 36
         },
@@ -511,7 +527,9 @@ const velocity = {
     "DBA-2526SP27": {"commited": 12, "completed": 84},
     "DBA-2526SP28": {"commited": 102, "completed": 110},
     "DBA-2627SP03": {"commited": 153, "completed": 85},
-    "DBA-2627SP04": {"commited": 143, "completed": 157}
+    "DBA-2627SP04": {"commited": 143, "completed": 157},
+    "DBA-2627SP05": {"commited": 98, "completed": 55}
+
 }
 
 const progress = {
@@ -547,5 +565,6 @@ const progress = {
     "DBA-2526SP27": {"planned": 12, "completed": 84},
     "DBA-2526SP28": {"planned": 102, "completed": 110},
     "DBA-2627SP03": {"planned": 112, "completed": 98},
-    "DBA-2627SP04": {"planned": 136, "completed": 130}
+    "DBA-2627SP04": {"planned": 136, "completed": 130},
+    "DBA-2627SP05": {"planned": 96, "completed": 48}
 }
