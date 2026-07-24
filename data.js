@@ -476,7 +476,7 @@ const epicDataR4 = {
     "DBA-2144: Postmortem - Account Status": { "Stories": 6, "Story Points": 32, "Progress": 100}
 };
 
-const epicData = {
+const epicDataR5 = {
     "DBA-2342: Dashboard com visualizações de negócios": { "Stories": 1, "Story Points": 5, "Progress": 100},
     "DBA-2144: Postmortem - Account Status": { "Stories": 6, "Story Points": 32, "Progress": 100},
     "DBA-2263: [Testes] Withdrawal e2e": { "Stories": 14, "Story Points": 58, "Progress": 100},
@@ -492,6 +492,17 @@ const epicData = {
     "DBA-2857: Pix Refund - Services": { "Stories": 10, "Story Points": 54, "Progress": 40},
     "DBA-2896: Pix Refund - UX": { "Stories": 5, "Story Points": 34, "Progress": 0},
 
+};
+
+const epicData = {
+    "DBA-2758: [Foundations] Refund Overview": { "Stories": 7, "Story Points": 56, "Progress": 100},
+    "DBA-2767: Plataforma - Migração Accounts": { "Stories": 3, "Story Points": 0, "Progress": 100},
+    "DBA-2983: QRCode estático - Caminho Critico": { "Stories": 9, "Story Points": 107, "Progress": 100},
+    "DBA-3226: [Cross-banking] - Melhorias Front-end": { "Stories": 3, "Story Points": 19, "Progress": 100},
+    "DBA-2896: Pix Refund - UX": { "Stories": 5, "Story Points": 34, "Progress": 100},
+    "DBA-2857: Pix Refund - Services": { "Stories": 10, "Story Points": 54, "Progress": 91},
+    "DBA-3103: Transaction Monitoring API Integration": { "Stories": 9, "Story Points": 38, "Progress": 88},
+    "DBA-2963: QRCode estático": { "Stories": 6, "Story Points": 58, "Progress": 77},
 };
 
 const velocity = {
